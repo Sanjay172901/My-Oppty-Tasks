@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Check Example</title>
+  <style>
+    .success { color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Name Login</h1>
+
+  <!-- Input field -->
+  <input type="text" id="username" placeholder="Enter your name">
+  <button onclick="checkLogin()">Login</button>
+
+  <!-- Message -->
+  <p id="loginMessage"></p>
+
+  <script>
+    function checkLogin() {
+      let user = document.getElementById("username").value;
+      let msg = document.getElementById("loginMessage");
+
+      if (user === "Sanjay") {
+        msg.textContent = "Welcome, Sanjay!";
+        msg.className = "success";
+      } else {
+        msg.textContent = "Access Denied. Try again.";
+        msg.className = "error";
+      }
+    }
+  </script>
+</body>
+</html>

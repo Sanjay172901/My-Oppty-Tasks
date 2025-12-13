@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Array Playground</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f0f4f8;
+            padding: 30px;
+            color: #333;
+        }
+        h2 {
+            background: linear-gradient(90deg, #0077b6, #00b4d8);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+        .box {
+            background: white;
+            border: 2px solid #0077b6;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        .box:nth-child(2) { animation-delay: 0.2s; }
+        .box:nth-child(3) { animation-delay: 0.4s; }
+        .box:nth-child(4) { animation-delay: 0.6s; }
+        .box:nth-child(5) { animation-delay: 0.8s; }
+        .box:nth-child(6) { animation-delay: 1s; }
+        .box:nth-child(7) { animation-delay: 1.2s; }
+        .box:nth-child(8) { animation-delay: 1.4s; }
+
+        h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        h3:hover {
+            color: #00b4d8;
+        }
+        pre {
+            background: #e9f5ff;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        pre:hover {
+            transform: scale(1.02);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<h2>JavaScript Array Playground</h2>
+
+<div class="box">
+    <h3>1. Array Methods</h3>
+    <pre id="methodsOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>2. Array Search</h3>
+    <pre id="searchOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>Extra: Array Search (findIndex & lastIndexOf)</h3>
+    <pre id="extraSearchOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>3. Array Sort</h3>
+    <pre id="sortOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>4. Array Iterations</h3>
+    <pre id="iterationOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>5. Array Reference</h3>
+    <pre id="refOutput"></pre>
+</div>
+
+<div class="box">
+    <h3>6. Array Const</h3>
+    <pre id="constOutput"></pre>
+</div>
+
+<script>
+// 1. ARRAY METHODS
+let cities = ["Delhi", "Mumbai", "Chennai"];
+cities.push("Hyderabad");
+cities.pop();
+cities.unshift("Kolkata");
+cities.shift();
+document.getElementById("methodsOutput").textContent =
+    "Cities Array: " + cities.join(", ");
+
+// 2. ARRAY SEARCH
+let scores = [12, 25, 37, 49, 58];
+let searchText =
+    "Index of 37: " + scores.indexOf(37) +
+    "\nIncludes 49? " + scores.includes(49) +
+    "\nFind >30: " + scores.find(s => s > 30);
+document.getElementById("searchOutput").textContent = searchText;
+
+// EXTRA ARRAY SEARCH
+let students = ["Amit", "Priya", "Ravi", "Priya", "Sneha"];
+let firstPriyaIndex = students.findIndex(name => name === "Priya");
+let lastPriyaIndex = students.lastIndexOf("Priya");
+let hasSneha = students.some(name => name === "Sneha");
+let allNamesLong = students.every(name => name.length > 3);
+
+document.getElementById("extraSearchOutput").textContent =
+    "Students: " + students.join(", ") +
+    "\nFirst Priya Index: " + firstPriyaIndex +
+    "\nLast Priya Index: " + lastPriyaIndex +
+    "\nIncludes Sneha? " + hasSneha +
+    "\nAll names longer than 3 letters? " + allNamesLong;
+
+// 3. ARRAY SORT
+let players = ["Virat", "Dhoni", "Rohit", "Sachin"];
+let sortedPlayers = players.sort();
+
+let ages = [34, 12, 56, 23];
+let sortedAges = ages.sort((a, b) => a - b);
+
+document.getElementById("sortOutput").textContent =
+    "Sorted Players: " + sortedPlayers.join(", ") +
+    "\nSorted Ages: " + sortedAges.join(", ");
+
+// 4. ARRAY ITERATION
+let prices = [99, 149, 199];
+let iterText = "";
+prices.forEach(p => iterText += "forEach: " + p + "\n");
+prices.map(p => p * 2).forEach(p => iterText += "map doubled: " + p + "\n");
+for (let i = 0; i < prices.length; i++) {
+    iterText += "for loop → Index: " + i + ", Value: " + prices[i] + "\n";
+}
+for (let value of prices) {
+    iterText += "for...of loop → Value: " + value + "\n";
+}
+document.getElementById("iterationOutput").textContent = iterText;
+
+// 5. ARRAY REFERENCE
+let arrA = ["alpha", "beta"];
+let arrB = arrA;
+arrB.push("gamma");
+document.getElementById("refOutput").textContent =
+    "Array A: " + arrA.join(", ") +
+    "\nArray B: " + arrB.join(", ");
+
+// 6. ARRAY CONST
+const animals = ["Dog", "Cat"];
+animals.push("Elephant");
+document.getElementById("constOutput").textContent =
+    "Animals (const): " + animals.join(", ") +
+    "\nNote: const arrays can be modified!";
+</script>
+
+</body>
+</html>

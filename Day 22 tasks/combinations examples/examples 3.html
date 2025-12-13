@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boolean Example - Agreement</title>
+  <style>
+    .ok { color: green; font-weight: bold; }
+    .warn { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Terms Agreement</h2>
+  <input type="checkbox" id="agree"> I agree to the terms
+  <br><br>
+  <button onclick="checkAgreement()">Submit</button>
+  <p id="agreementMessage"></p>
+
+  <script>
+    function checkAgreement() {
+      let isAgreed = document.getElementById("agree").checked; // Boolean true/false
+
+      if (isAgreed) {
+        document.getElementById("agreementMessage").textContent = "✅ Thank you for agreeing!";
+        document.getElementById("agreementMessage").className = "ok";
+      } else {
+        document.getElementById("agreementMessage").textContent = "❌ You must agree first!";
+        document.getElementById("agreementMessage").className = "warn";
+      }
+    }
+  </script>
+</body>
+</html>

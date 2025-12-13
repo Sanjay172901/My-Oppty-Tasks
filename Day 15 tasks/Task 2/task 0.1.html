@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Style 2.css"/>
+  <title>Even or Odd Colorchange</title>
+</head>
+<body>
+<h2>Enter a number</h2>
+  <input onkeyup="check()" type="text" id="num">
+  <p id="output"></p>
+<script>
+    function check()
+{
+    var num = document.getElementById("num").value;
+    if (num % 2 == 0)
+    {
+         document.body.style.backgroundColor = "green";
+      
+    }
+    else
+     {
+
+         document.body.style.backgroundColor = "red";
+      
+    }
+}
+  </script>
+</body>
+</html>

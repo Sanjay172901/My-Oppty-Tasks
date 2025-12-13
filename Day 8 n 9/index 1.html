@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume - Sanjay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --main-bg: #20a4e7;
+      --accent: #4272d7;
+      --section-bg: #ffffff;
+      --text: #222831;
+      --subtitle: #042338;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: lightblue;
+      color: rgb(127, 134, 227);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 32px 20px;
+      background: white;
+      box-shadow:  4px 32px rgba(67, 114, 215, 0.08);
+      border-radius: 16px;
+      display: grid;
+      grid-template-columns: auto;
+      gap: 32px;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-right: 16px;
+      border-right: 2px solid #e49058;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-left: 16px;
+    }
+
+    h1 {
+      color: grey;
+      margin: 0;
+      font-size: 2.6em;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      color: lightseagreen;
+      border-bottom: 2px solid;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      font-size: 1.25em;
+      margin-top: 0;
+      font-weight: 600px;
+    }
+
+    .info, .skills, .contact {
+      margin-bottom: 24px;
+    }
+
+    .skills ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    .skills li {
+      background: #e7ecff;
+      color: #264b96;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.98em;
+    }
+
+    .section {
+      background: #f3f7fc;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .job {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 15px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: lightsalmon;
+    }
+
+    .job-date {
+      color: #727b9d;
+      font-size: 0.92em;
+      margin-bottom: 6px;
+    }
+
+    .education {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: auto;
+        padding: 14px 2px;
+        gap: 14px;
+      }
+      .sidebar, .main-content {
+        padding: 0;
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="info">
+        <h1>[T v Sanjay]</h1>
+        <div class="contact">
+          <p><strong>Email:</strong> mymailid@email.com</p>
+          <p><strong>Phone:</strong> +91-1234567890</p>
+          <p><strong>Location:</strong> Kakinada, AP, India</p>
+        </div>
+      <div class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+    <div class="main-content">
+      <div class="section">
+        <h2>Profile</h2>
+        <p>Software Engineer with a passion for web development, modern UI, and creative problem solving.</p>
+      </div>
+      <div class="section">
+        <h2>Experience</h2>
+        <div class="job">
+          <div class="job-title">Assistant Manager</div>
+          <div class="job-date">August 2018 - March 2022</div>
+          <div>- CASA,LI,HI,RD</div>
+          <div>- Reference from Existing customer's</div>
+        </div>
+        <div class="job">
+          <div class="job-title">Web Developer</div>
+          <div class="job-date">Oct 2025 - Present</div>
+          <div>- Learning Html,CSS & Java</div>
+        </div>
+      </div>
+      <div class="section education">
+        <h2>Education</h2>
+        <div class="job">
+          <div class="job-title">B.Sc,Computer Science</div>
+          <div class="job-date">Andhra University, 2006-2009.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

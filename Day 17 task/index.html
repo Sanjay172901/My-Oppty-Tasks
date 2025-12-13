@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Marks Calculator</title>
+
+</head>
+<body>
+
+    <div class="container">
+        <h2><u>Marks Calculator</u></h2>
+
+        <label>HTML:</label>
+        <input type="number" id="sub1"><br>
+
+        <label>CSS:</label>
+        <input type="number" id="sub2"><br>
+
+        <label>Javascript:</label>
+        <input type="number" id="sub3"><br>
+
+        <button onclick="calculate()">Calculate</button>
+        <button onclick="resetForm()">Reset</button>
+        
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Marks //
+            let m1 = Number(document.getElementById("sub1").value);
+            let m2 = Number(document.getElementById("sub2").value);
+            let m3 = Number(document.getElementById("sub3").value);
+
+     function getTotal(a, b, c) {
+                return a + b + c;
+     }
+
+            // Total //
+            let total = m1 + m2 + m3;
+
+            // Average //
+            let avg = total / 3;
+
+            // Grade //
+            let grade = "";
+            if (avg >= 75) grade = "A";
+            else if (avg >= 60) grade = "B";
+            else if (avg >= 50) grade = "C";
+            else grade = "Fail";
+
+            // Simple object //
+            let student = {
+                sub1: m1,
+                sub2: m2,
+                sub3: m3,
+                total: total,
+                average: avg.toFixed(2),
+                grade: grade
+            };
+
+            //  result //
+            document.getElementById("output").innerHTML = `
+                <h3>Result</h3>
+                Total: ${student.total} <br>
+                Average: ${student.average} <br>
+                Grade: ${student.grade}
+            `;
+        }
+           // reset form //
+        function resetForm(){
+            document.getElementById("sub1").value = "";
+            document.getElementById("sub2").value = "";
+            document.getElementById("sub3").value = "";
+            document.getElementById("output").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

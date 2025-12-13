@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Task 1</title>
+    </head>
+<body>
+        <h1 id="mainHeading">Personal Details!</h1>
+        <div class="result">
+            <h3>Output:</h3>
+            <div id="output">
+            </div>
+        </div>
+        
+        <button onclick="runVariables()">Click Me</button>
+        <button onclick="clearOutput()">Clear</button>
+        <button onclick="changeColor()">Color Change</button>
+    <script>
+         function changeColor() {
+            const colors = ['#ff4c4c', '##4CAF50', '#dc143dc', '#000000', '#adff2f'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById("mainHeading").style.color = randomColor;
+        }
+        function displayOutput(text) 
+        {
+            document.getElementById("output").innerHTML += text + "<br>";
+        }
+        
+        function runVariables() 
+        {
+            let name = "Murali Jay";
+            let age = 3;
+            const place = "Kakinada";
+            const dob = "01-02-2023";
+            var hobbies = "Music";
+            
+            displayOutput("---Details---");
+            displayOutput("Name: " + name);
+            displayOutput("DOB: " + dob);
+            displayOutput("Place: " + place);
+            displayOutput("Age: " +age);
+            displayOutput("Hobbies: " +hobbies);
+        }
+                 function clearOutput()
+             {
+            document.getElementById("output").innerHTML = " ";
+        }
+    </script>
+   </body>
+</html>

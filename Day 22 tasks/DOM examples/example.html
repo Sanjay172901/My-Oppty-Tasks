@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css"/>
+  <title>DOM Add/Delete Example</title>
+</head>
+<body>
+  <h2>DOM Methods: Add & Delete Elements</h2>
+
+  <!-- Input field -->
+  <input type="text" id="itemInput" placeholder="Enter item">
+  <button class="addBtn" onclick="addItem()">Add Item</button>
+  <button class="delBtn" onclick="deleteItem()">Delete Last Item</button>
+
+  <!-- List -->
+  <ul id="list"></ul>
+
+  <script>
+    function addItem() {
+      let value = document.getElementById("itemInput").value;
+      if (value.trim() === "") return; 
+
+      // Create new element
+      let li = document.createElement("li");
+      li.textContent = value;
+
+      // Append to list
+      document.getElementById("list").appendChild(li);
+
+      // Clear input
+      document.getElementById("itemInput").value = "";
+    }
+
+    function deleteItem() {
+      let list = document.getElementById("list");
+      if (list.lastChild) {
+        list.removeChild(list.lastChild); 
+      }
+    }
+  </script>
+</body>
+</html>

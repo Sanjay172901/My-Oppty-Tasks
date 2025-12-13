@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer's Page</title>
+    <style>
+        * {
+            margin: 1;
+            padding: 1;
+            box-sizing: border-square;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #b9d4f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #f90e0e 0%, #535cd6 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow:  2px 3px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        article {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 1px 5px rgba(0,0,0,0.1);
+        }
+        
+        article h2 {
+            color: #bd1482;
+            margin-bottom: 1rem;
+        }
+        
+        article p {
+            margin-bottom: 1rem;
+        }
+        
+        .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow:  1px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-widget h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background: #ff3c3c;
+            color: rgb(0, 0, 0);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #a3a2a2;
+            color: white;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 5px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            article, .sidebar-widget {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            header {
+                padding: 1rem 0;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+ <header>
+  <h1>Financial Solution's</h1>
+  <p>Financial Operations and Serving Customers</p>
+  </header>
+        
+  <div class="content-wrapper">
+  <main class="main-content">
+   <article>
+   <h2>Easy Way to Get Banking Solutions</h2>
+   <div class="meta">
+   <span>&#128197; November 10, 2025</span> &nbsp;&nbsp; 
+   <span>&#128100; Alexander</span> &nbsp;&nbsp; 
+                        
+   </div>
+   <p>Banking solutions refer to various services and technologies that financial institutions manage to serve.</p>
+                    
+   <p>Key types include:</p>
+  <ul>
+ <li>Core Banking Solutions (CBS): Centralized systems that manage daily banking operations, such as deposit accounts, loan processing, and customer transactions. 
+</li>
+ <li>Digital Banking: Services like internet banking, mobile banking, and ATMs that allow customers to perform transactions remotely.</li>
+ <li>Emerging Trends: Innovations in banking technology, including AI and data analytics, to enhance customer engagement and streamline operations. These solutions are essential for modern banking, enabling efficiency and improved customer service.</li>
+                       
+                    </ul>
+                    
+ <p>Different Countries Currencies:</p>
+
+
+     <li>&yen; Yen currency--->Japan</li>
+     <li>&dollar; Dollar currency--->U.S.A</li>
+     <li>&euro; Euro currency--->Euro Zone</li>
+     <li>&pound; Pound currency--->U.K</li>
+                    
+  </article>
+                
+  <article>
+  <h2>Responsive Web Design Best PracticesBanks are financial institutions that accept deposits, provide loans, and offer various financial services, acting as intermediaries between depositors and borrowers.</h2>
+   <div class="meta">
+   <span>&#128197; November 10, 2025</span> &nbsp;&nbsp; 
+   <span>&#128100; Alexander</span> &nbsp;&nbsp; 
+                       
+   </div>
+    <p>Banks & Financial Instituions Work on:</p>
+                    
+    <ol>
+    <li><strong>Accepting Deposits</strong> &ndash; Accepting Deposits: Banks provide a safe place for individuals and businesses to deposit their money. This can be in the form of checking accounts, savings accounts, or certificates of deposit (CDs). Depositors earn interest on their savings, although rates may vary.</li>
+     <li><strong>Providing Loans</strong> &ndash; Banks use the funds deposited by customers to issue loans to individuals and businesses. These loans can be for various purposes, such as buying a home, financing a car, or funding business operations. Banks charge interest on these loans, which is typically higher than the interest paid to depositors, allowing them to make a profit.</li>
+     <li><strong>Facilitating Payments</strong> &ndash; Banks play a crucial role in the economy by facilitating transactions. They process payments between parties, whether it's payroll for employees, payments for goods and services, or transfers between accounts.</li>
+       
+</pre>
+ </article>
+<article>
+  <h2>How Banks Make Money?</h2>
+   <div class="meta">
+   <span>&#128197; November 10, 2025</span> &nbsp;&nbsp; 
+   <span>&#128100; Alexander</span> &nbsp;&nbsp; 
+                       
+   </div>
+    <p>As Per RBI Information:</p>
+                    
+    <ol>
+    <li><strong>Interest Rate Spread</strong> &ndash; Interest Rate Spreak:Banks earn money by lending at higher interest rates than they pay on deposits. For example, if a bank pays 1% interest on savings accounts but charges 5% on loans, the difference (or spread) is where the bank profits.</li>
+     <li><strong>FEES</strong> &ndash; Banks charge various fees for services such as account maintenance, overdrafts, wire transfers, and ATM usage outside their network.</li>
+     <li><strong>Investment Income</strong> &ndash;Banks may invest in securities and other financial instruments, generating returns on these investments.</li>
+                        
+  </pre>
+ </article>
+
+ </main>
+            
+ <aside class="sidebar">
+  <div class="sidebar-widget">
+  <h3>Regulators Environment</h3>
+  <p>Banks operate under strict regulations to ensure the safety and soundness of the financial system. In the U.S., banks are regulated by federal and state authorities, and they must adhere to rules that protect consumers and maintain financial stability. For example, the Federal Deposit Insurance Corporation (FDIC) insures deposits up to $250,000, providing a safety net for depositors..</p>
+ </div>
+                
+ <div class="sidebar-widget">
+ <h3> Accounts Variants </h3>
+ <ul style="list-style: none; padding: 0;">
+ <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+ <a href="#" style="text-decoration: none; color: #e83fa5;">&rarr; Savings Account</a>
+ </li>
+ <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+ <a href="#" style="text-decoration: none; color: #e83fa5;">&rarr; Current Account</a>
+  </li>
+ <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+ <a href="#" style="text-decoration: none; color: #e83fa5;">&rarr; OD Agr Account</a>
+ </li>
+ <li>
+ <a href="#" style="text-decoration: none; color: #e83fa5;">&rarr; junior Account</a>
+ </li>
+ </ul>
+</div>
+                
+<div class="sidebar-widget">
+ <h3>&#127991; We Offer</h3>
+  <div class="tags">
+   <span class="tag">Accounts</span>
+    <span class="tag">Loans</span>
+   <span class="tag">Credit Cards</span>
+   <span class="tag">Deposits</span>
+   <span class="tag">Credit score</span>
+   <span class="tag">Senior citizen's Deposit</span>
+   </div>
+ </div>
+<div class="sidebar-widget">
+ <h3> What Is a Bank? Definition and Role in the Economy</h3>
+  <div class="tags">
+  <p>Banks are financial institutions licensed to manage your deposits and extend loans, serving as both a secure place for your savings and a source for financing needs. They offer a variety of services, from individual retirement accounts (IRAs) and certificates of deposit (CDs) to currency exchange and safe deposit boxes.   
+</div>
+ </div>
+                
+<div class="sidebar-widget">
+<h3>&#9993; For Details</h3>
+<p>Email us:</p>
+<form style="margin-top: 15px;">
+<input type="email" placeholder="Your email" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+<button type="submit" style="width: 100%; padding: 10px; background: #e82b2b; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+ </form>
+</div>
+</aside> 
+</div>
+        
+<footer>
+<p>&copy; 2025 Banking Solutions. All rights reserved. &bull; <a href="#" style="color: white;">Privacy Policy</a> &bull; <a href="#" style="color: white;">Terms</a></p>
+
+<p><a href="#top">Back to Top</a></p>
+</footer>
+    </div>
+</body>
+</html>

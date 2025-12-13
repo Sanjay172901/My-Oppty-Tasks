@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traffic Light Switch Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .stop { color: red; font-weight: bold; }
+    .wait { color: orange; font-weight: bold; }
+    .go { color: green; font-weight: bold; }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .redBtn { background-color: red; color: white; }
+    .yellowBtn { background-color: orange; color: white; }
+    .greenBtn { background-color: green; color: white; }
+  </style>
+</head>
+<body>
+  <h2>Traffic Light Demo</h2>
+
+  <!-- Buttons -->
+  <button class="redBtn" onclick="showSignal('Red')">Red</button>
+  <button class="yellowBtn" onclick="showSignal('Yellow')">Yellow</button>
+  <button class="greenBtn" onclick="showSignal('Green')">Green</button>
+
+  <!-- Message -->
+  <p id="signalMessage"></p>
+
+  <script>
+    function showSignal(color) {
+      let msg = document.getElementById("signalMessage");
+
+      switch(color) {
+        case "Red":
+          msg.textContent = "Stop!";
+          msg.className = "stop";
+          break;
+        case "Yellow":
+          msg.textContent = "Wait!";
+          msg.className = "wait";
+          break;
+        case "Green":
+          msg.textContent = "Go!";
+          msg.className = "go";
+          break;
+        default:
+          msg.textContent = "Invalid signal!";
+          msg.className = "";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto slab', sans-serif;
+  line-height: 1.6;
+  background-color: #ffffffd3;
+  color: #333;
+}
+
+/* Container */
+.container {
+  width:100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  color: rgb(41, 40, 40);
+  padding: 25px 0;
+}
+
+.logo {
+  font-size: 4.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-top: 5px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 200px;
+  
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #ffffff;
+  padding: 200px 100px;
+  text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin: 12px;
+  color: #030303;
+}
+
+.hero-text p {
+  font-size: 2.0rem;
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.primary {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #ffffff;
+}
+
+.secondary {
+  background-color: none;
+  border: 2px solid #0a66c2;
+  color: #0a66c2;
+}
+
+.secondary:hover {
+  background-color: #0a66c2;
+  color: white;
+}
+
+/* Features Section */
+.features {
+  background-color: #e9f1ff;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.features h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  font-size: 1.1rem;
+  line-height: 3;
+}
+
+/* Footer */
+footer {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 75px;
+  margin-top: 40px;
+}

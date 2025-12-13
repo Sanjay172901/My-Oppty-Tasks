@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logical OR Example</title>
+  <style>
+    .yes { color: green; font-weight: bold; }
+    .no { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Discount Check (OR)</h2>
+  <input type="checkbox" id="student"> Student
+  <input type="checkbox" id="member"> Member
+  <br><br>
+  <button onclick="checkDiscount()">Check Discount</button>
+  <p id="discountMessage"></p>
+
+  <script>
+    function checkDiscount() {
+      let isStudent = document.getElementById("student").checked;
+      let isMember = document.getElementById("member").checked;
+
+      if (isStudent || isMember) {
+        document.getElementById("discountMessage").textContent = "✅ You get a discount!";
+        document.getElementById("discountMessage").className = "yes";
+      } else {
+        document.getElementById("discountMessage").textContent = "❌ No discount available.";
+        document.getElementById("discountMessage").className = "no";
+      }
+    }
+  </script>
+</body>
+</html>

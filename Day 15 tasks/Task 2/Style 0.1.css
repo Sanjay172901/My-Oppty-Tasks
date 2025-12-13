@@ -1,0 +1,23 @@
+   body {
+  background-color: #fcfcfc;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #22223b;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+h2 {
+  color: #2d2d2d;
+  margin-bottom: 15px;
+  letter-spacing: 3px;
+}
+input[type="text"] 
+{
+  padding: 10px 16px;
+  border: 1.5px solid #858484;
+  border-radius: 6px;
+}
+
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 6 Sports</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Audiowide, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Header styling */
+    header {
+      background: #157a6e;
+      color: #fff;
+      padding: 18px  12px;
+      text-align: center;
+    }
+    #site-title {
+      margin: auto;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      margin-top: 9px;
+    }
+    .nav-link {
+      color: #e7f6f2;
+      text-decoration: none;
+      padding:  16px;
+      font-weight: normal;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    .nav-link:hover 
+    {
+      color: #f9f388;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 38px auto;
+      padding: 24px 18px;
+      background-color: #edc0c0;
+      border: 2px solid #157a6e;
+      border-radius: 10px;
+    }
+    #main-title {
+      color: #157a6e;
+      border-bottom: 2px solid #157a6e;
+      margin-bottom: 30px;
+      padding-bottom: 11px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat;
+      gap: 28px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    /* Individual containers for each sport */
+    .cricket {
+      border: 2px solid #4ad7d1;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 15px #b2f7ef50;
+    }
+    
+    .football {
+      border: 2px solid #4ad7d1;
+      background-color:  #f3edfd;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 15px #b2f7ef50;
+    }
+    .tennis {
+      border: 2px solid #4ad7d1;
+      background-color: #f5fded;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 15px #b2f7ef50;
+    }
+    .basketball {
+      border: 2px solid #4ad7d1;
+      background-color: #b7fde6;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 15px #b2f7ef50;
+    }
+
+    .badminton {
+      border: 2px solid #4ad7d1;
+      background-color: #e0d4f7;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 15px #b2f7ef50;
+    }
+    .hockey {
+      border: 2px solid #4ad7d1;
+      background-color: #ddf5e4;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 15px #b2f7ef50;
+    }
+    .sport-name {
+      color: #0e5e6f;
+      margin-bottom: 8px;
+    }
+    .desc {
+      color: #cb1c1c;
+      margin-bottom: 12px;
+    }
+    .sport-link {
+      color: #fff;
+      background-color: #26a69a;
+      border: 1px solid aquamarine;
+      border-radius: 5px;
+      text-decoration: none;
+      padding: 8px 18px;
+      font-weight: bold;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    .sport-link:hover {
+      background-color: #0e5e6f;
+      color: #69ff8eec;
+    }
+    p{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    footer {
+      background: #157a6e;
+      color: #ffffff;
+      text-align: center;
+      padding: 16px;
+      position: relative;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 5px 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="site-title"><u>Sports Favorites</u></h1>
+    <nav>
+      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="#">About</a>
+      <a class="nav-link" href="#">Contact</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2 id="main-title"><u>Top 6 Sports and Favorites</u></h2>
+    <div class="sports-grid">
+      <div class="cricket">
+        <h3 class="sport-name"><u>Cricket</u></h3>
+        <p class="desc">Favorite Player: Virat Kohli</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+        <img src="https://www.bing.com/th/id/OIP.T56xIEWtREyiH9gqkAc4_QHaEz?w=272&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+      <div class="football">
+        <h3 class="sport-name"><u>Football</u></h3>
+        <p class="desc">Favorite Player: Leo Messi</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+         <img src="https://www.bing.com/th/id/OIP.A8fhH3kjMXc9D9wSknsHDwHaNK?w=160&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+      <div class="tennis">
+        <h3 class="sport-name"><u>Tennis</u></h3>
+        <p class="desc">Favorite Player: Roger Federer</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+        <img src="https://www.bing.com/th/id/OIP.7unffdym_NqN5x38_W6vKgHaFT?w=295&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+      <div class="basketball">
+        <h3 class="sport-name"><u>Basketball</u></h3>
+        <p class="desc">Favorite Player: LeBron James</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+        <img src="https://www.bing.com/th/id/OIP.nPN-ZegSsoWYXURJkET7AQHaFj?w=280&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+      <div class="badminton">
+        <h3 class="sport-name"><u>Badminton</u></h3>
+        <p class="desc">Favorite Player: P.V. Sindhu</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+        <img src="https://www.bing.com/th/id/OIP.tsMZIwO8nl33OmGPXvT_-QHaEH?w=255&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+      <div class="hockey">
+        <h3 class="sport-name"><u>Hockey</u></h3>
+        <p class="desc">Favorite Player: Dhanraj Pillai</p>
+        <a class="sport-link" href="#" target="_blank"><u>Know More</u></a>
+        <img src="https://www.bing.com/th/id/OIP.WRKvGvgqZiW2Kb3Hh28BPQHaHn?w=181&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2.jpg" alt="Virat Kohli" width="200" height="200">
+      </div>
+    </div>
+  </div>
+ <div> 
+  <p><mark>Sports are defined as physical contests pursued for their goals and challenges. They can be competitive or recreational and are often organized into leagues or tournaments. The International Olympic Committee recognizes various sports, including traditional physical activities and mind sports like chess</mark>.</p>
+  </div>
+  <footer>
+    <p>&copy; 2025 Sportspage. All rights reserved.</p>
+      <p><a href="#top">Back to Top</a></p>
+  </footer>
+</body>
+</html>
