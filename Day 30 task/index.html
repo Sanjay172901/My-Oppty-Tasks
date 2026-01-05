@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Speed Typing Test</title>
+</head>
+<body>
+  <h1>Typing Speed Test</h1>
+
+  <!-- Duration selector -->
+  <label for="durationSelect">Choose Duration:</label>
+  <select id="durationSelect">
+    <option value="120">2 Minutes</option>
+    <option value="180">3 Minutes</option>
+  </select>
+
+  <!-- Timer -->
+  <div id="timer">Time Left: 2:00</div>
+
+  <!-- The paragraph -->
+  <p id="testParagraph">
+    The morning sun painted the sky in shades of gold. Birds chirped cheerfully, welcoming the new day.
+  </p>
+
+  <!-- Input box -->
+  <textarea id="inputBox" rows="4" placeholder="Start typing here..."></textarea>
+
+  <!-- Result display -->
+  <div id="result"></div>
+  <div id="accuracy"></div>
+
+  <!-- Restart button -->
+  <button id="restartBtn">Restart</button>
+
+  
+  <script>
+    const testParagraph = document.getElementById('testParagraph').innerText;
+    const inputBox = document.getElementById('inputBox');
+    const result = document.getElementById('result');
+    const accuracyDisplay = document.getElementById('accuracy');
+    const timerDisplay = document.getElementById('timer');
+    const durationSelect = document.getElementById('durationSelect');
+    const restartBtn = document.getElementById('restartBtn');
+
+    let startTime;
+    let finished = false;
+    let countdown;
+    let duration = parseInt(durationSelect.value);
+    let timeLeft = duration;
+
+    // Format time helper
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Timer function
+    function startTimer() {
+      countdown = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          if (!finished) {
+            inputBox.disabled = true;
+            result.innerHTML = "⏰ Time's up! Test ended.";
+          }
+        } else {
+          timeLeft--;
+          timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+        }
+      }, 1000);
+    }
+
+    // Start timer on focus
+    inputBox.addEventListener('focus', () => {
+      if (!startTime) {
+        startTime = new Date();
+        startTimer();
+      }
+    });
+
+    // Input event: check completion + accuracy
+    inputBox.addEventListener('input', () => {
+      const typedText = inputBox.value;
+
+      // Accuracy tracking
+      let correctChars = 0;
+      for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === testParagraph[i]) correctChars++;
+      }
+      const accuracy = (correctChars / typedText.length) * 100 || 0;
+      accuracyDisplay.textContent = `Accuracy: ${accuracy.toFixed(2)}%`;
+
+      // Completion check
+      if (!finished && typedText.trim() === testParagraph.trim()) {
+        finished = true;
+        clearInterval(countdown);
+        const endTime = new Date();
+        const timeTaken = (endTime - startTime) / 1000; // seconds
+
+        // ✅ Standard WPM calculation (5 chars = 1 word)
+        const wpm = (typedText.length / 5) / (timeTaken / 60);
+
+        result.innerHTML = `✅ Completed!<br>
+          Time: ${timeTaken.toFixed(2)} seconds<br>
+          WPM: ${wpm.toFixed(2)}`;
+        inputBox.disabled = true;
+      }
+    });
+
+    // Duration change resets timer display
+    durationSelect.addEventListener('change', () => {
+      duration = parseInt(durationSelect.value);
+      timeLeft = duration;
+      timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+    });
+
+    // Restart button
+    restartBtn.addEventListener('click', () => {
+      clearInterval(countdown);
+      inputBox.disabled = false;
+      inputBox.value = "";
+      result.innerHTML = "";
+      accuracyDisplay.innerHTML = "";
+      startTime = null;
+      finished = false;
+      timeLeft = duration;
+      timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+    });
+  </script>
+</body>
+</html>
