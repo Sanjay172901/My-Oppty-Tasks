@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Student Registration Form</title>
+</head>
+<body>
+   <div id="toast" class="toast"></div>
+
+    <div class="container">
+        <!-- 1. SIGNUP SCREEN -->
+        <div id="auth-screen" class="card" style="max-width: 400px; margin: auto;">
+            <div class="card-header">
+                <h1>Student Sign Up</h1>
+            </div>
+            
+            <div class="form-body">
+                <div class="text-center mb-4">
+                    <i class="fas fa-user-plus fa-3x" style="color: var(--primary);"></i>
+                    <p class="mt-1 font-bold">Create your account to start registration</p>
+                </div>
+
+                <form id="signup-form" onsubmit="handleSignup(event)">
+                    <div class="form-group mb-4">
+                        <label>Full Name</label>
+                        <input type="text" id="s-name" class="input-control" required placeholder="Your Full Name">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Email Address</label>
+                        <input type="email" id="s-email" class="input-control" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Password</label>
+                        <input type="password" id="s-pass" class="input-control" required placeholder="Create Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Sign Up & Proceed</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 2. REGISTRATION SCREEN -->
+        <div id="registration-screen" class="card hidden">
+            <div class="card-header">
+                <h1 id="reg-title">Student Registration Form</h1>
+            </div>
+            
+            <form id="reg-form" class="form-body" onsubmit="handleRegistration(event)">
+                <div class="form-grid grid-cols-3">
+                    
+                    <div class="form-group">
+                        <label>Photo</label>
+                        <div class="photo-area">
+                            <img id="img-preview" src="" class="hidden">
+                            <i class="fas fa-camera"></i>
+                            <span class="photo-hint">Upload</span>
+                            <input type="file" id="p-input" class="file-input" accept="image/*" onchange="previewImg(event)">
+                        </div>
+                    </div>
+
+                    <div class="span-full grid-cols-2 grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="stu-name" class="input-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Enrollment Number</label>
+                            <input type="text" id="stu-enroll" class="input-control" required placeholder="e.g. ENR12345">
+                        </div>
+                        <div class="form-group">
+                            <label>Father's Name</label>
+                            <input type="text" id="stu-father" class="input-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mother's Name</label>
+                            <input type="text" id="stu-mother" class="input-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="stu-dob" class="input-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Blood Group</label>
+                            <select id="stu-blood" class="input-control" required>
+                                <option value="">Select</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Aadhaar (12 Digits)</label>
+                            <input type="text" id="stu-aadhaar" class="input-control" pattern="\d{12}" maxlength="12" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile No.</label>
+                            <input type="tel" id="stu-mobile" class="input-control" pattern="[6-9][0-9]{9}" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Course</label>
+                            <select id="stu-course" class="input-control" required>
+                                <option value="">Select Course</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="BCA">BCA</option>
+                                <option value="B.Com">B.Com</option>
+                                <option value="MBA">MBA</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-full">
+                            <label>Address</label>
+                            <textarea id="stu-addr" class="input-control" rows="2" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group mt-4 no-print">
+                    <button type="button" class="btn btn-outline flex-1" onclick="restart()">Logout</button>
+                    <button type="submit" id="save-btn" class="btn btn-primary flex-1">Save Profile</button>
+                </div>
+
+                <!-- Database List -->
+                <div class="records-wrapper">
+                    <h3 class="preview-label">Saved Records</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="db-body"></tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+
+        <!-- 3. PREVIEW SCREEN -->
+        <div id="preview-screen" class="card hidden">
+            <div class="card-header">
+                <h1>Registration Confirmation</h1>
+            </div>
+            <div class="form-body">
+                <div class="preview-flex">
+                    <img id="prev-img" src="" class="preview-img">
+                    <div class="preview-grid">
+                        <div class="form-group">
+                            <span class="preview-label">Full Name</span>
+                            <span id="pv-name" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Student ID</span>
+                            <span id="pv-id" class="preview-val font-bold" style="color: var(--primary);"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Father's Name</span>
+                            <span id="pv-father" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Mother's Name</span>
+                            <span id="pv-mother" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Blood Group</span>
+                            <span id="pv-blood" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Enrollment</span>
+                            <span id="pv-enroll" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Contact</span>
+                            <span id="pv-mobile" class="preview-val"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="preview-label">Course</span>
+                            <span id="pv-course" class="preview-val"></span>
+                        </div>
+                        <div class="form-group span-full">
+                            <span class="preview-label">Address</span>
+                            <span id="pv-addr" class="preview-val"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group mt-4 no-print">
+                    <button class="btn btn-outline flex-1" onclick="window.print()">Print</button>
+                    <button class="btn btn-primary flex-1" onclick="backToForm()">Close Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- THANK YOU POPUP -->
+    <div id="thank-you-popup" class="overlay hidden">
+        <div class="popup">
+            <i class="fas fa-check-circle"></i>
+            <h2>Thank You!</h2>
+            <p>Registration completed successfully. Your profile is now saved.</p>
+            <button class="btn btn-primary w-full" onclick="showPreviewFromPopup()">View Profile</button>
+        </div>
+    </div>
+
+    <script>
+        // State
+        const state = {
+            photo: null,
+            students: [],
+            accounts: [],
+            editId: null,
+            currentSessionEmail: null
+        };
+
+        // Utility: Notification
+        function notify(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('toast-success', 'toast-error', 'toast-show');
+            toast.classList.add(type === 'success' ? 'toast-success' : 'toast-error');
+            
+            void toast.offsetWidth; // Trigger reflow
+            toast.classList.add('toast-show');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
+            }, 3000);
+        }
+
+        // Load Data on Startup
+        function loadData() {
+            state.students = JSON.parse(localStorage.getItem('simple_stu_db')) || [];
+            state.accounts = JSON.parse(localStorage.getItem('stu_accounts')) || [];
+        }
+
+        // Handlers
+        function handleSignup(e) {
+            e.preventDefault();
+            loadData(); // Ensure fresh accounts list
+            
+            const name = document.getElementById('s-name').value.trim();
+            const email = document.getElementById('s-email').value.trim().toLowerCase();
+            const pass = document.getElementById('s-pass').value;
+
+            // Check if email already exists in accounts
+            if (state.accounts.find(a => a.email === email)) {
+                notify("User Already Exists with this email!", "error");
+                return;
+            }
+
+            // Create account
+            const newAccount = { name, email, pass };
+            state.accounts.push(newAccount);
+            localStorage.setItem('stu_accounts', JSON.stringify(state.accounts));
+
+            state.currentSessionEmail = email; 
+            notify("Successful Login & Account Created!");
+            
+            setTimeout(() => {
+                document.getElementById('auth-screen').classList.add('hidden');
+                document.getElementById('registration-screen').classList.remove('hidden');
+                document.getElementById('stu-name').value = name;
+                renderDB();
+            }, 800);
+        }
+
+        function restart() {
+            location.reload();
+        }
+
+        function previewImg(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                state.photo = ev.target.result;
+                const img = document.getElementById('img-preview');
+                img.src = state.photo;
+                img.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+            if (!state.photo) {
+                notify("Upload photo first", "error");
+                return;
+            }
+
+            let sid;
+            if (state.editId) {
+                sid = state.editId;
+            } else {
+                sid = `STU-${Date.now().toString().slice(-6)}`;
+            }
+
+            const data = {
+                id: sid,
+                name: document.getElementById('stu-name').value,
+                enroll: document.getElementById('stu-enroll').value,
+                father: document.getElementById('stu-father').value,
+                mother: document.getElementById('stu-mother').value,
+                blood: document.getElementById('stu-blood').value,
+                dob: document.getElementById('stu-dob').value,
+                aadhaar: document.getElementById('stu-aadhaar').value,
+                mobile: document.getElementById('stu-mobile').value,
+                course: document.getElementById('stu-course').value,
+                addr: document.getElementById('stu-addr').value,
+                photo: state.photo,
+                email: state.currentSessionEmail 
+            };
+
+            if (state.editId) {
+                const index = state.students.findIndex(s => s.id === state.editId);
+                if (index !== -1) {
+                    state.students[index] = data;
+                    notify("Profile Updated!");
+                }
+                state.editId = null;
+                document.getElementById('reg-title').textContent = "Student Registration Form";
+                document.getElementById('save-btn').textContent = "Save Profile";
+            } else {
+                state.students.push(data);
+                notify("Record Saved!");
+            }
+
+            localStorage.setItem('simple_stu_db', JSON.stringify(state.students));
+            populatePreview(data);
+            document.getElementById('thank-you-popup').classList.remove('hidden');
+            renderDB();
+        }
+
+        function populatePreview(data) {
+            document.getElementById('pv-name').textContent = data.name;
+            document.getElementById('pv-id').textContent = data.id;
+            document.getElementById('pv-enroll').textContent = data.enroll;
+            document.getElementById('pv-father').textContent = data.father;
+            document.getElementById('pv-mother').textContent = data.mother;
+            document.getElementById('pv-blood').textContent = data.blood;
+            document.getElementById('pv-mobile').textContent = data.mobile;
+            document.getElementById('pv-course').textContent = data.course;
+            document.getElementById('pv-addr').textContent = data.addr;
+            document.getElementById('prev-img').src = data.photo;
+        }
+
+        function showPreviewFromPopup() {
+            document.getElementById('thank-you-popup').classList.add('hidden');
+            document.getElementById('registration-screen').classList.add('hidden');
+            document.getElementById('preview-screen').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function viewRec(id) {
+            const student = state.students.find(s => s.id === id);
+            if (student) {
+                populatePreview(student);
+                document.getElementById('registration-screen').classList.add('hidden');
+                document.getElementById('preview-screen').classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function editRec(id) {
+            const student = state.students.find(s => s.id === id);
+            if (student) {
+                state.editId = id;
+                state.photo = student.photo;
+                state.currentSessionEmail = student.email; 
+                
+                document.getElementById('stu-name').value = student.name;
+                document.getElementById('stu-enroll').value = student.enroll;
+                document.getElementById('stu-father').value = student.father;
+                document.getElementById('stu-mother').value = student.mother;
+                document.getElementById('stu-blood').value = student.blood;
+                document.getElementById('stu-dob').value = student.dob;
+                document.getElementById('stu-aadhaar').value = student.aadhaar;
+                document.getElementById('stu-mobile').value = student.mobile;
+                document.getElementById('stu-course').value = student.course;
+                document.getElementById('stu-addr').value = student.addr;
+                
+                const img = document.getElementById('img-preview');
+                img.src = student.photo;
+                img.classList.remove('hidden');
+
+                document.getElementById('reg-title').textContent = "Edit Record (" + id + ")";
+                document.getElementById('save-btn').textContent = "Update Profile";
+                
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function backToForm() {
+            document.getElementById('reg-form').reset();
+            state.photo = null;
+            state.editId = null;
+            document.getElementById('img-preview').classList.add('hidden');
+            document.getElementById('preview-screen').classList.add('hidden');
+            document.getElementById('registration-screen').classList.remove('hidden');
+            document.getElementById('reg-title').textContent = "Student Registration Form";
+            document.getElementById('save-btn').textContent = "Save Profile";
+            renderDB();
+            window.scrollTo(0, 0);
+        }
+
+        function renderDB() {
+            loadData();
+            const body = document.getElementById('db-body');
+            body.innerHTML = "";
+            const list = [...state.students].reverse();
+            
+            if (list.length === 0) {
+                body.innerHTML = "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
+                return;
+            }
+
+            list.forEach(s => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${s.photo}" class="thumb"></td>
+                    <td class="font-bold">${s.id}</td>
+                    <td>${s.name}</td>
+                    <td>${s.course}</td>
+                    <td>
+                        <div class="flex gap-2">
+                            <button type="button" class="btn btn-info" onclick="viewRec('${s.id}')">View</button>
+                            <button type="button" class="btn btn-warning" onclick="editRec('${s.id}')">Edit</button>
+                            <button type="button" class="btn btn-danger" onclick="delRec('${s.id}')">Delete</button>
+                        </div>
+                    </td>
+                `;
+                body.appendChild(row);
+            });
+        }
+
+        function delRec(id) {
+            if (!confirm("Are you sure? This will delete the account AND the student record.")) return;
+            
+            loadData();
+            
+            const studentToDelete = state.students.find(s => s.id === id);
+            const emailToDelete = studentToDelete ? studentToDelete.email : null;
+
+            // 1. Remove from student records
+            const updatedStudents = state.students.filter(s => s.id !== id);
+            localStorage.setItem('simple_stu_db', JSON.stringify(updatedStudents));
+            
+            // 2. Remove associated account
+            if (emailToDelete) {
+                const updatedAccounts = state.accounts.filter(a => a.email !== emailToDelete);
+                localStorage.setItem('stu_accounts', JSON.stringify(updatedAccounts));
+            }
+            
+            renderDB();
+            notify("Deleted Record & Freed Mail ID");
+        }
+
+        window.onload = renderDB;
+           </script>
+</body>
+</html>
