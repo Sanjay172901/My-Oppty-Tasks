@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="calculator">
+        <div class="screen">
+            <div id="display-top" class="previous-operand"></div>
+            <div id="display-bottom" class="current-operand">0</div>
+        </div>
+        <div class="buttons-grid">
+            <button class="span-two action-clear" id="clear">ON / AC</button>
+            <button class="action-delete" id="delete">DEL</button>
+            <button class="operator op-btn" value="÷">÷</button>
+            
+            <!-- Smart Row -->
+            <button class="smart-func" id="sqrt">√</button>
+            <button class="smart-func" id="square">x²</button>
+            <button class="smart-func" id="percent">%</button>
+            <button class="operator op-btn" value="×">×</button>
+            
+            <button class="num-btn">7</button>
+            <button class="num-btn">8</button>
+            <button class="num-btn">9</button>
+            <button class="operator op-btn" value="−">−</button>
+            
+            <button class="num-btn">4</button>
+            <button class="num-btn">5</button>
+            <button class="num-btn">6</button>
+            <button class="operator op-btn" value="+">+</button>
+            
+            <button class="num-btn">1</button>
+            <button class="num-btn">2</button>
+            <button class="num-btn">3</button>
+            <button class="span-two action-equals" id="equals">=</button>
+            
+            <button class="num-btn">0</button>
+            <button class="num-btn">.</button>
+        </div>
+    </div>
+
+    <script>
+        const topScreen = document.getElementById('display-top');
+        const bottomScreen = document.getElementById('display-bottom');
+        
+        let activeOperator = "";
+        let shouldResetScreen = false;
+
+        function updateBottom(value) {
+            bottomScreen.innerText = value;
+        }
+
+        function calculate(a, b, op) {
+            switch (op) {
+                case "+": return a + b;
+                case "−": return a - b;
+                case "×": return a * b;
+                case "÷": return b === 0 ? "ERR" : a / b;
+                default: return b;
+            }
+        }
+
+        document.querySelectorAll('.num-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (bottomScreen.innerText === "0" || shouldResetScreen) {
+                    updateBottom("");
+                    shouldResetScreen = false;
+                }
+                if (btn.innerText === "." && bottomScreen.innerText.includes(".")) return;
+                bottomScreen.innerText += btn.innerText;
+            });
+        });
+
+        
+        document.querySelectorAll('.op-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentVal = bottomScreen.innerText;
+                const topVal = topScreen.innerText;
+
+                if (topVal !== "" && activeOperator !== "" && !shouldResetScreen) {
+                    const result = calculate(parseFloat(topVal), parseFloat(currentVal), activeOperator);
+                    topScreen.innerText = result + " " + btn.value;
+                    updateBottom(result);
+                } else {
+                    topScreen.innerText = currentVal + " " + btn.value;
+                }
+                
+                activeOperator = btn.value;
+                shouldResetScreen = true;
+            });
+        });
+        document.getElementById('sqrt').addEventListener('click', () => {
+            const val = parseFloat(bottomScreen.innerText);
+            if (val < 0) return updateBottom("ERR");
+            updateBottom(Math.round(Math.sqrt(val) * 10000) / 10000);
+            shouldResetScreen = true;
+        });
+
+        document.getElementById('square').addEventListener('click', () => {
+            const val = parseFloat(bottomScreen.innerText);
+            updateBottom(Math.round(Math.pow(val, 2) * 10000) / 10000);
+            shouldResetScreen = true;
+        });
+
+        document.getElementById('percent').addEventListener('click', () => {
+            const val = parseFloat(bottomScreen.innerText);
+            updateBottom(val / 100);
+            shouldResetScreen = true;
+        });
+
+        document.getElementById('equals').addEventListener('click', () => {
+            if (topScreen.innerText === "" || activeOperator === "") return;
+
+            const firstNum = parseFloat(topScreen.innerText);
+            const secondNum = parseFloat(bottomScreen.innerText);
+            
+            const result = calculate(firstNum, secondNum, activeOperator);
+            
+            updateBottom(typeof result === 'number' ? Math.round(result * 100000) / 100000 : result);
+            topScreen.innerText = "";
+            activeOperator = "";
+            shouldResetScreen = true;
+        });
+
+        document.getElementById('clear').addEventListener('click', () => {
+            updateBottom("0");
+            topScreen.innerText = "";
+            activeOperator = "";
+            shouldResetScreen = false;
+        });
+
+        document.getElementById('delete').addEventListener('click', () => {
+            if (shouldResetScreen) return;
+            if (bottomScreen.innerText.length > 1) {
+                updateBottom(bottomScreen.innerText.slice(0, -1));
+            } else {
+                updateBottom("0");
+            }
+        });
+    </script>
+</body>
+</html>
