@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Assessment System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="royal-card animate-pop" id="login-box">
+        <h1 class="royal-title">Member Access</h1>
+        <p class="royal-subtitle">Authenticate to begin the domain assessment.</p>
+        
+        <div class="input-stack">
+            <input type="text" id="username" placeholder="Full Name" required>
+            <input type="password" id="password" placeholder="Passkey (123456)">
+        </div>
+
+        <div class="topic-selection">
+            <p class="selection-label">Select Domain:</p>
+            <div class="radio-row">
+                <label class="radio-item">
+                    <input type="radio" name="topic" value="html" checked>
+                    <span class="checkmark"></span> HTML
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="topic" value="css">
+                    <span class="checkmark"></span> CSS
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="topic" value="js">
+                    <span class="checkmark"></span> JS
+                </label>
+            </div>
+        </div>
+        
+        <button class="btn-primary" onclick="authenticate()">Start Quiz</button>
+        <button class="btn-ghost" onclick="showMasterReport()">View All User Reports</button>
+    </div>
+
+    <div class="royal-card hidden" id="quiz-box">
+        <div class="quiz-header">
+            <span id="display-topic" class="badge"></span>
+            <div id="timer-pill"><span id="timer-text">15</span>s</div>
+        </div>
+        <div class="stage">
+            <h2 id="q-text"></h2>
+            <div id="options-grid"></div>
+        </div>
+        <div class="quiz-footer">
+            <div class="progress-container"><div id="progress-bar"></div></div>
+            <span id="step-count">Question 1 / 5</span>
+        </div>
+    </div>
+
+    <div class="royal-card hidden" id="result-box">
+        <div class="trophy-icon">🏆</div>
+        <h2 class="royal-title">Results</h2>
+        <div class="stats-grid">
+            <div class="stat-item"><p id="res-score">0</p><small>Marks</small></div>
+            <div class="stat-item"><p id="res-acc">0%</p><small>Accuracy</small></div>
+        </div>
+        <div class="btn-group">
+            <button class="btn-primary" onclick="showMasterReport()">View Full Report</button>
+            <button class="btn-logout" onclick="location.reload()">New Candidate</button>
+        </div>
+    </div>
+
+    <div class="royal-card hidden" id="report-box">
+        <h2 class="royal-title">Master Report</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Domain</th><th>Marks</th><th>Acc</th><th>Status</th></tr>
+                </thead>
+                <tbody id="report-body"></tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <button class="btn-excel" onclick="exportToCSV()">Export to Excel (.csv)</button>
+            <button class="btn-logout" onclick="location.reload()">Back to Login</button>
+            <button class="btn-danger" onclick="clearData()">Clear All Data</button>
+        </div>
+    </div>
+
+    <script>
+        const banks = {
+            html: [{q:"HTML tag for large heading?",a:["h6","head","h1","header"],c:2},{q:"HTML stands for?",a:["Hyperlinks","Hyper Text","Home Tool","Hyper Tool"],c:1},{q:"Internal style tag?",a:["script","css","style","link"],c:2},{q:"End tag char?",a:["*","<","/", "^"],c:2},{q:"Footer tag?",a:["bottom","section","footer","div"],c:2}],
+            css: [{q:"BG color property?",a:["color","bgcolor","background-color","fill"],c:2},{q:"CSS stands for?",a:["Creative","Computer","Cascading","Colorful"],c:2},{q:"Text size property?",a:["font-style","text-size","font-size","weight"],c:2},{q:"Default position?",a:["relative","fixed","absolute","static"],c:3},{q:"Bold text property?",a:["font:bold","font-weight:bold","style:bold","font-style:bold"],c:1}],
+            js: [{q:"JS tag?",a:["js","scripting","script","javascript"],c:2},{q:"Alert box syntax?",a:["msg()","alertBox()","alert()","console()"],c:2},{q:"Function syntax?",a:["func:()","func=()","function()","new func"],c:2},{q:"IF syntax?",a:["if i=5","if i==5 then","if(i==5)","if i=5"],c:2},{q:"Add to end of array?",a:["pop","push","shift","unshift"],c:1}]
+        };
+
+        let currentBank=[], idx=0, score=0, timer, sec=15, currentUser="";
+
+        function authenticate() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const topic = document.querySelector('input[name="topic"]:checked').value;
+            if (user.trim().length < 3 || pass !== "123456") return alert("Invalid Name or Password!");
+            
+            currentUser = user;
+            currentBank = banks[topic];
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+            document.getElementById('display-topic').innerText = topic.toUpperCase();
+            loadQ(); startTimer();
+        }
+
+        function loadQ() {
+            sec=15; document.getElementById('timer-text').innerText=sec;
+            const data=currentBank[idx];
+            document.getElementById('q-text').innerText=data.q;
+            document.getElementById('step-count').innerText=`Q ${idx+1}/5`;
+            document.getElementById('progress-bar').style.width=`${((idx+1)/5)*100}%`;
+            const grid=document.getElementById('options-grid'); grid.innerHTML='';
+            data.a.forEach((opt,i)=>{
+                const b=document.createElement('button'); b.className='opt-btn';
+                b.innerText=opt; b.onclick=()=>next(i); grid.appendChild(b);
+            });
+        }
+
+        function startTimer() { timer=setInterval(()=>{ sec--; document.getElementById('timer-text').innerText=sec; if(sec<=0)next(-1); },1000); }
+
+        function next(choice) {
+            if(choice===currentBank[idx].c) score++;
+            idx++; if(idx < 5) loadQ(); else finalize();
+        }
+
+        function finalize() {
+            clearInterval(timer);
+            const accuracy = (score * 20) + "%";
+            const status = score >= 3 ? "Pass" : "Fail";
+            const reports = JSON.parse(localStorage.getItem('quizDB')) || [];
+            reports.push({ name: currentUser, domain: document.getElementById('display-topic').innerText, score: score, acc: accuracy, status: status, date: new Date().toLocaleDateString() });
+            localStorage.setItem('quizDB', JSON.stringify(reports));
+
+            document.getElementById('quiz-box').classList.add('hidden');
+            document.getElementById('result-box').classList.remove('hidden');
+            document.getElementById('res-score').innerText = score;
+            document.getElementById('res-acc').innerText = accuracy;
+        }
+
+        function showMasterReport() {
+            document.querySelectorAll('.royal-card').forEach(c => c.classList.add('hidden'));
+            document.getElementById('report-box').classList.remove('hidden');
+            const reports = JSON.parse(localStorage.getItem('quizDB')) || [];
+            document.getElementById('report-body').innerHTML = reports.map(r => `
+                <tr>
+                    <td>${r.name}</td>
+                    <td>${r.domain}</td>
+                    <td>${r.score}/5</td>
+                    <td>${r.acc}</td>
+                    <td style="color:${r.status === 'Pass' ? '#10b981' : '#ef4444'}; font-weight:bold;">${r.status}</td>
+                </tr>`).join('');
+        }
+
+        function exportToCSV() {
+            const reports = JSON.parse(localStorage.getItem('quizDB')) || [];
+            if(!reports.length) return alert("No data available.");
+            let csv = "Name,Domain,Marks,Accuracy,Status,Date\n" + reports.map(r => `${r.name},${r.domain},${r.score},${r.acc},${r.status},${r.date}`).join("\n");
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "Assessment_Report.csv";
+            link.click();
+        }
+
+        function clearData() { if(confirm("Erase all user data?")) { localStorage.removeItem('quizDB'); showMasterReport(); } }
+    </script>
+</body>
+</html>
