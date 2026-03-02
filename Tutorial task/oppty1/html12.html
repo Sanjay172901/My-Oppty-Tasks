@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            overflow: auto;
+            color: #00f2fe;
+            margin-bottom: 20px;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .code-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-btn {
+            background: #4facfe;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00f2fe;
+            color: black;
+        }
+
+        .output-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">12. HTML Forms</h1>
+
+        <p>
+            HTML forms are used to collect user input. The data is usually sent to a server for processing.
+        </p>
+
+        <h2>The &lt;form&gt; Element</h2>
+
+        <p>
+            The &lt;form&gt; tag defines a form. It contains form elements like input fields, checkboxes, radio buttons,
+            and submit buttons.
+        </p>
+
+        <pre>
+&lt;form action="server.php" method="post"&gt;
+   &lt;input type="text" name="username"&gt;
+   &lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+
+        <h2>Common Form Elements</h2>
+
+        <p><strong>&lt;input&gt;</strong> – Used to create input fields.</p>
+        <p><strong>&lt;label&gt;</strong> – Defines label for input.</p>
+        <p><strong>&lt;textarea&gt;</strong> – Multi-line text input.</p>
+        <p><strong>&lt;select&gt;</strong> – Dropdown list.</p>
+        <p><strong>&lt;option&gt;</strong> – Dropdown options.</p>
+        <p><strong>&lt;button&gt;</strong> – Clickable button.</p>
+
+        <h2>Input Types</h2>
+
+        <pre>
+&lt;input type="text"&gt;
+&lt;input type="password"&gt;
+&lt;input type="email"&gt;
+&lt;input type="number"&gt;
+&lt;input type="date"&gt;
+&lt;input type="radio"&gt;
+&lt;input type="checkbox"&gt;
+&lt;input type="file"&gt;
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+</pre>
+
+        <h2>Important Attributes</h2>
+
+        <p><strong>action</strong> – Where to send form data.</p>
+        <p><strong>method</strong> – GET or POST.</p>
+        <p><strong>name</strong> – Identifies input data.</p>
+        <p><strong>required</strong> – Makes field mandatory.</p>
+        <p><strong>placeholder</strong> – Hint text.</p>
+
+        <h2>Try It Yourself</h2>
+
+        <div class="code-wrapper">
+            <div class="code-buttons">
+                <button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+                <button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+            </div>
+
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Registration Form&lt;/h1&gt;
+
+&lt;form&gt;
+
+&lt;label&gt;Full Name:&lt;/label&gt;&lt;br&gt;
+&lt;input type="text" name="fullname" placeholder="Enter your name" required&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Email:&lt;/label&gt;&lt;br&gt;
+&lt;input type="email" name="email" required&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Password:&lt;/label&gt;&lt;br&gt;
+&lt;input type="password" name="password"&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Gender:&lt;/label&gt;&lt;br&gt;
+&lt;input type="radio" name="gender"&gt; Male
+&lt;input type="radio" name="gender"&gt; Female
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Skills:&lt;/label&gt;&lt;br&gt;
+&lt;input type="checkbox"&gt; HTML
+&lt;input type="checkbox"&gt; CSS
+&lt;input type="checkbox"&gt; JavaScript
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Country:&lt;/label&gt;&lt;br&gt;
+&lt;select&gt;
+   &lt;option&gt;USA&lt;/option&gt;
+   &lt;option&gt;UK&lt;/option&gt;
+   &lt;option&gt;India&lt;/option&gt;
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Message:&lt;/label&gt;&lt;br&gt;
+&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+
+        <h2>Preview</h2>
+
+        <div class="output-box">
+            <iframe></iframe>
+        </div>
+        <h2>Complete Example with All HTML5 Form Elements</h2>
+
+        <div class="code-wrapper">
+            <div class="code-buttons">
+                <button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+                <button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+            </div>
+
+            <pre>
+&lt;form action="#" method="post" autocomplete="on"&gt;
+&lt;fieldset&gt;&lt;legend&gt; Personal Information&lt;/legend&gt;
+
+&lt;label&gt;Full Name:&lt;/label&gt;
+&lt;input type="text" name="fullname" placeholder="Enter name" required&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Email:&lt;/label&gt;
+&lt;input type="email" name="email" required&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Password:&lt;/label&gt;
+&lt;input type="password" name="password" minlength="6"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Phone:&lt;/label&gt;
+&lt;input type="tel" pattern="[0-9]{10}" placeholder="10 digit number"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Age:&lt;/label&gt;
+&lt;input type="number" min="1" max="100"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Date of Birth:&lt;/label&gt;
+&lt;input type="date"&gt;&lt;br&gt;&lt;br&gt;
+&lt;/fieldset &gt;
+&lt;label&gt;Time:&lt;/label&gt;
+&lt;input type="time"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Color:&lt;/label&gt;
+&lt;input type="color"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Range:&lt;/label&gt;
+&lt;input type="range" min="0" max="100"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Website:&lt;/label&gt;
+&lt;input type="url"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Search:&lt;/label&gt;
+&lt;input type="search"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Gender:&lt;/label&gt;
+&lt;input type="radio" name="gender"&gt; Male
+&lt;input type="radio" name="gender"&gt; Female&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Hobbies:&lt;/label&gt;
+&lt;input type="checkbox"&gt; Reading
+&lt;input type="checkbox"&gt; Music&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Upload File:&lt;/label&gt;
+&lt;input type="file"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Comments:&lt;/label&gt;
+&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Country:&lt;/label&gt;
+&lt;select&gt;
+&lt;option&gt;India&lt;/option&gt;
+&lt;option&gt;USA&lt;/option&gt;
+&lt;/select&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;input type="submit" value="Submit"&gt;
+&lt;input type="reset" value="Reset"&gt;
+
+&lt;/form&gt;
+</pre>
+        </div>
+
+        <div class="output-box">
+            <iframe></iframe>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="html11.html" class="nav-btn">← Prev: Tables</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            <a href="html13.html" class="nav-btn">Next: Semantic HTML →</a>
+        </div>
+
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const pre = wrapper.querySelector("pre");
+
+            const range = document.createRange();
+            range.selectNodeContents(pre);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+            navigator.clipboard.writeText(pre.innerText);
+            alert("Code Copied Successfully!");
+        }
+
+        function runCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const code = wrapper.querySelector("pre").innerText;
+
+            let nextElement = wrapper.nextElementSibling;
+
+            while (nextElement && !nextElement.classList.contains("output-box")) {
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (nextElement) {
+                const iframe = nextElement.querySelector("iframe");
+                iframe.srcdoc = code;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

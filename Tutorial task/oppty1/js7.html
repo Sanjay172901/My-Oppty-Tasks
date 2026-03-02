@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays - Comprehensive Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --primary: #ffd200; /* Gold/Yellow */
+            --secondary: #000000; /* Black */
+            --accent: #f7971e; /* Orange */
+            --success: #4ade80;
+            --error: #f87171;
+            --bg-gradient: linear-gradient(135deg, #000000, #434343);
+            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: white;
+            line-height: 1.7;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        
+        .banner {
+            background: var(--btn-gradient);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: black;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        }
+        .banner h1 { margin: 0; font-size: 2.6rem; font-weight: 700; }
+        .banner p { margin: 10px 0 0; opacity: 1; font-weight: 400; color: black; }
+
+        h2 { 
+            font-size: 2rem; 
+            margin: 40px 0 20px; 
+            color: var(--primary); 
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        h3 { color: var(--accent); margin: 25px 0 15px; font-size: 1.4rem; }
+        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+
+    
+        pre {
+            background: #111827;
+            padding: 25px;
+            border-radius: 15px;
+            overflow: auto;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+        }
+
+    
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        ul { margin-bottom: 25px; list-style: none; }
+        ul li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #ccc; }
+        ul li::before { content: "›"; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 1.3rem; }
+        ul li strong { color: var(--primary); font-family: 'Fira Code', monospace; }
+
+      
+        .playground-card {
+            background: white;
+            color: #333;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        #output-screen {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent);
+            margin-bottom: 25px;
+            font-family: 'Fira Code', monospace;
+            min-height: 120px;
+            color: #1e293b;
+            font-weight: 500;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            padding: 14px;
+            border: none;
+            background: var(--btn-gradient);
+            color: black;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .action-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        .try-it-editor {
+            background: #111827;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        .editor-header {
+            background: #1f2937;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #9ca3af; }
+        
+        #custom-editor {
+            width: 100%;
+            height: 240px;
+            background: transparent;
+            color: var(--primary);
+            border: none;
+            padding: 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        #custom-preview {
+            background: #0f172a; 
+            color: #e2e8f0;      
+            padding: 40px;
+            min-height: 120px;
+            border-radius: 0 0 16px 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        #quiz-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        #timer-bar {
+            height: 6px;
+            background: var(--primary);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 1s linear;
+        }
+        .quiz-question { font-size: 1.4rem; margin-bottom: 30px; font-weight: 600; }
+        .quiz-options { display: flex; flex-direction: column; gap: 15px; }
+        .quiz-opt {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.2s;
+        }
+        .quiz-opt:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary); }
+        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
+        .wrong { background: var(--error) !important; color: #7f1d1d; }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+        .nav-links a {
+            padding: 12px 35px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            transition: 0.3s;
+        }
+        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
+
+        footer { text-align: center; padding: 50px; font-size: 0.9rem; color: #9ca3af; opacity: 0.6; }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+        }
+
+        @media (max-width: 900px) {
+            .container { padding: 30px; }
+            .btn-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="banner">
+        <h1>7. JavaScript Arrays</h1>
+        <p>Store multiple values in a single variable using ordered lists</p>
+    </header>
+
+    <section>
+        <h2>What are Arrays?</h2>
+        <p>An array is a special variable, which can hold more than one value at a time. If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:</p>
+        <pre>let car1 = "Saab";
+let car2 = "Volvo";
+let car3 = "BMW";</pre>
+        <p>However, what if you want to loop through the cars and find a specific one? And what if you had 300 cars, not 3? The solution is an <strong>array</strong>!</p>
+    </section>
+
+    <section>
+        <h2>Creating an Array</h2>
+        <p>Using an array literal is the easiest way to create a JavaScript Array.</p>
+        <pre>const cars = ["Saab", "Volvo", "BMW"];</pre>
+        <div class="info-card">
+            <p>You can also create an array, and then provide the elements: <br>
+            <code>const cars = []; cars[0]= "Saab"; cars[1]= "Volvo";</code></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Accessing Elements</h2>
+        <p>You access an array element by referring to the <strong>index number</strong>. JavaScript array indexes start with <strong>0</strong>.</p>
+        <pre>const cars = ["Saab", "Volvo", "BMW"];
+let car = cars[0]; // Accesses "Saab"
+
+// Changing an element
+cars[0] = "Opel"; // Now cars is ["Opel", "Volvo", "BMW"]</pre>
+    </section>
+
+    <section>
+        <h2>Common Array Methods</h2>
+        <p>JavaScript provides powerful methods to manipulate arrays:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="info-card">
+                <h3>Adding/Removing</h3>
+                <ul>
+                    <li><strong>push():</strong> Add to end</li>
+                    <li><strong>pop():</strong> Remove from end</li>
+                    <li><strong>shift():</strong> Remove from start</li>
+                    <li><strong>unshift():</strong> Add to start</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>Transforming</h3>
+                <ul>
+                    <li><strong>sort():</strong> Sort alphabetically</li>
+                    <li><strong>reverse():</strong> Invert order</li>
+                    <li><strong>join():</strong> Convert to string</li>
+                    <li><strong>concat():</strong> Merge arrays</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Array Length Property</h2>
+        <p>The <code>length</code> property of an array returns the number of elements in it. It is always one higher than the highest array index.</p>
+        <pre>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.length; // Returns 4</pre>
+    </section>
+
+    <section>
+        <h2>Arrays Playground</h2>
+        <p>Test various array methods on a sample dataset and see how the indices change:</p>
+        <div class="playground-card">
+            <div id="output-screen">Current Array: ["HTML", "CSS", "JS"]</div>
+            <div class="btn-grid">
+                <button class="action-btn" onclick="runPushEx()">Push("React")</button>
+                <button class="action-btn" onclick="runPopEx()">Pop()</button>
+                <button class="action-btn" onclick="runSortEx()">Sort()</button>
+                <button class="action-btn" onclick="runReverseEx()">Reverse()</button>
+                <button class="action-btn" onclick="runResetEx()" style="background:#444; color: white;">Reset Array</button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section>
+        <h2>Try It Yourself</h2>
+        <p>Experiment with complex array logic. Try using <code>map</code>, <code>filter</code>, or <code>splice</code> in the editor below!</p>
+        
+        <div class="try-it-editor">
+            <div class="editor-header">
+                <span class="editor-label">ARRAYS_LAB.JS</span>
+                <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
+            </div>
+            <textarea id="custom-editor" spellcheck="false">// Define your array
+const prices = [10, 20, 30, 40, 50];
+
+// Use map to create a new array with tax added
+const taxedPrices = prices.map(p => p * 1.15);
+
+// Filter prices over 30
+const expensive = prices.filter(p => p > 30);
+
+document.getElementById('custom-preview').innerHTML = `
+  <h3 style="color: #ffd200; margin-bottom: 15px;">Processing Results:</h3>
+  <p>Original: <strong>[${prices.join(", ")}]</strong></p>
+  <p>Taxed (+15%): <strong>[${taxedPrices.map(p => p.toFixed(2)).join(", ")}]</strong></p>
+  <p>Filtered (>30): <span style="color: #f7971e; font-weight: bold">[${expensive.join(", ")}]</span></p>
+`;</textarea>
+            <div id="custom-preview">
+                <span style="color: #9ca3af">Run your array logic to see the output here...</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-area">
+        <h2>Arrays Knowledge Check</h2>
+        <p>Test your understanding of JavaScript Arrays! 15 seconds per question.</p>
+        <div id="quiz-container">
+            <div id="timer-bar"></div>
+            <div id="quiz-content" style="text-align: center;">
+                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 45px; margin-top: 20px;">Start Arrays Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nav-links">
+        <a href="js6.html">← Prev: Objects</a>
+         <a href="js.html">Home</a>
+        <a href="js8.html">Next: Array Iteration →</a>
+    </div>
+
+    <footer>
+        © 2026 JavaScript Tutorial Series. All rights reserved.
+    </footer>
+</div>
+
+<script>
+    const screen = document.getElementById('output-screen');
+    let sampleArray = ["HTML", "CSS", "JS"];
+
+    function updateScreen() {
+        screen.innerHTML = `Current Array: [${sampleArray.map(item => `"${item}"`).join(", ")}]<br>Length: ${sampleArray.length}`;
+    }
+
+    function runPushEx() {
+        if(!sampleArray.includes("React")) sampleArray.push("React");
+        updateScreen();
+    }
+
+    function runPopEx() {
+        sampleArray.pop();
+        updateScreen();
+    }
+
+    function runSortEx() {
+        sampleArray.sort();
+        updateScreen();
+    }
+
+    function runReverseEx() {
+        sampleArray.reverse();
+        updateScreen();
+    }
+
+    function runResetEx() {
+        sampleArray = ["HTML", "CSS", "JS"];
+        updateScreen();
+    }
+
+
+    const customRunBtn = document.getElementById('custom-run-btn');
+    const customEditor = document.getElementById('custom-editor');
+    const customPreview = document.getElementById('custom-preview');
+
+    customRunBtn.addEventListener('click', () => {
+        try {
+            customPreview.innerHTML = "";
+            const userScript = new Function('document', customEditor.value);
+            userScript(document);
+        } catch (err) {
+            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
+        }
+    });
+
+  
+    const quizData = [
+        { q: "What is the index of the first element in a JavaScript array?", a: ["-1", "0", "1", "any"], correct: 1 },
+        { q: "Which method is used to add a new element to the end of an array?", a: ["pop()", "shift()", "push()", "unshift()"], correct: 2 },
+        { q: "How do you find the number of elements in an array named 'colors'?", a: ["colors.size", "colors.count", "colors.length", "colors.index"], correct: 2 },
+        { q: "Which method removes the FIRST element of an array?", a: ["pop()", "shift()", "slice()", "splice()"], correct: 1 },
+        { q: "What will 'typeof []' return in JavaScript?", a: ["'array'", "'list'", "'object'", "'undefined'"], correct: 2 }
+    ];
+
+    let currentQ = 0;
+    let scoreCount = 0;
+    let timer;
+    let timeLeft = 15;
+
+    function startQuiz() {
+        currentQ = 0;
+        scoreCount = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        clearInterval(timer);
+        if (currentQ >= quizData.length) {
+            showResults();
+            return;
+        }
+
+        timeLeft = 15;
+        updateTimerBar();
+        
+        const data = quizData[currentQ];
+        let optionsHtml = data.a.map((opt, i) => `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`).join('');
+        
+        document.getElementById('quiz-content').innerHTML = `
+            <div class="quiz-question">Question ${currentQ + 1}: ${data.q}</div>
+            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+        `;
+
+        timer = setInterval(() => {
+            timeLeft--;
+            updateTimerBar();
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                currentQ++;
+                showQuestion();
+            }
+        }, 1000);
+    }
+
+    function updateTimerBar() {
+        const bar = document.getElementById('timer-bar');
+        if(bar) bar.style.width = (timeLeft / 15) * 100 + "%";
+    }
+
+    function checkAnswer(index) {
+        clearInterval(timer);
+        const correct = quizData[currentQ].correct;
+        const opts = document.querySelectorAll('.quiz-opt');
+        
+        if (index === correct) {
+            opts[index].classList.add('correct');
+            scoreCount++;
+        } else if (index !== -1) {
+            opts[index].classList.add('wrong');
+            opts[correct].classList.add('correct');
+        }
+
+        setTimeout(() => {
+            currentQ++;
+            showQuestion();
+        }, 1500);
+    }
+
+    function showResults() {
+        document.getElementById('timer-bar').style.width = "0%";
+        document.getElementById('quiz-content').innerHTML = `
+            <div style="padding: 20px;">
+                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
+                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
+                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
+            </div>
+        `;
+    }
+
+    updateScreen();
+</script>
+
+</body>
+</html>

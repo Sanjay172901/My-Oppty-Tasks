@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11. Text Formatting</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  color:white;
+  padding:60px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:15px;}
+h2{margin-top:40px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  overflow:auto;
+  color:#ff6a00;
+  margin-bottom:20px;
+}
+
+/* Try Button */
+button{
+  background:#ff6a6a;
+  color:white;
+  border:none;
+  padding:8px 20px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+textarea{
+  width:100%;
+  height:260px;
+  background:#111827;
+  color:#ff6a00;
+  border:none;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+.nav-buttons{
+  margin-top:50px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-buttons a{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+.preview-box{
+  background:#f1f2f6;
+  padding:15px;
+  border-radius:8px;
+  margin:10px 0;
+  color:#333;
+}
+
+/* TEXT COLOR */
+.red{color:#ff6b6b;}
+.blue{color:#667eea;}
+.green{color:#4ecdc4;}
+
+.gradient-text{
+  background:linear-gradient(45deg,#ff6b6b,#ee5a24);
+  background-clip: text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-weight:600;
+}
+
+/* ALIGNMENT */
+.left{text-align:left;}
+.center{text-align:center;}
+.right{text-align:right;}
+.justify{text-align:justify;}
+
+/* DECORATION */
+.underline{text-decoration:underline;}
+.overline{text-decoration:overline;}
+.line-through{text-decoration:line-through;}
+.combo{text-decoration:underline overline line-through;}
+
+/* TRANSFORMATION */
+.upper{text-transform:uppercase;}
+.lower{text-transform:lowercase;}
+.cap{text-transform:capitalize;}
+
+/* LETTER SPACING */
+.normal-letter{letter-spacing:normal;}
+.wide-letter{letter-spacing:5px;}
+.tight-letter{letter-spacing:-1px;}
+
+/* WORD SPACING */
+.normal-word{word-spacing:normal;}
+.wide-word{word-spacing:10px;}
+
+/* LINE HEIGHT */
+.tight-line{line-height:1.2;}
+.normal-line{line-height:1.6;}
+.spaced-line{line-height:2;}
+
+/* TEXT SHADOW */
+.simple-shadow{text-shadow:2px 2px 3px #999;}
+.color-shadow{text-shadow:2px 2px 4px red;}
+.glow{
+  background:#1f2937;
+  color:white;
+  padding:15px;
+  border-radius:8px;
+  text-shadow:0 0 10px #00f,0 0 20px #00f;
+}
+
+/* OVERFLOW */
+.overflow-box{
+  width:200px;
+  white-space:nowrap;
+  overflow:hidden;
+  border:1px solid #ccc;
+  padding:5px;
+  border-radius:5px;
+  margin-bottom:10px;
+}
+
+.clip{ text-overflow:clip; }
+.ellipsis{ text-overflow:ellipsis; }
+
+/* Styled Paragraph */
+.styled-para{
+  border-left:5px solid #667eea;
+  color: black;
+  padding:20px;
+  line-height:1.8;
+  text-align:justify;
+  background:#f9fafc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>11. Text Formatting</h1>
+<p>Styling text with CSS</p>
+
+<h2>CSS Text Properties</h2>
+<p>
+CSS provides numerous properties to format and style text content.
+These properties control the appearance, alignment, spacing, and decoration of text.
+</p>
+
+<h2>Text Color</h2>
+<p>The color property sets the color of text:</p>
+
+<pre>
+.red-text { color: red; }
+.hex-text { color: #ff6b6b; }
+.rgb-text { color: rgb(255, 107, 107); }
+.rgba-text { color: rgba(255, 107, 107, 0.8); }
+</pre>
+
+<h2>Text Alignment</h2>
+<p>The text-align property controls the horizontal alignment of text:</p>
+
+<pre>
+.left-align { text-align: left; }
+.center-align { text-align: center; }
+.right-align { text-align: right; }
+.justify-align { text-align: justify; }
+</pre>
+
+<h2>Text Decoration</h2>
+<p>The text-decoration property adds decorative lines to text:</p>
+
+<pre>
+.underline { text-decoration: underline; }
+.overline { text-decoration: overline; }
+.line-through { text-decoration: line-through; }
+.no-decoration { text-decoration: none; }
+</pre>
+
+<h2>Text Transformation</h2>
+<p>The text-transform property controls capitalization:</p>
+
+<pre>
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.none-transform { text-transform: none; }
+</pre>
+
+<h2>Text Spacing</h2>
+
+<h3>Letter Spacing</h3>
+<pre>
+.normal-spacing { letter-spacing: normal; }
+.wide-spacing { letter-spacing: 3px; }
+.tight-spacing { letter-spacing: -1px; }
+</pre>
+
+<h3>Word Spacing</h3>
+<pre>
+.normal-word-spacing { word-spacing: normal; }
+.wide-word-spacing { word-spacing: 10px; }
+.tight-word-spacing { word-spacing: -2px; }
+</pre>
+
+<h3>Line Height</h3>
+<pre>
+.normal-line-height { line-height: normal; }
+.spaced-line-height { line-height: 1.8; }
+.tight-line-height { line-height: 1.2; }
+</pre>
+
+<h2>Text Shadow</h2>
+<pre>
+.simple-shadow { text-shadow: 2px 2px 3px #333; }
+.multiple-shadows {
+  text-shadow:
+  1px 1px 2px #ff6b6b,
+  0 0 1em #ee5a24,
+  0 0 0.2em #667eea;
+}
+.no-shadow { text-shadow: none; }
+</pre>
+
+<h2>Text Overflow</h2>
+<p>Control how text behaves when it overflows:</p>
+
+<pre>
+.clip-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.ellipsis-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</pre>
+
+<!-- ================= TRY IT ================= -->
+
+<h2 style="margin-top:50px;">Try It Yourself</h2>
+<p>Experiment with different text formatting properties:</p>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+<span style="background:#ff6a6a;padding:6px 15px;border-radius:6px;">CSS</span>
+<button onclick="runTextCode()">Run Code</button>
+</div>
+
+<textarea id="textEditor">
+
+.demo-text {
+  font-size: 22px;
+  color: #ff6a6a;
+  text-align: center;
+  text-shadow: 2px 2px 5px black;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+</textarea>
+
+<div id="textPreview">
+  <p class="demo-text">Sample Text Preview</p>
+</div>
+
+<h2>Preview:</h2>
+
+<h3>Text Color</h3>
+
+<div class="preview-box red">This text is red (#ff6b6b)</div>
+<div class="preview-box blue">This text is blue (#667eea)</div>
+<div class="preview-box green">This text is green (#4ecdc4)</div>
+<div class="preview-box gradient-text">This text has a gradient color</div>
+
+<h3>Text Alignment</h3>
+
+<div class="preview-box left">Left aligned text</div>
+<div class="preview-box center">Center aligned text</div>
+<div class="preview-box right">Right aligned text</div>
+<div class="preview-box justify">
+Justified text that spans multiple lines to demonstrate how the text aligns to both the left and right margins.
+</div>
+
+<h3>Text Decoration</h3>
+
+<div class="preview-box underline">Underlined text</div>
+<div class="preview-box overline">Overlined text</div>
+<div class="preview-box line-through">Line-through text</div>
+<div class="preview-box combo">Combined text decorations</div>
+
+<h3>Text Transformation</h3>
+
+<div class="preview-box upper">This text is uppercase</div>
+<div class="preview-box lower">THIS TEXT IS LOWERCASE</div>
+<div class="preview-box cap">this text has capitalized words</div>
+
+<h3>Letter Spacing</h3>
+
+<div class="preview-box normal-letter">Normal letter spacing</div>
+<div class="preview-box wide-letter">Wide letter spacing</div>
+<div class="preview-box tight-letter">Tight letter spacing</div>
+
+<h3>Word Spacing</h3>
+
+<div class="preview-box normal-word">Normal word spacing between words</div>
+<div class="preview-box wide-word">Wide word spacing between words</div>
+
+<h3>Line Height</h3>
+
+<div class="preview-box tight-line">
+Tight line height with multiple lines of text to show reduced spacing between lines.
+</div>
+
+<div class="preview-box normal-line">
+Normal line height with multiple lines of text to show default spacing.
+</div>
+
+<div class="preview-box spaced-line">
+Spaced line height with multiple lines of text to show increased spacing.
+</div>
+
+<h3>Text Shadow</h3>
+
+<div class="preview-box simple-shadow">Simple text shadow</div>
+<div class="preview-box color-shadow">Colored text shadow</div>
+<div class="glow">Glowing text effect</div>
+
+<h3>Text Overflow</h3>
+
+<div class="overflow-box clip">
+This is a long text that will be clipped
+</div>
+
+<div class="overflow-box ellipsis">
+This is a long text that will show ellipsis
+</div>
+
+<h3>Styled Paragraph</h3>
+
+<div class="styled-para">
+This is a beautifully styled paragraph with justified text alignment, comfortable line height, and a decorative left border.
+Text formatting properties make it easy to create visually appealing content that enhances readability and user experience.
+</div>
+
+
+<div class="nav-buttons">
+    <a href="css10.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css.html">Next →</a>
+</div>
+
+</div>
+
+<script>
+function runTextCode(){
+
+    const css = document.getElementById("textEditor").value;
+
+    const oldStyle = document.getElementById("dynamicTextStyle");
+    if(oldStyle) oldStyle.remove();
+
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g,
+        function(match,p1,p2){
+            return p1 + " #textPreview " + p2;
+        });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "dynamicTextStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

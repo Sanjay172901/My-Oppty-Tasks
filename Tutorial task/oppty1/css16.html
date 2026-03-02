@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grid Complete Tutorial</title>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:40px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+    font-family:monospace;
+}
+
+/* GRID STYLES */
+.grid-container{ display:grid; gap:15px; }
+.grid-item{ background:#ff6a00; padding:20px; border-radius:8px; color:white; text-align:center; }
+
+/* Grid Templates */
+.grid-2-col { grid-template-columns: 1fr 1fr; }
+.grid-3-col { grid-template-columns: repeat(3, 1fr); }
+.grid-4-col { grid-template-columns: repeat(4, 1fr); }
+.grid-auto { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+
+/* Grid Rows */
+.grid-rows-2 { grid-template-rows: repeat(2, 100px); }
+.grid-rows-3 { grid-template-rows: repeat(3, 100px); }
+
+/* Grid Area */
+.area-demo { grid-template-areas: "header header" "sidebar main" "footer footer"; }
+
+/* Individual grid items by area */
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+.nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>16. CSS Grid Complete Tutorial</h1>
+
+<h2>Basic Grid Container</h2>
+<p>
+CSS Grid is a two-dimensional layout system that allows you to create complex layouts
+with rows and columns. You can define a grid container and then place items into
+specific rows and columns, making layout much more flexible than using floats or Flexbox alone.
+</p>
+<p>Here is a simple 3-column grid example:</p>
+
+<div class="grid-container grid-3-col demo-flex">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+</div>
+
+<hr>
+
+<h2>Grid Auto Columns</h2>
+<p>
+The <code>auto-fit</code> and <code>auto-fill</code> functions let your grid automatically
+fit items into the container. Each item can have a minimum and maximum size, and
+the grid will adjust to fill available space.
+</p>
+
+<div class="grid-container grid-auto demo-flex">
+    <div class="grid-item">A</div>
+    <div class="grid-item">B</div>
+    <div class="grid-item">C</div>
+    <div class="grid-item">D</div>
+    <div class="grid-item">E</div>
+</div>
+
+<hr>
+
+<h2>Grid Template Rows</h2>
+<p>
+You can define specific heights for rows using <code>grid-template-rows</code>.
+This allows you to create grids with consistent row sizes or a mix of different heights.
+</p>
+
+<div class="grid-container grid-2-col grid-rows-3 demo-flex">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+</div>
+
+<hr>
+
+<h2>Grid Column & Row Span</h2>
+<p>
+Individual items can span multiple columns or rows using <code>grid-column: span X</code>
+or <code>grid-row: span X</code>. This is useful for creating layouts like dashboards
+where certain elements need more space.
+</p>
+
+<div class="grid-container grid-3-col demo-flex">
+    <div class="grid-item" style="grid-column:span 2;">Span 2 Columns</div>
+    <div class="grid-item">Normal</div>
+    <div class="grid-item" style="grid-row:span 2;">Span 2 Rows</div>
+    <div class="grid-item">Normal</div>
+</div>
+
+<hr>
+
+<h2>Grid Template Areas</h2>
+<p>
+You can define named areas in your grid to make layout easier to manage.
+Items can then be placed using <code>grid-area</code>, making it very readable and semantic.
+</p>
+
+<div class="grid-container area-demo demo-flex" style="height:300px;">
+    <div class="grid-item header">Header</div>
+    <div class="grid-item sidebar">Sidebar</div>
+    <div class="grid-item main">Main</div>
+    <div class="grid-item footer">Footer</div>
+</div>
+
+<hr>
+
+<h2>Justify Items & Align Items</h2>
+<p>
+Grid allows you to control alignment of items inside each cell:
+<code>justify-items</code> aligns items horizontally, while <code>align-items</code> aligns
+items vertically within their grid area. This gives precise control over layout.
+</p>
+
+<div class="grid-container grid-3-col demo-flex" style="height:150px; justify-items:center; align-items:center;">
+    <div class="grid-item">Centered</div>
+    <div class="grid-item">Centered</div>
+    <div class="grid-item">Centered</div>
+</div>
+
+<div class="grid-container grid-3-col demo-flex" style="height:150px; justify-items:end; align-items:start; margin-top:20px;">
+    <div class="grid-item">Top End</div>
+    <div class="grid-item">Top End</div>
+    <div class="grid-item">Top End</div>
+</div>
+
+<hr>
+
+<h2>Grid Gap</h2>
+<p>
+The <code>gap</code> property (or <code>grid-gap</code>) adds spacing between rows and columns,
+eliminating the need for margins on individual items. This keeps grids clean and consistent.
+</p>
+
+<div class="grid-container grid-3-col demo-flex" style="gap:30px;">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+</div>
+<div class="nav-buttons">
+    <a href="css15.html">← Previous</a>
+    
+    <a href="css.html">Home </a>
+</div>
+</div>
+</body>
+</html>

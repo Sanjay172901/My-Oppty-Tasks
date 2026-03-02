@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Tutorial Series</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    display:flex;
+    background:#111;
+    color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:280px;
+    background:#1a1a1a;
+    padding:40px 25px;
+    min-height:100vh;
+    box-shadow:5px 0 25px rgba(0,0,0,0.4);
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+}
+
+.sidebar ul{list-style:none;}
+
+.sidebar li{
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:10px;
+    cursor:pointer;
+    background:#222;
+    transition:0.3s;
+}
+
+.sidebar li:hover{
+    background:linear-gradient(45deg,#f7971e,#ffd200);
+    color:black;
+}
+
+/* CONTENT */
+.content{
+    flex:1;
+    padding:60px;
+}
+
+.content h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.content p{
+    opacity:0.8;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.back-btn{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#f7971e,#ffd200);
+    border-radius:30px;
+    text-decoration:none;
+    color:black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>JavaScript Lessons</h2>
+    <ul>
+        <li onclick="location.href='js1.html'">1. Introduction to JavaScript</li>
+        <li onclick="location.href='js2.html'">2. Syntax</li>
+        <li onclick="location.href='js3.html'">3. Variables</li>
+        <li onclick="location.href='js4.html'">4. Operators</li>
+        <li onclick="location.href='js5.html'">5. Functions</li>
+        <li onclick="location.href='js6.html'">6. Objects</li>
+        <li onclick="location.href='js7.html'">7. Arrays</li>
+        <li onclick="location.href='js8.html'">8. Array iterations</li>
+        <li onclick="location.href='js9.html'">9. Conditionals</li>
+        <li onclick="location.href='js10.html'">10. Loops</li>
+        <li onclick="location.href='js11.html'">11. DOM Manipulation</li>
+        <li onclick="location.href='js12.html'">12. Error Handling</li>
+        <li onclick="location.href='js13.html'">13. Asynchronous Programming</li>
+        <li onclick="location.href='js14.html'">14. ES6 + Features</li>
+        <li onclick="location.href='js15.html'">15. Modules</li>
+         <li onclick="location.href='js16.html'">16. API integration</li>
+        
+    </ul>
+</div>
+
+<div class="content">
+
+    <h1>JavaScript Tutorial Series</h1>
+
+    <p>
+        JavaScript makes your website interactive.
+        Learn variables, functions, DOM manipulation,
+        ES6 features, events and API integration.
+    </p>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> Course Overview</h2>
+    <p>
+        JavaScript is a powerful programming language used to create
+        dynamic and interactive web applications. It allows you to
+        control webpage behavior, respond to user actions,
+        and manipulate content in real-time.
+    </p>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> What You Will Learn</h2>
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>JavaScript syntax and structure</li>
+        <li>Variables and data types</li>
+        <li>Functions and scope</li>
+        <li>Conditional statements and loops</li>
+        <li>Working with arrays and objects</li>
+        <li>DOM manipulation</li>
+        <li>Handling events</li>
+        <li>Modern ES6 features</li>
+    </ul>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> Basic JavaScript Example</h2>
+
+    <pre style="background:#1a1a1a; padding:20px; border-radius:10px; overflow:auto; color:#ffd200;">
+let name = "Ravi";
+
+function greet(user) {
+    return "Hello " + user + "!";
+}
+
+console.log(greet(name));
+    </pre>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> Control Structures</h2>
+    <p>
+        JavaScript includes conditional statements and loops
+        that help control program flow.
+    </p>
+
+    <pre style="background:#1a1a1a; padding:20px; border-radius:10px; overflow:auto; color:#f7971e;">
+for (let i = 1; i <= 5; i++) {
+    console.log("Number: " + i);
+}
+
+if (name === "Ravi") {
+    console.log("Welcome back!");
+}
+    </pre>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> DOM Manipulation</h2>
+    <p>
+        JavaScript can access and modify HTML elements using
+        the Document Object Model (DOM).
+    </p>
+
+    <pre style="background:#1a1a1a; padding:20px; border-radius:10px; overflow:auto; color:#ffd200;">
+document.getElementById("demo").innerText = "Updated Text!";
+    </pre>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> Events</h2>
+    <p>
+        Events allow JavaScript to respond to user actions like
+        clicks, keyboard input, and form submissions.
+    </p>
+
+    <pre style="background:#1a1a1a; padding:20px; border-radius:10px; overflow:auto; color:#f7971e;">
+button.addEventListener("click", function() {
+    alert("Button Clicked!");
+});
+    </pre>
+
+    <hr style="border:1px solid #2a2a2a; margin:30px 0;">
+
+    <h2> Learning Outcome</h2>
+    <p>
+        After completing this course, you will be able to:
+    </p>
+
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>Write structured JavaScript programs</li>
+        <li>Manipulate webpage elements dynamically</li>
+        <li>Handle user interactions using events</li>
+        <li>Build interactive web applications</li>
+        <li>Understand modern JavaScript features</li>
+    </ul>
+
+    <br><br>
+
+    <a href="index.html" class="back-btn">← Back to Courses</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semantic Elements</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #00f2fe;
+        }
+
+        p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            color: #00f2fe;
+        }
+
+
+        .btn-small {
+            padding: 5px 12px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .copy-btn {
+            background: #00c6ff;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00ff99;
+            color: black;
+        }
+
+        .output-box {
+            margin-top: 10px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .output-box iframe {
+            width: 100%;
+            height: 100px;
+            border: none;
+        }
+
+        .nav-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">13.HTML Semantic Elements</h1>
+
+        <p>
+            Semantic elements clearly describe their meaning to both browser and developer.
+            They improve SEO and accessibility.
+        </p>
+        <p>
+            HTML Semantic Elements are tags that clearly describe their meaning
+            to both the browser and the developer. Unlike non-semantic tags like
+            &lt;div&gt; and &lt;span&gt;, semantic tags explain the purpose of the content
+            inside them.
+        </p>
+
+        <h2>Why Use Semantic Elements?</h2>
+        <p>
+            1. They improve website structure and readability. <br>
+            2. They help search engines understand your content better (SEO). <br>
+            3. They improve accessibility for screen readers. <br>
+            4. They make code more meaningful and easier to maintain. <br>
+            5. They clearly define different parts of a webpage like header, footer, navigation, and sections.
+        </p>
+        <!-- HEADER -->
+        <h2>&lt;header&gt; Tag</h2>
+        <p>
+            The header element represents introductory content like logo, title, navigation links.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;header&gt;
+  &lt;h1&gt;My Website&lt;/h1&gt;
+  &lt;p&gt;Welcome to my site&lt;/p&gt;
+&lt;/header&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+
+        <!-- NAV -->
+        <h2>&lt;nav&gt; Tag</h2>
+        <p>
+            Defines navigation links.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;nav&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt; |
+  &lt;a href="#"&gt;About&lt;/a&gt; |
+  &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+
+        <!-- SECTION -->
+        <h2>&lt;section&gt; Tag</h2>
+        <p>
+            Defines a section in a document.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;section style="background:#f2f2f2; padding:15px;"&gt;
+  &lt;h2&gt;Services&lt;/h2&gt;
+  &lt;p&gt;We provide web development services.&lt;/p&gt;
+&lt;/section&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+
+        <!-- ARTICLE -->
+        <h2>&lt;article&gt; Tag</h2>
+        <p>
+            Represents independent content like blog post.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;article&gt;
+  &lt;h2&gt;Blog Title&lt;/h2&gt;
+  &lt;p&gt;This is a blog article.&lt;/p&gt;
+&lt;/article&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+
+        <!-- ASIDE -->
+        <h2>&lt;aside&gt; Tag</h2>
+        <p>
+            Represents sidebar content.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;aside&gt;
+  &lt;p&gt;This is sidebar content.&lt;/p&gt;
+&lt;/aside&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+
+        <!-- FOOTER -->
+        <h2>&lt;footer&gt; Tag</h2>
+        <p>
+            Represents footer section.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;footer&gt;
+  &lt;p&gt;© 2026 My Website&lt;/p&gt;
+&lt;/footer&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <!-- MAIN -->
+        <h2>&lt;main&gt; Tag</h2>
+        <p>
+            The main element represents the main content of the document.
+            There should be only one &lt;main&gt; element in a webpage.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;main&gt;
+  &lt;h2&gt;Main Content Area&lt;/h2&gt;
+  &lt;p&gt;This is the primary content of the webpage.&lt;/p&gt;
+&lt;/main&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <!-- FIGURE -->
+        <h2>&lt;figure&gt; and &lt;figcaption&gt; Tags</h2>
+        <p>
+            The figure element is used to group media content like images,
+            and figcaption provides a caption for that content.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;figure&gt;
+  &lt;img src="https://via.placeholder.com/150" alt="Sample Image"&gt;
+  &lt;figcaption&gt;This is an example image.&lt;/figcaption&gt;
+&lt;/figure&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <!-- MARK -->
+        <h2>&lt;mark&gt; Tag</h2>
+        <p>
+            The mark element highlights important text.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;p&gt;This is &lt;mark&gt;important&lt;/mark&gt; highlighted text.&lt;/p&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <!-- TIME -->
+        <h2>&lt;time&gt; Tag</h2>
+        <p>
+            The time element represents a specific date or time.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;p&gt;Meeting on &lt;time datetime="2026-02-27"&gt;February 27, 2026&lt;/time&gt;&lt;/p&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <!-- DETAILS -->
+        <h2>&lt;details&gt; and &lt;summary&gt; Tags</h2>
+        <p>
+            The details element creates a collapsible section,
+            and summary defines the visible heading.
+        </p>
+
+        <div class="code-wrapper">
+
+            <pre>
+&lt;details&gt;
+  &lt;summary&gt;Click to view more&lt;/summary&gt;
+  &lt;p&gt;This content is hidden until clicked.&lt;/p&gt;
+&lt;/details&gt;
+</pre>
+        </div>
+        <div class="output-box"><iframe></iframe></div>
+        <div class="nav-buttons">
+            <a href="html12.html">← Back</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            <a href="html14.html">Next →</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const wrappers = document.querySelectorAll(".code-wrapper");
+
+            wrappers.forEach((wrapper) => {
+                const code = wrapper.querySelector("pre").innerText;
+                const outputBox = wrapper.nextElementSibling;
+                const iframe = outputBox.querySelector("iframe");
+                iframe.srcdoc = code;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

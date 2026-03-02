@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tutorial - Colors</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+        padding: 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      pre {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: auto;
+        color: #ff6a00;
+        margin-bottom: 20px;
+      }
+      .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1> 6. Background </h1>
+      
+
+      <h2>CSS Background Properties</h2>
+      <p>
+        CSS background properties are used to define the background effects for
+        elements.There are several background properties that can be used
+        individually or as a shorthand property.
+      </p>
+
+      <h2>Background Color</h2>
+      <p>
+        The background-color property specifies the background color of an
+        element:
+      </p>
+      <pre>
+.background-example { background-color: #ff6b6b; } .transparent-bg { background-color: transparent; } 
+.named-color { background-color: lightblue; }
+</pre
+      >
+
+      <h2>Background Image</h2>
+      <p>
+        The background-image property specifies the background image of an
+        element:
+      </p>
+      <pre>
+background-image { background-image: url("image.jpg"); }
+</pre
+      >
+
+      <h2>Background Repeat</h2>
+      <p>
+        The background-repeat property specifies how a background image should
+        be repeated :
+      </p>
+
+      <pre>
+    * Default - repeat both directions */ .repeat-both { background-image: url("pattern.png"); } 
+     /* Repeat horizontally only */ 
+    .repeat-x { background-image: url("pattern.png"); background-repeat: repeat-x; } 
+    /* Repeat vertically only */ .repeat-y
+     { background-image: url("pattern.png"); background-repeat: repeat-y; } 
+     /* No repeat */ .no-repeat { background-image: 
+     url("logo.png"); background-repeat: no-repeat; }
+</pre
+      >
+
+      <h2>Background Position</h2>
+      <p>
+        The background-position property specifies the position of a background
+        image:
+      </p>
+      <pre>
+    * Position keywords */ .top-left { background-image: url("image.png");
+     background-position: top left; } 
+    /* Center */ .center { background-image: url("image.png");
+     background-position: center; } 
+    /* Bottom right */ .bottom-right { background-image: url("image.png"); 
+    background-position: bottom right; } 
+    /* Percentage values */ .percent-position { background-image: url("image.png");
+     background-position: 25% 75%; } 
+    /* Length values */ .length-position { background-image: url("image.png");
+     background-position: 10px 20px; }
+</pre
+      >
+
+      <h2>Background Attachment</h2>
+      <p>
+        The background-attachment property specifies whether a background image
+        should scroll with the rest of the page or be fixed:
+      </p>
+      <pre>
+.scroll { background-image: url("image.png"); background-attachment: scroll; /* Default */ } 
+.fixed { background-image: url("image.png"); background-attachment: fixed; }
+</pre
+      >
+
+      <h2>Background Size</h2>
+      <p>
+        The background-size property specifies the size of the background
+        images:
+      </p>
+
+      <pre>
+.auto-size { background-image: url("image.png"); background-size: auto; /* Default */ } 
+.cover { background-image: url("image.png"); background-size: cover; /* Scale to cover entire element */ }
+ .contain { background-image: url("image.png"); background-size: contain; /* Scale to fit inside element */ } 
+ .specific-size { background-image: url("image.png"); background-size: 100px 80px; /* Specific dimensions */ }
+  .percentage-size { background-image: url("image.png"); background-size: 50% 75%; /* Percentage of element */ }
+</pre
+      >
+
+      <h2>Background Shorthand</h2>
+      <p>
+        The background property is a shorthand for setting all background
+        properties in one declaration:
+      </p>
+
+      <pre>
+.shorthand-example { background: #ff6b6b url("image.png") no-repeat center/cover; }
+ /* The order is: background: color image repeat position/size attachment;
+  */ .detailed-shorthand { background: linear-gradient(135deg, #ff6b6b, #ee5a24) url("pattern.png") repeat-x top left scroll; }
+</pre
+      >
+
+      <h2>Multiple Backgrounds</h2>
+      <p>
+        The background property can be used to set multiple backgrounds for an
+        element:
+      </p>
+
+      <pre>
+multiple-backgrounds { background-image: url("image1.png"), url("image2.png"),
+ linear-gradient(to bottom, #ff6b6b, #ee5a24); background-position: right bottom, left top, center;
+  background-repeat: no-repeat, no-repeat, no-repeat; }
+</pre>
+<div class="nav-buttons">
+    <a href="css5.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css7.html">Next →</a>
+    
+</div>
+    </div>
+  </body>
+</html>

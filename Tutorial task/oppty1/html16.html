@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Iframes Tutorial</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    padding:40px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.main-title{
+    text-align:center;
+    background:linear-gradient(45deg,#00f2fe,#4facfe);
+    padding:15px 25px;
+    border-radius:50px;
+    margin-bottom:30px;
+    font-size:30px;
+    font-weight:700;
+}
+
+h2{
+    margin-top:30px;
+    margin-bottom:10px;
+    color:#00f2fe;
+}
+
+p{
+    margin-bottom:10px;
+    line-height:1.6;
+}
+
+.code-wrapper{
+    margin-top:10px;
+    cursor:pointer;
+}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:10px;
+    overflow:auto;
+    color:#00f2fe;
+}
+
+.output-box{
+    margin-top:40px;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.output-box iframe{
+    width:100%;
+    height:250px;
+    border:none;
+}
+
+.nav-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:10px 20px;
+    background:linear-gradient(45deg,#00f2fe,#4facfe);
+    color:white;
+    text-decoration:none;
+    border-radius:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">16. HTML Iframe Tag</h1>
+
+<p>
+The &lt;iframe&gt; tag is used to embed another webpage inside the current webpage.
+It creates an inline frame.
+</p>
+
+<!-- Basic Iframe -->
+<h2>1. Basic Iframe</h2>
+<p>Embeds another website inside your page.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Width & Height -->
+<h2>2. Width and Height</h2>
+<p>Defines iframe size.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+width="400" height="200"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Border Remove -->
+<h2>3. Remove Border</h2>
+<p>Use CSS to remove iframe border.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+style="border:none;"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Name Attribute -->
+<h2>4. name Attribute</h2>
+<p>Used to target links.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe name="myFrame"&gt;&lt;/iframe&gt;
+
+&lt;a href="https://example.com" 
+target="myFrame"&gt;Open in Iframe&lt;/a&gt;
+</pre>
+</div>
+
+<!-- Sandbox -->
+<h2>5. sandbox Attribute</h2>
+<p>Adds security restrictions.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+sandbox&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Loading -->
+<h2>6. loading Attribute</h2>
+<p>Lazy loads iframe.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+loading="lazy"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Allow -->
+<h2>7. allow Attribute</h2>
+<p>Controls special permissions like fullscreen.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+allow="fullscreen"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Referrer Policy -->
+<h2>8. referrerpolicy Attribute</h2>
+<p>Controls referrer information sent.</p>
+
+<div class="code-wrapper">
+<pre>
+&lt;iframe src="https://example.com" 
+referrerpolicy="no-referrer"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<!-- Navigation -->
+<div class="nav-buttons">
+<a href="html15.html">← Back</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html17.html">Next →</a>
+</div>
+
+
+</div>
+
+
+</body>
+</html>

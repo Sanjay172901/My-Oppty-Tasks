@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tutorial - Colors</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+        padding: 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      pre {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: auto;
+        color: #ff6a00;
+        margin-bottom: 20px;
+      }
+      .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1> 5. CSS Border</h1>
+
+      <h2>CSS Border Properties</h2>
+      <p>
+        The CSS border properties allow you to specify the style, width, and
+        color of an element's border. There are several border properties that
+        can be used individually or as shorthand properties. For example, you
+        can use the border property to set all the border properties at once, or
+        you can use the border-width, border-style, and border-color properties
+        to set each property individually.
+      </p>
+
+      <h2>Border Color</h2>
+      <p>The border-color property sets the color of an element's border.</p>
+      <pre>
+.none { border-style: none; /* No border */ } 
+.dotted { border-style: dotted; /* Dotted border */ }
+.solid { border-style: solid; /* Solid border */ } 
+.double { border-style: double; /* Double border */ } 
+.groove { border-style: groove;  /* 3D grooved border */ }
+.outset { border-style: outset; /* 3D outset border */ }
+</pre
+      >
+
+      <h2>Border Width</h2>
+      <p>The border-width property sets the width of an element's border.</p>
+      <pre>
+ thin { border-style: solid; border-width: thin; } 
+ .medium { border-style: solid; border-width: medium; } 
+ .thick { border-style: solid; border-width: thick; }
+ .specific { border-style: solid; border-width: 5px; }
+  .multiple-widths { border-style: solid; border-width: 2px 10px 4px 20px; 
+    /* top right bottom left */ }
+</pre
+      >
+
+      <h2>Border Color</h2>
+      <p>The border-color property sets the color of an element's border.</p>
+
+      <pre>
+.red-border { border-style: solid; border-color: red; } 
+.hex-border { border-style: solid; border-color: #ff6b6b; } 
+.rgb-border { border-style: solid; border-color: rgb(255, 107, 107); }
+ .transparent-border { border-style: solid; border-color: transparent; } 
+ .multiple-colors { border-style: solid; border-color: red green blue yellow; 
+    /* top right bottom left */ }
+</pre
+      >
+
+      <h2>Individual Border Sides</h2>
+      <p>The border-color property sets the color of an element's border.</p>
+      <pre>
+.top-border { border-top-style: dotted; border-top-width: 2px;
+     border-top-color: red; } 
+.right-border { border-right-style: dashed; border-right-width: 5px;
+     border-right-color: blue; } 
+.bottom-border { border-bottom-style: solid; border-bottom-width: 3px;
+     border-bottom-color: green; } 
+.left-border { border-left-style: double; border-left-width: 4px;
+     border-left-color: purple; }
+</pre
+      >
+
+      <h2>Border Shorthand Properties</h2>
+      <p>
+        The border property is a shorthand property for the following individual
+        border properties:
+      </p>
+      <pre>
+.* Border shorthand for all sides */ 
+.shorthand-all { border: 2px solid #ff6b6b; } 
+/* Individual side shorthand */ 
+.border-top { border-top: 3px dotted blue; } 
+.border-right { border-right: 5px dashed green; } 
+.border-bottom { border-bottom: 2px double purple; } 
+.border-left { border-left: 4px groove orange; }
+</pre
+      >
+
+      <h2>Border Radius</h2>
+      <p>
+        The border-radius property is used to add rounded corners to an element.
+        It can take pixel values, percentage values, or global values like
+        inherit or initial.
+      </p>
+
+      <pre>
+.rounded-corners { border: 2px solid #ff6b6b; border-radius: 10px; } 
+.circle { border: 2px solid #ff6b6b; border-radius: 50%; 
+    /* Creates a circle */ width: 100px; height: 100px; } 
+.elliptical { border: 2px solid #ff6b6b; border-radius: 50px/25px; 
+    /* Elliptical corners */ width: 200px; height: 100px; } 
+.individual-corners { border: 2px solid #ff6b6b; border-radius: 10px 20px 30px 40px;
+     /* top-left top-right bottom-right bottom-left */ } 
+.specific-corners { border: 2px solid #ff6b6b;
+     border-top-left-radius: 20px; border-top-right-radius: 40px; 
+     border-bottom-right-radius: 20px; border-bottom-left-radius: 10px; }
+</pre>
+<div class="nav-buttons">
+    <a href="css4.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css6.html">Next →</a>
+</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16. CSS & JS Integration</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+padding:60px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.main-title{
+text-align:center;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+padding:15px 25px;
+border-radius:50px;
+margin-bottom:30px;
+font-size:32px;
+font-weight:700;
+}
+
+h2{
+margin-top:25px;
+margin-bottom:15px;
+color:#4facfe;
+}
+
+p{
+margin-bottom:20px;
+line-height:1.7;
+opacity:0.9;
+}
+
+ul{
+margin-left:20px;
+margin-bottom:20px;
+}
+
+.code-wrapper{
+position:relative;
+margin-bottom:15px;
+}
+
+.code-buttons{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+display:flex;
+justify-content:space-between;
+}
+
+pre{
+background:#111827;
+padding:40px 20px 20px 20px;
+border-radius:12px;
+overflow:auto;
+color:#00f2fe;
+}
+
+.btn-small{
+padding:6px 12px;
+font-size:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.copy-btn{ background:#4facfe; color:white; }
+.run-btn{ background:#00f2fe; color:white; }
+
+.output-box{
+background:white;
+color:black;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+iframe{
+width:100%;
+height:350px;
+border:none;
+}
+
+.nav-buttons{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+}
+
+.nav-btn{
+padding:12px 25px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">17. CSS & JS Integration</h1>
+
+<p>
+Modern web development is built on three core technologies:
+<strong>HTML</strong> (structure), 
+<strong>CSS</strong> (presentation), and 
+<strong>JavaScript</strong> (behavior).
+Understanding how to properly integrate CSS and JS into HTML is essential for building interactive and visually appealing websites.
+</p>
+
+<h2>Integrating CSS with HTML</h2>
+
+<p>
+There are three primary ways to add CSS to an HTML document.
+Each method has specific use cases depending on project size and maintainability.
+</p>
+
+<h2>1. External Stylesheet (Recommended for Real Projects)</h2>
+
+<p>
+This is the most professional and scalable approach.
+CSS is written in a separate file and linked using the &lt;link&gt; tag.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+</pre>
+</div>
+
+<p>
+Benefits:
+</p>
+
+<ul>
+<li>Better maintainability</li>
+<li>Reusable styles across pages</li>
+<li>Faster page loading (cached CSS)</li>
+</ul>
+
+
+<h2>2. Internal Stylesheet</h2>
+
+<p>
+CSS rules are written inside the &lt;style&gt; element within the &lt;head&gt;.
+Useful for single-page styling.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;head&gt;
+&lt;style&gt;
+body { background-color: lightblue; }
+h1 { color: navy; margin-left: 20px; }
+&lt;/style&gt;
+&lt;/head&gt;
+</pre>
+</div>
+
+<h2>3. Inline Styles</h2>
+
+<p>
+Styles are applied directly to HTML elements using the style attribute.
+This method is not recommended for large projects.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;h1 style="color: blue; font-size: 24px;"&gt;Hello World&lt;/h1&gt;
+&lt;p style="color: red;"&gt;This is a paragraph.&lt;/p&gt;
+</pre>
+</div>
+
+<h2>Integrating JavaScript with HTML</h2>
+
+<p>
+JavaScript adds interactivity to web pages.
+It can be included either internally or externally.
+</p>
+
+<h2>1. External JavaScript</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;body&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+</div>
+
+<p>
+Advantages:
+</p>
+<ul>
+<li>Cleaner HTML structure</li>
+<li>Reusable code</li>
+<li>Better performance</li>
+</ul>
+
+<h2>2. Internal JavaScript</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;script&gt;
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello JavaScript!";
+}
+&lt;/script&gt;
+</pre>
+</div>
+
+<h2>Async and Defer</h2>
+
+<p>
+Control how scripts load:
+</p>
+
+<ul>
+<li><strong>async</strong> – Downloads script asynchronously.</li>
+<li><strong>defer</strong> – Executes script after HTML parsing completes.</li>
+</ul>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;script src="script.js" async&gt;&lt;/script&gt;
+&lt;script src="script.js" defer&gt;&lt;/script&gt;
+</pre>
+</div>
+
+<h2>Complete Integration Example</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.highlight { background-color: yellow; }
+.hidden { display: none; }
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;CSS & JS Integration&lt;/h1&gt;
+
+&lt;p id="demo"&gt;This paragraph will change.&lt;/p&gt;
+
+&lt;button onclick="changeText()"&gt;Change Text&lt;/button&gt;
+&lt;button onclick="toggleHighlight()"&gt;Toggle Highlight&lt;/button&gt;
+
+&lt;script&gt;
+function changeText() {
+  document.getElementById("demo").innerHTML = "Text changed!";
+}
+
+function toggleHighlight() {
+  document.getElementById("demo").classList.toggle("highlight");
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<h2>Why Integration Matters</h2>
+
+<ul>
+<li>Separation of concerns (HTML structure, CSS style, JS behavior)</li>
+<li>Improved maintainability</li>
+<li>Better performance optimization</li>
+<li>Scalable project architecture</li>
+</ul>
+
+<div class="nav-buttons">
+<a href="html16.html" class="nav-btn">← Prev</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html18.html" class="nav-btn">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+navigator.clipboard.writeText(code);
+alert("Code Copied Successfully!");
+}
+
+function runCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+
+let nextElement = wrapper.nextElementSibling;
+while(nextElement && !nextElement.classList.contains("output-box")){
+nextElement = nextElement.nextElementSibling;
+}
+
+if(nextElement){
+const iframe = nextElement.querySelector("iframe");
+iframe.srcdoc = code;
+}
+}
+</script>
+
+</body>
+</html>

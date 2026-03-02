@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>17. Input Validations</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+padding:60px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.main-title{
+text-align:center;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+padding:15px 25px;
+border-radius:50px;
+margin-bottom:30px;
+font-size:32px;
+font-weight:700;
+}
+
+h2{
+margin-top:25px;
+margin-bottom:15px;
+color:#4facfe;
+}
+
+p{
+margin-bottom:20px;
+line-height:1.7;
+opacity:0.9;
+}
+
+ul{
+margin-left:20px;
+margin-bottom:20px;
+}
+
+.code-wrapper{
+position:relative;
+margin-bottom:15px;
+}
+
+.code-buttons{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+display:flex;
+justify-content:space-between;
+}
+
+pre{
+background:#111827;
+padding:40px 20px 20px 20px;
+border-radius:12px;
+overflow:auto;
+color:#00f2fe;
+}
+
+.btn-small{
+padding:6px 12px;
+font-size:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.copy-btn{ background:#4facfe; color:white; }
+.run-btn{ background:#00f2fe; color:white; }
+
+.output-box{
+background:white;
+color:black;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+iframe{
+width:100%;
+height:500px;
+border:none;
+}
+
+.nav-buttons{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+}
+
+.nav-btn{
+padding:12px 25px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">18. Input Types & Validations</h1>
+
+<p>
+HTML forms collect user data. Input validation ensures that the data entered 
+is correct, complete, and secure before submission.
+Modern HTML5 provides built-in validation features without JavaScript.
+</p>
+
+<h2>What is Input Validation?</h2>
+
+<p>
+Input validation ensures:
+</p>
+
+<ul>
+<li>Required fields are not empty</li>
+<li>Email format is correct</li>
+<li>Numbers stay within allowed ranges</li>
+<li>Data matches required patterns</li>
+<li>Files meet type restrictions</li>
+</ul>
+
+<p>
+Validation improves security, user experience, and data accuracy.
+</p>
+
+<h2>Common Text Input Types</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;input type="text" name="username" required&gt;
+
+&lt;input type="email" name="email" required&gt;
+
+&lt;input type="password" name="password" required&gt;
+
+&lt;input type="tel" name="phone"&gt;
+
+&lt;input type="url" name="website"&gt;
+</pre>
+</div>
+
+<h2>Numeric Validation</h2>
+
+<p>
+Use <strong>min</strong>, <strong>max</strong>, and <strong>step</strong> 
+to control numeric input ranges.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+</div>
+<pre>
+&lt;input type="number" name="age" min="1" max="120"&gt;
+
+&lt;input type="range" min="0" max="100"&gt;
+</pre>
+</div>
+
+<h2>Pattern Validation</h2>
+
+<p>
+The <strong>pattern</strong> attribute uses Regular Expressions (Regex) 
+to validate user input.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;input type="text" name="code"
+pattern="[A-Za-z]{3}"
+title="Enter exactly three letters"&gt;
+</pre>
+</div>
+
+<h2>File Validation</h2>
+
+<p>
+The <strong>accept</strong> attribute restricts file types.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;input type="file" accept="image/*"&gt;
+</pre>
+</div>
+
+<h2>Complete Registration Form Example</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body style="font-family: Arial; padding:20px;"&gt;
+
+&lt;h2&gt;Registration Form&lt;/h2&gt;
+
+&lt;form&gt;
+
+Full Name:&lt;br&gt;
+&lt;input type="text" required&gt;&lt;br&gt;&lt;br&gt;
+
+Email:&lt;br&gt;
+&lt;input type="email" required&gt;&lt;br&gt;&lt;br&gt;
+
+Password:&lt;br&gt;
+&lt;input type="password" minlength="6" required&gt;&lt;br&gt;&lt;br&gt;
+
+Age:&lt;br&gt;
+&lt;input type="number" min="13" max="120"&gt;&lt;br&gt;&lt;br&gt;
+
+Website:&lt;br&gt;
+&lt;input type="url" placeholder="https://example.com"&gt;&lt;br&gt;&lt;br&gt;
+
+Favorite Color:&lt;br&gt;
+&lt;input type="color"&gt;&lt;br&gt;&lt;br&gt;
+
+Gender:&lt;br&gt;
+&lt;input type="radio" name="gender"&gt; Male
+&lt;input type="radio" name="gender"&gt; Female&lt;br&gt;&lt;br&gt;
+
+Interests:&lt;br&gt;
+&lt;input type="checkbox"&gt; Sports
+&lt;input type="checkbox"&gt; Music&lt;br&gt;&lt;br&gt;
+
+Profile Picture:&lt;br&gt;
+&lt;input type="file" accept="image/*"&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<h2>Best Practices for Validation</h2>
+
+<ul>
+<li>Always use required for important fields</li>
+<li>Use semantic input types (email, number, date)</li>
+<li>Restrict numeric ranges</li>
+<li>Validate on both client-side and server-side</li>
+<li>Provide clear error messages</li>
+</ul>
+
+<h2>Client-Side vs Server-Side Validation</h2>
+
+<p>
+Client-side validation (HTML/JS) improves user experience.
+Server-side validation ensures security and must always be implemented.
+Never rely only on frontend validation.
+</p>
+
+<div class="nav-buttons">
+<a href="html17.html" class="nav-btn">← Prev</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html19.html" class="nav-btn">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+navigator.clipboard.writeText(code);
+alert("Code Copied Successfully!");
+}
+
+function runCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+
+let nextElement = wrapper.nextElementSibling;
+while(nextElement && !nextElement.classList.contains("output-box")){
+nextElement = nextElement.nextElementSibling;
+}
+
+if(nextElement){
+const iframe = nextElement.querySelector("iframe");
+iframe.srcdoc = code;
+}
+}
+</script>
+
+</body>
+</html>

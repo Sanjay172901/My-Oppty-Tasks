@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multimedia (Audio & Video)</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+padding:60px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.main-title{
+text-align:center;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+padding:15px 25px;
+border-radius:50px;
+margin-bottom:30px;
+font-size:32px;
+font-weight:700;
+}
+
+h2{
+margin-top:25px;
+margin-bottom:15px;
+color:#4facfe;
+}
+
+p{
+margin-bottom:20px;
+line-height:1.7;
+opacity:0.9;
+}
+
+ul{
+margin-left:20px;
+margin-bottom:20px;
+}
+
+.code-wrapper{
+position:relative;
+margin-bottom:15px;
+}
+
+.code-buttons{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+display:flex;
+justify-content:space-between;
+}
+
+pre{
+background:#111827;
+padding:40px 20px 20px 20px;
+border-radius:12px;
+overflow:auto;
+color:#00f2fe;
+}
+
+.btn-small{
+padding:6px 12px;
+font-size:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.copy-btn{ background:#4facfe; color:white; }
+.run-btn{ background:#00f2fe; color:white; }
+
+.output-box{
+background:white;
+color:white;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+iframe{
+width:100%;
+height:100px;
+border:none;
+}
+
+.nav-buttons{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+}
+
+.nav-btn{
+padding:12px 25px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">9. Multimedia (Audio & Video)</h1>
+
+<p>
+HTML5 introduced built-in support for multimedia elements such as audio and video.
+Before HTML5, multimedia required plugins like Flash.
+Now, browsers can directly play media using the 
+<strong>&lt;audio&gt;</strong> and <strong>&lt;video&gt;</strong> tags.
+</p>
+
+<h2>Adding Audio</h2>
+
+<p>
+The &lt;audio&gt; tag embeds sound content in a webpage.
+The <strong>controls</strong> attribute adds play, pause, and volume controls.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;audio controls&gt;
+  &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<p>
+The &lt;source&gt; tag allows multiple audio formats to ensure browser compatibility.
+If the browser does not support the audio element, fallback text is displayed.
+</p>
+
+<h2>Important Audio Attributes</h2>
+
+<ul>
+<li><strong>controls</strong> – Displays playback controls.</li>
+<li><strong>autoplay</strong> – Starts playing automatically.</li>
+<li><strong>loop</strong> – Repeats audio continuously.</li>
+<li><strong>muted</strong> – Starts audio muted.</li>
+</ul>
+
+<h2>Adding Video</h2>
+
+<p>
+The &lt;video&gt; tag is used to embed video files.
+You can specify width and height to control the display size.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;video width="320" height="240" controls&gt;
+  &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<h2>Important Video Attributes</h2>
+
+<ul>
+<li><strong>controls</strong> – Shows video controls.</li>
+<li><strong>autoplay</strong> – Plays automatically.</li>
+<li><strong>loop</strong> – Repeats the video.</li>
+<li><strong>muted</strong> – Starts muted.</li>
+<li><strong>poster</strong> – Displays preview image before playing.</li>
+</ul>
+
+<h2>Using Poster Attribute</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;video width="320" controls 
+poster="https://via.placeholder.com/320x180"&gt;
+  &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<h2>Why Multimedia is Important</h2>
+
+<ul>
+<li>Improves user engagement</li>
+<li>Enhances learning experience</li>
+<li>Supports modern web applications</li>
+<li>Eliminates need for external plugins</li>
+</ul>
+
+<h2>Best Practices</h2>
+
+<ul>
+<li>Always include fallback text.</li>
+<li>Provide multiple formats (MP4, WebM, MP3).</li>
+<li>Use compressed media for faster loading.</li>
+<li>Avoid autoplay for better user experience.</li>
+</ul>
+
+<div class="nav-buttons">
+<a href="html8.html" class="nav-btn">← Back</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html10.html" class="nav-btn">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+navigator.clipboard.writeText(code);
+alert("Code Copied Successfully!");
+}
+
+function runCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+
+let nextElement = wrapper.nextElementSibling;
+while(nextElement && !nextElement.classList.contains("output-box")){
+nextElement = nextElement.nextElementSibling;
+}
+
+if(nextElement){
+const iframe = nextElement.querySelector("iframe");
+iframe.srcdoc = code;
+}
+}
+</script>
+
+</body>
+</html>

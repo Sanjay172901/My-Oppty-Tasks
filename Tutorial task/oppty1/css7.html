@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Margins</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  color:white;
+  padding:60px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  overflow:auto;
+  color:#ff6a00;
+  margin-bottom:20px;
+}
+
+button{
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  border:none;
+  padding:10px 25px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  height:250px;
+  background:#111827;
+  color:#ff6a00;
+  border:none;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+#previewBox{
+  background:white;
+  color:black;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+.nav-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-buttons a{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+
+/* ================= MARGIN PREVIEW STYLES ================= */
+
+.demo-box{
+  color:white;
+  padding:15px;
+  border-radius:8px;
+  margin-bottom:20px;
+  font-weight:500;
+}
+
+.small { margin:10px; background:#f56565; }
+.medium { margin:20px; background:#f97316; }
+.large { margin:40px; background:#667eea; }
+
+.top-margin { margin-top:30px; background:#7b4fa3; }
+.right-margin { margin-right:25px; background:#f56565; }
+.bottom-margin { margin-bottom:35px; background:#f97316; }
+.left-margin { margin-left:20px; background:#667eea; }
+
+.all-sides { margin:15px; background:#7b4fa3; }
+
+.vertical-horizontal { margin:10px 25px; background:#f56565; }
+
+.three-values { margin:10px 20px 30px; background:#f97316; }
+
+.four-values { margin:5px 15px 25px 35px; background:#667eea; }
+
+.centered-box{
+  width:300px;
+  margin:20px auto;
+  background:#7b4fa3;
+  padding:15px;
+  border-radius:8px;
+  text-align:center;
+  color:white;
+}
+
+.left-box{
+  width:300px;
+  margin:20px 0;
+  background:#f56565;
+  padding:15px;
+  border-radius:8px;
+}
+
+.right-box{
+  width:300px;
+  margin:20px 0 20px auto;
+  background:#f97316;
+  padding:15px;
+  border-radius:8px;
+  text-align:center;
+}
+
+.negative-margin{
+  margin:-10px -15px;
+  background:#667eea;
+  padding:15px;
+  border-radius:8px;
+}
+
+.percent-margin{
+  margin:3%;
+  background:#7b4fa3;
+  padding:15px;
+  border-radius:8px;
+}
+
+.pixel-margin{
+  margin:20px;
+  background:#f56565;
+  padding:15px;
+  border-radius:8px;
+}
+
+.em-margin{
+  margin:2em;
+  background:#f97316;
+  padding:15px;
+  border-radius:8px;
+}
+
+.rem-margin{
+  margin:1.5rem;
+  background:#667eea;
+  padding:15px;
+  border-radius:8px;
+}
+
+.collapse-box{
+  background:#2d2d2d;
+  padding:20px;
+  border-radius:8px;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>7. CSS Margins</h1>
+<p>Learn how to control space outside elements.</p>
+
+<h2>Basic Margin Examples</h2>
+
+<pre>
+.box1 { margin: 20px; }
+.box2 { margin: 10px 40px; }
+.box3 { margin-top: 50px; }
+.box4 { margin: -10px; }
+</pre>
+
+<!-- ================= THEORY SECTION START ================= -->
+
+<h2>CSS Margin Properties</h2>
+
+<p>
+The CSS margin properties are used to create space around elements,
+outside of any defined borders. Margins can be set for all
+sides of an element or for specific sides.
+</p>
+
+<h2>Margin Values</h2>
+
+<p>Margin values can be specified in several ways:</p>
+
+<pre>
+/* Length values */
+.length-margin { margin: 20px; }
+
+/* Percentage values */
+.percentage-margin { margin: 5%; }
+
+/* Auto value (for centering) */
+.auto-margin { margin: 0 auto; } /* Centers block element */
+
+/* Initial and inherit */
+.initial-margin { margin: initial; }
+.inherit-margin { margin: inherit; }
+</pre>
+
+<h2>Individual Margin Sides</h2>
+
+<p>You can set margins for specific sides of an element:</p>
+
+<pre>
+.top-margin { margin-top: 20px; }
+.right-margin { margin-right: 15px; }
+.bottom-margin { margin-bottom: 30px; }
+.left-margin { margin-left: 10px; }
+</pre>
+
+<h2>Margin Shorthand</h2>
+
+<p>
+The margin property is a shorthand for setting all margin properties in one declaration:
+</p>
+
+<pre>
+/* All sides same */
+.all-sides { margin: 20px; }
+
+/* Vertical and horizontal */
+.vertical-horizontal { margin: 10px 20px; } /* top/bottom left/right */
+
+/* Top, horizontal, bottom */
+.top-horizontal-bottom { margin: 10px 20px 15px; }
+
+/* Top Right Bottom Left */
+.all-four { margin: 10px 20px 15px 25px; }
+</pre>
+
+<h2>Margin Collapsing</h2>
+
+<p>
+Top and bottom margins of adjacent elements can collapse (combine) into a single margin:
+</p>
+
+<pre>
+.element1 { margin-bottom: 30px; }
+.element2 { margin-top: 20px; }
+
+/* The actual margin between them will be 30px (the larger value) */
+</pre>
+
+<h2>Negative Margins</h2>
+
+<p>
+Negative margins can be used to overlap elements or pull them outside their container:
+</p>
+
+<pre>
+.negative-margin {
+  margin-top: -20px;
+  margin-left: -10px;
+}
+</pre>
+
+<h2>Auto Margins</h2>
+
+<p>
+Auto margins are commonly used to center block elements horizontally:
+</p>
+
+<pre>
+.centered {
+  width: 300px;
+  margin: 0 auto; /* Centers horizontally */
+}
+
+.left-aligned {
+  width: 300px;
+  margin: 0;
+}
+
+.right-aligned {
+  width: 300px;
+  margin: 0 0 0 auto; /* Right alignment */
+}
+</pre>
+
+<h2>Margin with Different Units</h2>
+
+<p>Margins can be specified using different CSS units:</p>
+
+<pre>
+.pixel-margin { margin: 20px; }
+
+.em-margin { margin: 2em; } /* Relative to font size */
+
+.rem-margin { margin: 1.5rem; } /* Relative to root font size */
+
+.percent-margin { margin: 5%; } /* Relative to parent element */
+
+.viewport-margin { margin: 2vw; } /* Relative to viewport width */
+</pre>
+
+<!-- ================= THEORY SECTION END ================= -->
+
+<h2>Try It Yourself</h2>
+
+<button onclick="runCode()">Run Code</button>
+
+<textarea id="cssEditor">
+
+/* Basic margin examples */
+.small-margin {
+    margin: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.medium-margin {
+    margin: 20px;
+    background-color: #ee5a24;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.large-margin {
+    margin: 40px;
+    background-color: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Individual side margins */
+.top-margin {
+    margin-top: 30px;
+    background-color: #764ba2;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.right-margin {
+    margin-right: 25px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.bottom-margin {
+    margin-bottom: 35px;
+    background-color: #ee5a24;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.left-margin {
+    margin-left: 20px;
+    background-color: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Shorthand margin examples */
+.all-same {
+    margin: 15px;
+    background-color: #764ba2;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.vertical-horizontal {
+    margin: 10px 25px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.top-horizontal-bottom {
+    margin: 10px 20px 30px;
+    background-color: #ee5a24;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.all-four-sides {
+    margin: 5px 15px 25px 35px;
+    background-color: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Auto margins for centering */
+.centered-box {
+    width: 300px;
+    margin: 20px auto;
+    background-color: #764ba2;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.left-aligned-box {
+    width: 300px;
+    margin: 20px 0;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.right-aligned-box {
+    width: 300px;
+    margin: 20px 0 20px auto;
+    background-color: #ee5a24;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Negative margins */
+.negative-margin {
+    margin: -10px -15px;
+    background-color: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Percentage margins */
+.percent-margin {
+    margin: 3%;
+    background-color: #764ba2;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Different units */
+.pixel-margin {
+    margin: 20px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.em-margin {
+    margin: 2em;
+    background-color: #ee5a24;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.rem-margin {
+    margin: 1.5rem;
+    background-color: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Container for demonstrating margin collapsing */
+.margin-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.collapsing-example {
+    margin: 20px 0;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+</textarea>
+
+
+
+<!-- ================= MARGIN PREVIEW SECTION ================= -->
+
+<h2 style="margin-top:40px;">Margin Preview Examples</h2>
+
+<div class="demo-box small">Small Margin (10px)</div>
+<div class="demo-box medium">Medium Margin (20px)</div>
+<div class="demo-box large">Large Margin (40px)</div>
+
+<div class="demo-box top-margin">Top Margin (30px)</div>
+<div class="demo-box right-margin">Right Margin (25px)</div>
+<div class="demo-box bottom-margin">Bottom Margin (35px)</div>
+<div class="demo-box left-margin">Left Margin (20px)</div>
+
+<div class="demo-box all-sides">All Sides Same (15px)</div>
+<div class="demo-box vertical-horizontal">Vertical: 10px, Horizontal: 25px</div>
+<div class="demo-box three-values">Top: 10px, Horizontal: 20px, Bottom: 30px</div>
+<div class="demo-box four-values">Top: 5px, Right: 15px, Bottom: 25px, Left: 35px</div>
+
+<div class="centered-box">Centered Box</div>
+<div class="left-box">Left Aligned Box</div>
+<div class="right-box">Right Aligned Box</div>
+
+<div class="demo-box negative-margin">
+Negative Margin (-10px vertical, -15px horizontal)
+</div>
+
+<div class="demo-box percent-margin">Percentage Margin (3%)</div>
+<div class="demo-box pixel-margin">Pixel Margin (20px)</div>
+<div class="demo-box em-margin">EM Margin (2em)</div>
+<div class="demo-box rem-margin">REM Margin (1.5rem)</div>
+
+<div class="collapse-box">Margin Collapsing Example 1</div>
+<div class="collapse-box">Margin Collapsing Example 2</div>
+<div class="nav-buttons">
+    <a href="css6.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css8.html">Next →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+
+  const css = document.getElementById("cssEditor").value;
+
+  const oldStyle = document.getElementById("dynamicStyle");
+  if(oldStyle){
+    oldStyle.remove();
+  }
+
+  const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g,
+    function(match, p1, p2){
+      return p1 + " #previewBox " + p2;
+    });
+
+  const styleTag = document.createElement("style");
+  styleTag.id = "dynamicStyle";
+  styleTag.innerHTML = scopedCSS;
+
+  document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

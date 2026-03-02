@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Height & Width</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  color:white;
+  padding:60px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  overflow:auto;
+  color:#ff6a00;
+  margin-bottom:20px;
+}
+
+.nav-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-buttons a{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+
+.demo-box{
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  margin:15px 0;
+  font-weight:500;
+}
+
+/* Fixed Dimensions */
+.fixed1{
+  width:200px;
+  height:150px;
+  background:#f56565;
+}
+
+.fixed2{
+  width:300px;
+  height:100px;
+  background:#f97316;
+}
+
+/* Percentage */
+.percent1{
+  width:80%;
+  height:120px;
+  background:#667eea;
+}
+
+.percent2{
+  width:60%;
+  height:80px;
+  background:#7b4fa3;
+}
+
+/* Max & Min Width */
+.max-width-box{
+  width:100%;
+  max-width:400px;
+  height:100px;
+  background:#f56565;
+}
+
+.min-width-box{
+  width:200px;
+  min-width:150px;
+  height:80px;
+  background:#f97316;
+}
+
+/* Max & Min Height */
+.max-height-box{
+  width:200px;
+  height:200px;
+  max-height:120px;
+  background:#667eea;
+}
+
+.min-height-box{
+  width:200px;
+  height:50px;
+  min-height:80px;
+  background:#7b4fa3;
+}
+
+/* Units */
+.px-box{
+  width:150px;
+  height:100px;
+  background:#f56565;
+}
+
+.em-box{
+  width:15em;
+  height:8em;
+  background:#f97316;
+}
+
+.rem-box{
+  width:12rem;
+  height:6rem;
+  background:#667eea;
+}
+
+.viewport-box{
+  width:40vw;
+  height:20vh;
+  background:#7b4fa3;
+}
+
+/* Box-sizing */
+.content-box{
+  box-sizing:content-box;
+  width:200px;
+  height:100px;
+  padding:20px;
+  border:5px solid #f56565;
+  background:#fce4e4;
+  color:black;
+  margin:15px 0;
+}
+
+.border-box{
+  box-sizing:border-box;
+  width:200px;
+  height:100px;
+  padding:20px;
+  border:5px solid #667eea;
+  background:#e4e8fc;
+  color:black;
+  margin:15px 0;
+}
+
+/* Auto */
+.auto-width{
+  width:auto;
+  height:80px;
+  background:#f56565;
+}
+
+.auto-height{
+  width:200px;
+  height:auto;
+  padding:20px;
+  background:#f97316;
+}
+
+/* Responsive Container */
+.responsive-container{
+  background:#f0f0f0;
+  padding:20px;
+  border-radius:10px;
+  width:100%;
+  max-width:600px;
+}
+
+.responsive-box{
+  width:100%;
+  height:150px;
+  background:#667eea;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>9. Height & Width</h1>
+<p>Setting dimensions of elements</p>
+
+<h2>CSS Height and Width Properties</h2>
+
+<p>
+The CSS height and width properties are used to set the height and width
+of an element. These properties do not include padding, borders, or margins.
+</p>
+
+<h2>Height Property</h2>
+
+<p>The height property sets the height of an element:</p>
+
+<pre>
+.auto-height { height: auto; } 
+.fixed-height { height: 200px; }
+.percentage-height { height: 50%; }
+.max-height { max-height: 300px; }
+.min-height { min-height: 100px; }
+</pre>
+
+<h2>Width Property</h2>
+
+<p>The width property sets the width of an element:</p>
+
+<pre>
+.auto-width { width: auto; }
+.fixed-width { width: 300px; }
+.percentage-width { width: 75%; }
+.max-width { max-width: 500px; }
+.min-width { min-width: 200px; }
+</pre>
+
+<h2>Common Units</h2>
+
+<p>Height and width can be specified using various CSS units:</p>
+
+<pre>
+.pixel-dimensions {
+  width: 200px;
+  height: 150px;
+}
+
+.em-dimensions {
+  width: 20em;
+  height: 15em;
+}
+
+.rem-dimensions {
+  width: 15rem;
+  height: 10rem;
+}
+
+.percent-dimensions {
+  width: 80%;
+  height: 60%;
+}
+
+.viewport-dimensions {
+  width: 50vw;
+  height: 30vh;
+}
+
+.viewport-min {
+  width: 50vmin;
+  height: 30vmin;
+}
+
+.viewport-max {
+  width: 30vmax;
+  height: 20vmax;
+}
+</pre>
+
+<h2>Max and Min Dimensions</h2>
+
+<p>These properties set constraints on element dimensions:</p>
+
+<pre>
+.max-constrained {
+  width: 100%;
+  max-width: 800px;
+  height: 200px;
+  max-height: 300px;
+}
+
+.min-constrained {
+  width: 200px;
+  min-width: 150px;
+  height: 100px;
+  min-height: 80px;
+}
+
+.responsive-box {
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+  height: 200px;
+  min-height: 150px;
+}
+</pre>
+
+<h2>Box-sizing Property</h2>
+
+<p>The box-sizing property affects how width and height are calculated:</p>
+
+<pre>
+.content-box {
+  box-sizing: content-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #ff6b6b;
+}
+
+.border-box {
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #667eea;
+}
+</pre>
+
+
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2 style="margin-top:40px;">Try It Yourself</h2>
+<p>Experiment with different height and width properties:</p>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+    <span style="background:#ff6a6a;padding:6px 15px;border-radius:6px;">CSS</span>
+    <button onclick="runHWCode()"
+    style="background:#ff6a6a;color:white;border:none;
+    padding:8px 20px;border-radius:8px;cursor:pointer;">
+    Run Code
+    </button>
+</div>
+
+<textarea id="hwEditor"
+style="width:100%;height:300px;background:#111827;
+color:#ff6a00;border:none;border-radius:10px;
+padding:15px;margin-bottom:20px;">
+
+/* Fixed dimensions */
+.fixed-box {
+  width: 200px;
+  height: 150px;
+  background-color: #f56565;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+/* Percentage width */
+.percent-box {
+  width: 70%;
+  height: 120px;
+  background-color: #f97316;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+/* Max width example */
+.max-box {
+  width: 100%;
+  max-width: 400px;
+  height: 100px;
+  background-color: #667eea;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+</textarea>
+
+<h3>Preview:</h3>
+
+<div class="demo-box fixed1">Fixed: 200px × 150px</div>
+<div class="demo-box fixed2">Fixed: 300px × 100px</div>
+
+<div class="demo-box percent1">Percentage: 80% width × 120px height</div>
+<div class="demo-box percent2">Percentage: 60% width × 80px height</div>
+
+<div class="demo-box max-width-box">Max-width: 100% width, max 400px</div>
+<div class="demo-box min-width-box">Min-width: 150px</div>
+
+<div class="demo-box max-height-box">Max-height: 200px height, max 120px</div>
+<div class="demo-box min-height-box">Min-height: 50px, min 80px</div>
+
+<div class="demo-box px-box">Pixels: 150px × 100px</div>
+<div class="demo-box em-box">EMs: 15em × 8em</div>
+<div class="demo-box rem-box">REMs: 12rem × 6rem</div>
+<div class="demo-box viewport-box">Viewport: 40vw × 20vh</div>
+
+<div class="content-box">
+Content-box: 200px + padding + border
+</div>
+
+<div class="border-box">
+Border-box: 200px includes padding + border
+</div>
+
+<div class="demo-box auto-width">Auto width (based on content)</div>
+
+<div class="auto-height">
+Auto height (based on content)
+</div>
+
+<div class="responsive-container">
+  <h4 style="color:black;">Responsive Container</h4>
+  <div class="responsive-box">
+    Responsive Box: 100% width, 150px height
+  </div>
+</div>
+<div class="nav-buttons">
+    <a href="css8.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css10.html">Next →</a>
+</div>
+</div>
+
+</body>
+</html>

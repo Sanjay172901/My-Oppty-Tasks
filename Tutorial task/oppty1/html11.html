@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tables</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            overflow: auto;
+            color: #00f2fe;
+            margin-bottom: 20px;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .code-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-btn {
+            background: #4facfe;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00f2fe;
+            color: black;
+        }
+
+        .output-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">11. HTML Tables</h1>
+
+        <p>
+            HTML tables allow web developers to arrange data into rows and columns.
+        </p>
+
+        <h2>Basic Table Example</h2>
+
+        <pre>
+&lt;table&gt;
+   &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Age&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;John&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+        <h2>Table Elements</h2>
+
+        <p><strong>&lt;table&gt;</strong> – Defines the table container.</p>
+        <p><strong>&lt;tr&gt;</strong> – Defines a table row.</p>
+        <p><strong>&lt;th&gt;</strong> – Defines a header cell (bold & centered).</p>
+        <p><strong>&lt;td&gt;</strong> – Defines a data cell.</p>
+
+        <h2>Table Structure Tags</h2>
+
+        <p><strong>&lt;thead&gt;</strong> – Groups header content.</p>
+        <p><strong>&lt;tbody&gt;</strong> – Groups body content.</p>
+        <p><strong>&lt;tfoot&gt;</strong> – Groups footer content.</p>
+
+        <h2>Table Attributes</h2>
+
+        <p><strong>colspan</strong> – Spans across multiple columns.</p>
+
+        <pre>
+&lt;th colspan="2"&gt;Contact Info&lt;/th&gt;
+</pre>
+
+        <p><strong>rowspan</strong> – Spans across multiple rows.</p>
+
+        <pre>
+&lt;td rowspan="2"&gt;John Doe&lt;/td&gt;
+</pre>
+        <h2>Complete Table Structure Example</h2>
+
+        <p>
+            A full table normally contains &lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;.
+            This makes the table more organized and readable.
+        </p>
+
+        <pre>
+&lt;table&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+         &lt;th&gt;Product&lt;/th&gt;
+         &lt;th&gt;Price&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+
+   &lt;tbody&gt;
+      &lt;tr&gt;
+         &lt;td&gt;Laptop&lt;/td&gt;
+         &lt;td&gt;$800&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+
+   &lt;tfoot&gt;
+      &lt;tr&gt;
+         &lt;td&gt;Total&lt;/td&gt;
+         &lt;td&gt;$800&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tfoot&gt;
+&lt;/table&gt;
+</pre>
+
+        <hr style="margin:30px 0; border:1px solid rgba(255,255,255,0.2);">
+
+        <h2>More Table Attributes</h2>
+
+        <p><strong>border</strong> (Old Method)</p>
+        <p>
+            Adds border around table. Modern HTML uses CSS instead.
+        </p>
+
+        <pre>
+&lt;table border="1"&gt;
+</pre>
+
+        <p><strong>width</strong></p>
+        <p>
+            Defines table width.
+        </p>
+
+        <pre>
+&lt;table width="100%"&gt;
+</pre>
+
+        <p><strong>cellpadding</strong> (Old Method)</p>
+        <p>
+            Adds space inside table cells.
+        </p>
+
+        <pre>
+&lt;table cellpadding="10"&gt;
+</pre>
+
+        <p><strong>cellspacing</strong> (Old Method)</p>
+        <p>
+            Adds space between table cells.
+        </p>
+
+        <pre>
+&lt;table cellspacing="5"&gt;
+</pre>
+
+        <hr style="margin:30px 0; border:1px solid rgba(255,255,255,0.2);">
+
+        <h2>colspan Example</h2>
+
+        <pre>
+&lt;table border="1"&gt;
+   &lt;tr&gt;
+      &lt;th colspan="2"&gt;Full Name&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;John&lt;/td&gt;
+      &lt;td&gt;Doe&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+        <h2>rowspan Example</h2>
+
+        <pre>
+&lt;table border="1"&gt;
+   &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+   &lt;/tr&gt;
+
+   &lt;tr&gt;
+      &lt;td rowspan="2"&gt;John Doe&lt;/td&gt;
+      &lt;td&gt;john@email.com&lt;/td&gt;
+   &lt;/tr&gt;
+
+   &lt;tr&gt;
+      &lt;td&gt;john.work@email.com&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+        <hr style="margin:30px 0; border:1px solid rgba(255,255,255,0.2);">
+
+        <h2>Styling Tables with CSS</h2>
+
+        <p>
+            Instead of using old HTML attributes like border, modern websites use CSS.
+        </p>
+
+        <pre>
+&lt;style&gt;
+table {
+   border-collapse: collapse;
+   width: 100%;
+}
+
+th, td {
+   border: 1px solid black;
+   padding: 8px;
+   text-align: left;
+}
+
+th {
+   background-color: #f2f2f2;
+}
+&lt;/style&gt;
+</pre>
+
+        <p>
+            • <strong>border-collapse:</strong> Removes double borders<br>
+            • <strong>padding:</strong> Adds spacing inside cells<br>
+            • <strong>background-color:</strong> Changes header color<br>
+        </p>
+        <h2>Try It Yourself</h2>
+
+        <div class="code-wrapper">
+            <div class="code-buttons">
+                <button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+                <button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+            </div>
+
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Employee Information&lt;/h1&gt;
+
+&lt;table style="border-collapse: collapse; width:100%;" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ID&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Department&lt;/th&gt;
+&lt;th&gt;Salary&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;001&lt;/td&gt;
+&lt;td&gt;John Smith&lt;/td&gt;
+&lt;td&gt;Engineering&lt;/td&gt;
+&lt;td&gt;$75,000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;002&lt;/td&gt;
+&lt;td&gt;Jane Doe&lt;/td&gt;
+&lt;td&gt;Marketing&lt;/td&gt;
+&lt;td&gt;$65,000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td colspan="3"&gt;Total Employees&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+
+        <h2>Preview</h2>
+
+        <div class="output-box">
+            <iframe></iframe>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="html10.html" class="nav-btn">← Prev: Lists</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            <a href="html12.html" class="nav-btn">Next: Forms →</a>
+        </div>
+
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const pre = wrapper.querySelector("pre");
+
+            const range = document.createRange();
+            range.selectNodeContents(pre);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+            navigator.clipboard.writeText(pre.innerText);
+            alert("Code Copied Successfully!");
+        }
+
+        function runCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const code = wrapper.querySelector("pre").innerText;
+
+            let nextElement = wrapper.nextElementSibling;
+
+            while (nextElement && !nextElement.classList.contains("output-box")) {
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (nextElement) {
+                const iframe = nextElement.querySelector("iframe");
+                iframe.srcdoc = code;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

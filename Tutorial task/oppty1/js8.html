@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Iteration - Comprehensive Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --primary: #ffd200; /* Gold/Yellow */
+            --secondary: #000000; /* Black */
+            --accent: #f7971e; /* Orange */
+            --success: #4ade80;
+            --error: #f87171;
+            --bg-gradient: linear-gradient(135deg, #000000, #434343);
+            --btn-gradient: linear-gradient(45deg, #f7971e, #ffd200);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: white;
+            line-height: 1.7;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Banner Style */
+        .banner {
+            background: var(--btn-gradient);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: black;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        }
+        .banner h1 { margin: 0; font-size: 2.6rem; font-weight: 700; }
+        .banner p { margin: 10px 0 0; opacity: 1; font-weight: 400; color: black; }
+
+        h2 { 
+            font-size: 2rem; 
+            margin: 40px 0 20px; 
+            color: var(--primary); 
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        h3 { color: var(--accent); margin: 25px 0 15px; font-size: 1.4rem; }
+        p { margin-bottom: 25px; color: #e0e0e0; font-weight: 300; }
+
+        /* Code Blocks */
+        pre {
+            background: #111827;
+            padding: 25px;
+            border-radius: 15px;
+            overflow: auto;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+        }
+
+        /* Info Highlight Cards */
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        ul { margin-bottom: 25px; list-style: none; }
+        ul li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #ccc; }
+        ul li::before { content: "›"; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 1.3rem; }
+        ul li strong { color: var(--primary); font-family: 'Fira Code', monospace; }
+
+        /* Playground Card */
+        .playground-card {
+            background: white;
+            color: #333;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        #output-screen {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent);
+            margin-bottom: 25px;
+            font-family: 'Fira Code', monospace;
+            min-height: 120px;
+            color: #1e293b;
+            font-weight: 500;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            padding: 14px;
+            border: none;
+            background: var(--btn-gradient);
+            color: black;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .action-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        /* Try It Yourself Section Styles */
+        .try-it-editor {
+            background: #111827;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        .editor-header {
+            background: #1f2937;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .editor-label { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #9ca3af; }
+        
+        #custom-editor {
+            width: 100%;
+            height: 240px;
+            background: transparent;
+            color: var(--primary);
+            border: none;
+            padding: 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        #custom-preview {
+            background: #0f172a; 
+            color: #e2e8f0;      
+            padding: 40px;
+            min-height: 120px;
+            border-radius: 0 0 16px 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Quiz System */
+        #quiz-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        #timer-bar {
+            height: 6px;
+            background: var(--primary);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 1s linear;
+        }
+        .quiz-question { font-size: 1.4rem; margin-bottom: 30px; font-weight: 600; }
+        .quiz-options { display: flex; flex-direction: column; gap: 15px; }
+        .quiz-opt {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.2s;
+        }
+        .quiz-opt:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary); }
+        .correct { background: var(--success) !important; color: #064e3b; font-weight: bold; }
+        .wrong { background: var(--error) !important; color: #7f1d1d; }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+        .nav-links a {
+            padding: 12px 35px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            transition: 0.3s;
+        }
+        .nav-links a:hover { background: var(--btn-gradient); color: black; border-color: transparent; }
+
+        footer { text-align: center; padding: 50px; font-size: 0.9rem; color: #9ca3af; opacity: 0.6; }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+        }
+
+        @media (max-width: 900px) {
+            .container { padding: 30px; }
+            .btn-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="banner">
+        <h1>8. Array Iteration</h1>
+        <p>Master powerful methods to loop through and transform array data</p>
+    </header>
+
+    <section>
+        <h2>What is Array Iteration?</h2>
+        <p>Array iteration methods operate on every array item. They allow you to perform actions, transform data, or filter elements without using traditional <code>for</code> loops.</p>
+    </section>
+
+    <section>
+        <h2>The forEach() Method</h2>
+        <p>The <code>forEach()</code> method calls a function (a callback function) once for each array element.</p>
+        <pre>const numbers = [45, 4, 9, 16, 25];
+numbers.forEach(myFunction);
+
+function myFunction(value, index, array) {
+  console.log(value);
+}</pre>
+        <div class="info-card">
+            <p><strong>Note:</strong> <code>forEach()</code> does not create a new array. Use it for side effects (like logging or updating the DOM).</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>The map() Method</h2>
+        <p>The <code>map()</code> method creates a <strong>new array</strong> by performing a function on each array element. It does not change the original array.</p>
+        <pre>const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map(x => x * 2);
+
+// numbers2 is now [90, 8, 18, 32, 50]</pre>
+    </section>
+
+    <section>
+        <h2>The filter() Method</h2>
+        <p>The <code>filter()</code> method creates a new array with array elements that pass a test.</p>
+        <pre>const numbers = [45, 4, 9, 16, 25];
+const over18 = numbers.filter(value => value > 18);
+
+// over18 is now [45, 25]</pre>
+    </section>
+
+    <section>
+        <h2>The reduce() Method</h2>
+        <p>The <code>reduce()</code> method runs a function on each array element to produce (reduce it to) a single value. It works from left-to-right.</p>
+        <pre>const numbers = [45, 4, 9, 16, 25];
+let sum = numbers.reduce((total, value) => total + value);
+
+// sum is now 99</pre>
+        <div class="info-card">
+            <p>You can also provide an initial value for the total: <code>numbers.reduce(func, 100);</code></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Additional Iteration Methods</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="info-card">
+                <h3>every() & some()</h3>
+                <p>Check if all (<code>every</code>) or some (<code>some</code>) elements pass a test.</p>
+                <ul>
+                    <li>Returns <strong>Boolean</strong></li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>find() & findIndex()</h3>
+                <p>Returns the <strong>value</strong> or the <strong>index</strong> of the first element that passes a test.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Iteration Playground</h2>
+        <p>Apply these methods to a sample array of numbers <code>[10, 25, 30, 45, 50]</code>:</p>
+        <div class="playground-card">
+            <div id="output-screen">Select a method to see the iteration in action...</div>
+            <div class="btn-grid">
+                <button class="action-btn" onclick="runMapDemo()">Map (Double values)</button>
+                <button class="action-btn" onclick="runFilterDemo()">Filter (> 30)</button>
+                <button class="action-btn" onclick="runReduceDemo()">Reduce (Sum)</button>
+                <button class="action-btn" onclick="runEveryDemo()">Every (> 5)</button>
+                <button class="action-btn" onclick="clearOutput()" style="background:#444; color: white;">Clear Results</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try It Yourself Section -->
+    <section>
+        <h2>Try It Yourself</h2>
+        <p>Combine methods for powerful data processing! Try filtering then mapping in the same statement.</p>
+        
+        <div class="try-it-editor">
+            <div class="editor-header">
+                <span class="editor-label">ITERATION_LAB.JS</span>
+                <div style="display: flex; gap: 10px;">
+                    <button class="action-btn" id="edit-btn" style="padding: 6px 15px; font-size: 0.8rem; background: #444;">Edit Code</button>
+                    <button class="action-btn" id="custom-run-btn" style="padding: 6px 15px; font-size: 0.8rem;">Run Code</button>
+                </div>
+            </div>
+            <textarea id="custom-editor" spellcheck="false">// Data set
+const employees = [
+  { name: "John", salary: 50000 },
+  { name: "Jane", salary: 75000 },
+  { name: "Doe", salary: 45000 },
+  { name: "Alex", salary: 80000 }
+];
+
+// 1. Filter high earners
+const highEarners = employees.filter(e => e.salary > 60000);
+
+// 2. Map names only
+const names = highEarners.map(e => e.name);
+
+document.getElementById('custom-preview').innerHTML = `
+  <h3 style="color: #ffd200; margin-bottom: 15px;">HR Report:</h3>
+  <p>Employees earning > 60k: <strong>${names.join(", ")}</strong></p>
+  <p>Total High Earners: <span style="color: #f7971e; font-weight: bold">${names.length}</span></p>
+`;</textarea>
+            <div id="custom-preview">
+                <span style="color: #9ca3af">Run code to see the processed iteration output here...</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-area">
+        <h2>Iteration Knowledge Check</h2>
+        <p>Test your understanding of Array Iteration! 15 seconds per question.</p>
+        <div id="quiz-container">
+            <div id="timer-bar"></div>
+            <div id="quiz-content" style="text-align: center;">
+                <button class="action-btn" onclick="startQuiz()" style="padding: 15px 45px; margin-top: 20px;">Start Iteration Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nav-links">
+        <a href="js7.html">← Prev: Arrays</a>
+         <a href="js.html">Home</a>
+        <a href="js9.html">Next: JavaScript Dates →</a>
+    </div>
+
+    <footer>
+        © 2026 JavaScript Tutorial Series. All rights reserved.
+    </footer>
+</div>
+
+<script>
+    const screen = document.getElementById('output-screen');
+    const data = [10, 25, 30, 45, 50];
+
+    function runMapDemo() {
+        const result = data.map(n => n * 2);
+        screen.innerHTML = `Original: [${data.join(", ")}]<br>map(n => n * 2): [${result.join(", ")}]`;
+    }
+
+    function runFilterDemo() {
+        const result = data.filter(n => n > 30);
+        screen.innerHTML = `Original: [${data.join(", ")}]<br>filter(n => n > 30): [${result.join(", ")}]`;
+    }
+
+    function runReduceDemo() {
+        const result = data.reduce((total, n) => total + n, 0);
+        screen.innerHTML = `Original: [${data.join(", ")}]<br>reduce(sum): <strong>${result}</strong>`;
+    }
+
+    function runEveryDemo() {
+        const result = data.every(n => n > 5);
+        screen.innerHTML = `Original: [${data.join(", ")}]<br>every(n > 5): <strong>${result}</strong>`;
+    }
+
+    function clearOutput() {
+        screen.innerHTML = "Select a method to see the iteration in action...";
+    }
+
+    // --- Custom Editor Logic ---
+    const customRunBtn = document.getElementById('custom-run-btn');
+    const editBtn = document.getElementById('edit-btn');
+    const customEditor = document.getElementById('custom-editor');
+    const customPreview = document.getElementById('custom-preview');
+
+    customRunBtn.addEventListener('click', () => {
+        try {
+            customPreview.innerHTML = "";
+            const userScript = new Function('document', customEditor.value);
+            userScript(document);
+        } catch (err) {
+            customPreview.innerHTML = `<div style="color: #ef4444; font-family: monospace;">Error: ${err.message}</div>`;
+        }
+    });
+
+    editBtn.addEventListener('click', () => {
+        customEditor.focus();
+        customEditor.style.outline = "2px solid var(--primary)";
+        setTimeout(() => customEditor.style.outline = "none", 500);
+    });
+
+    // Quiz Data
+    const quizData = [
+        { q: "Which method creates a new array by performing a function on each element?", a: ["forEach()", "map()", "reduce()", "every()"], correct: 1 },
+        { q: "Which method returns the value of the first array element that passes a test function?", a: ["find()", "filter()", "search()", "some()"], correct: 0 },
+        { q: "The reduce() method reduces an array to a _______.", a: ["New array", "String", "Single value", "Boolean"], correct: 2 },
+        { q: "Which method checks if SOME (at least one) array elements pass a test?", a: ["every()", "all()", "some()", "filter()"], correct: 2 },
+        { q: "Does map() change the original array?", a: ["Yes", "No", "Only if specified", "Depends on the browser"], correct: 1 }
+    ];
+
+    let currentQ = 0;
+    let scoreCount = 0;
+    let timer;
+    let timeLeft = 15;
+
+    function startQuiz() {
+        currentQ = 0;
+        scoreCount = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        clearInterval(timer);
+        if (currentQ >= quizData.length) {
+            showResults();
+            return;
+        }
+
+        timeLeft = 15;
+        updateTimerBar();
+        
+        const dataQ = quizData[currentQ];
+        let optionsHtml = dataQ.a.map((opt, i) => `<div class="quiz-opt" onclick="checkAnswer(${i})">${opt}</div>`).join('');
+        
+        document.getElementById('quiz-content').innerHTML = `
+            <div class="quiz-question">Question ${currentQ + 1}: ${dataQ.q}</div>
+            <div class="quiz-options" style="text-align: left;">${optionsHtml}</div>
+        `;
+
+        timer = setInterval(() => {
+            timeLeft--;
+            updateTimerBar();
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                currentQ++;
+                showQuestion();
+            }
+        }, 1000);
+    }
+
+    function updateTimerBar() {
+        const bar = document.getElementById('timer-bar');
+        if(bar) bar.style.width = (timeLeft / 15) * 100 + "%";
+    }
+
+    function checkAnswer(index) {
+        clearInterval(timer);
+        const correct = quizData[currentQ].correct;
+        const opts = document.querySelectorAll('.quiz-opt');
+        
+        if (index === correct) {
+            opts[index].classList.add('correct');
+            scoreCount++;
+        } else if (index !== -1) {
+            opts[index].classList.add('wrong');
+            opts[correct].classList.add('correct');
+        }
+
+        setTimeout(() => {
+            currentQ++;
+            showQuestion();
+        }, 1500);
+    }
+
+    function showResults() {
+        document.getElementById('timer-bar').style.width = "0%";
+        document.getElementById('quiz-content').innerHTML = `
+            <div style="padding: 20px;">
+                <h2 style="border:none; text-align:center; margin:0; color: white;">Quiz Complete!</h2>
+                <p style="text-align:center; font-size: 1.5rem; color: var(--primary); font-weight: bold; margin: 15px 0;">Score: ${scoreCount} / ${quizData.length}</p>
+                <button class="action-btn" onclick="startQuiz()" style="display: block; margin: 20px auto; padding: 12px 40px;">Try Again</button>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

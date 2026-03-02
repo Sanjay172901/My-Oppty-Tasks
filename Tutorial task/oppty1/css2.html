@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Syntax</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:60px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+}
+
+.nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>2. CSS Syntax</h1>
+
+<p>
+Understanding CSS selectors, properties, and values.
+</p>
+
+<h2>CSS Rule Structure</h2>
+
+<p>
+A CSS rule consists of a selector and a declaration block.
+The declaration block contains one or more declarations separated by semicolons.
+Each declaration includes a CSS property name and a value, separated by a colon.
+</p>
+
+<pre>
+selector {
+    property: value;
+    property: value;
+}
+</pre>
+
+<h2>CSS Selectors</h2>
+
+<p>
+Selectors are patterns used to select the HTML elements you want to style.
+</p>
+
+<h2>Element Selector</h2>
+
+<p>
+Selects elements based on their tag name.
+</p>
+
+<pre>
+h1 { color: blue; }
+p { font-size: 16px; }
+</pre>
+
+<h2>ID Selector</h2>
+
+<p>
+Selects an element based on its unique id attribute.
+Use the # symbol before the id name.
+</p>
+
+<pre>
+#header {
+    background-color: #333;
+    color: white;
+}
+</pre>
+
+<h2>Class Selector</h2>
+
+<p>
+Selects elements based on their class attribute.
+Use the . symbol before the class name.
+</p>
+
+<pre>
+.highlight {
+    background-color: yellow;
+}
+</pre>
+
+<h2>Universal Selector</h2>
+
+<p>
+Selects all elements on the page using the * symbol.
+</p>
+
+<pre>
+* {
+    margin: 0;
+    padding: 0;
+}
+</pre>
+
+<h2>Grouping Selectors</h2>
+
+<p>
+You can group multiple selectors using commas to apply the same styles.
+</p>
+
+<pre>
+h1, h2, h3 {
+    color: #ff6a00;
+}
+</pre>
+
+<!-- CSS Properties and Values -->
+
+<h2>CSS Properties and Values</h2>
+
+<p>
+Properties define what aspect of an element you want to style,
+and values define what you want to set that property to.
+</p>
+
+<h2>Color Properties</h2>
+
+<p>
+CSS supports different ways to define colors:
+named colors, hex codes, RGB, and RGBA values.
+</p>
+
+<pre>
+.color-example {
+    color: red;          /* Named color */
+    color: #ff0000;      /* Hex code */
+    color: rgb(255,0,0); /* RGB values */
+    color: rgba(255,0,0,0.5); /* RGBA with opacity */
+}
+</pre>
+
+<h2>Size Properties</h2>
+
+<p>
+CSS allows you to define sizes using different units
+like pixels, percentages, em, and rem.
+</p>
+
+<pre>
+.size-example {
+    width: 100px;   /* Pixels */
+    height: 50%;    /* Percentage */
+    margin: 1em;    /* Relative to font size */
+    padding: 2rem;  /* Relative to root font size */
+}
+</pre>
+
+<h2>Shorthand Properties</h2>
+
+<p>
+Some CSS properties can be written in shorthand
+to save time and reduce code length.
+</p>
+
+<pre>
+/* Longhand */
+.margin-example {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+/* Shorthand */
+.margin-example {
+    margin: 10px 20px;
+}
+
+/* Padding shorthand */
+.padding-example {
+    padding: 10px 20px 15px 25px;
+}
+</pre>
+
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2>Try It Yourself</h2>
+
+<p>
+Experiment with different CSS selectors and properties:
+</p>
+
+<div style="margin-bottom:15px;">
+    <span style="background:#ff6a00;padding:6px 15px;border-radius:6px;">CSS</span>
+    <button onclick="runCode()" 
+        style="float:right;background:#ee0979;border:none;padding:8px 20px;
+        color:white;border-radius:8px;cursor:pointer;">
+        Run Code
+    </button>
+</div>
+
+<textarea id="cssEditor" 
+style="width:100%;height:220px;border-radius:12px;padding:15px;
+background:#111827;color:#ff6a00;border:none;margin-bottom:20px;">
+/* Write your CSS here */
+
+/* Element selectors */
+h1 {
+    color: #ff6b6b;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Class selectors */
+.highlight {
+    background-color: #ffeb3b;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #ee5a24;
+}
+
+/* ID selector */
+#main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Universal selector */
+* {
+    box-sizing: border-box;
+}
+
+/* Grouped selectors */
+h2, h3 {
+    color: #ee5a24;
+    margin-top: 25px;
+}
+</textarea>
+
+<h3 style="margin-bottom:15px;">Preview:</h3>
+
+<div id="previewBox" 
+style="background:white;color:black;padding:30px;
+border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+
+    <h1>CSS Syntax Example</h1>
+    <p>This is a paragraph with <span style="background:yellow;">highlighted text</span>.</p>
+
+    <h3>Subheading</h3>
+    <p>This paragraph demonstrates how CSS styling works with different selectors.</p>
+
+    <h3>Another Subheading</h3>
+    <p>You can see how <span class="highlight">classes</span> are applied to specific elements.</p>
+
+    <button style="padding:10px 20px;border:none;background:#ff6a00;
+    color:white;border-radius:8px;cursor:pointer;">
+    Click Me
+    </button>
+
+</div>
+
+<div class="nav-buttons">
+    <a href="css1.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css3.html">Next →</a>
+</div>
+
+</div>
+
+<script>
+function runCode(){
+    const css = document.getElementById("cssEditor").value;
+    const preview = document.getElementById("previewBox");
+
+    // Remove old style
+    const oldStyle = document.getElementById("dynamicStyle");
+    if(oldStyle){
+        oldStyle.remove();
+    }
+
+    // Scope CSS only inside previewBox
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g, function(match, p1, p2){
+        return p1 + " #previewBox " + p2;
+    });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "dynamicStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+
+
+</body>
+</html>

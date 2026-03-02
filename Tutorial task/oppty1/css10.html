@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Box Model</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  color:white;
+  padding:60px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  overflow:auto;
+  color:#ff6a00;
+  margin-bottom:20px;
+}
+
+.nav-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-buttons a{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+.component{
+  width:200px;
+  height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  border-radius:8px;
+  margin:20px 0;
+  font-size:14px;
+}
+
+.content-only-demo{
+  background:#f56565;
+}
+
+.padding-demo{
+  background:#4ecdc4;
+  padding:20px;
+}
+
+.border-demo{
+
+  background:#4ecdc4;
+  padding:10px;
+  border:5px solid #45b7d1;
+}
+
+.full-demo{
+  background:#4ecdc4;
+  padding:20px;
+  border:5px solid #45b7d1;
+  margin:30px;
+}
+
+/* Comparison */
+.comparison-wrapper{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.compare-box{
+  background:#f0f0f0;
+  padding:20px;
+  border-radius:10px;
+  width:300px;
+}
+.compare-box h4{
+  color:#333;
+  margin-bottom:15px;
+}
+.border-compare{
+  border:5px solid #667eea;
+  background:#e4e8fc;
+  color: black;
+}
+
+.compare{
+  padding:20px;
+  text-align:center;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+.content-compare{
+  box-sizing:content-box;
+  width:200px;
+  padding:20px;
+  border:5px solid #f56565;
+  background:#ffe5e5;
+  color: black;
+}
+
+.border-compare{
+  box-sizing:border-box;
+  width:200px;
+  padding:20px;
+  border:5px solid #667eea;
+  background:#e4e8fc;
+}
+
+/* Visualization */
+.visual-margin{
+  padding:40px;
+  border:2px dashed orange;
+  display:inline-block;
+  margin-top:20px;
+  background:#ffeaa7;
+}
+
+.visual-border{
+  padding:30px;
+  border:5px solid #3498db;
+  background:#a2d5f2;
+}
+
+.visual-padding{
+  padding:20px;
+  background:#81c784;
+}
+
+.visual-content{
+  width:120px;
+  height:60px;
+  background:#4caf50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>10. Box Model</h1>
+<p>Understanding the CSS box model</p>
+
+<h2>What is the CSS Box Model?</h2>
+
+<p>
+The CSS box model is essentially a box that wraps around every HTML element.
+It consists of: content, padding, borders, and margins.
+Understanding the box model is crucial for CSS layout and sizing.
+</p>
+
+<pre>
+/* Box Model Visualization */
+.content { width: 200px; height: 100px; background-color: #ff6b6b; }
+.padding { padding: 20px; background-color: #4ecdc4; }
+.border { border: 5px solid #45b7d1; }
+.margin { margin: 30px; }
+</pre>
+
+<h2>Box Model Components</h2>
+
+<h3>1. Content</h3>
+<p>
+The content area is where your text and images appear.
+The size of this area is determined by width and height.
+</p>
+
+<pre>
+.content-box {
+  width: 200px;
+  height: 100px;
+  background-color: #ff6b6b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</pre>
+
+<h3>2. Padding</h3>
+<p>
+Padding is the space between the content and the border.
+It is transparent and takes the background color of the element.
+</p>
+
+<pre>
+.padding-box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</pre>
+
+<h3>3. Border</h3>
+<p>
+The border surrounds the padding and content.
+It can have different styles, widths, and colors.
+</p>
+
+<pre>
+.border-box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #45b7d1;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</pre>
+
+<h3>4. Margin</h3>
+<p>
+Margin is the space outside the border.
+It separates the element from other elements.
+</p>
+
+<pre>
+.margin-box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #45b7d1;
+  margin: 30px;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</pre>
+
+<h2>Box-sizing Property</h2>
+
+<p>
+The box-sizing property controls how total width and height are calculated.
+</p>
+
+<h3>content-box (Default)</h3>
+
+<pre>
+.content-box-sizing {
+  box-sizing: content-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid;
+  /* Total width = 200 + 40 + 10 = 250px */
+}
+</pre>
+
+<h3>border-box</h3>
+
+<pre>
+.border-box-sizing {
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid;
+  /* Padding and border included inside 200px */
+}
+</pre>
+
+<h2>Calculating Total Width and Height</h2>
+
+<h3>With content-box (default)</h3>
+
+<p>
+Total width = width + left padding + right padding + left border + right border + left margin + right margin
+</p>
+
+<pre>
+.example-content-box {
+  width: 200px;
+  padding: 10px 20px;
+  border: 5px solid;
+  margin: 15px 25px;
+  /* Total width = 200 + 20 + 20 + 5 + 5 + 25 + 25 = 300px */
+}
+</pre>
+
+<h3>With border-box</h3>
+
+<p>
+Total width = width (includes padding & border) + left margin + right margin
+</p>
+
+<pre>
+.example-border-box {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 10px 20px;
+  border: 5px solid;
+  margin: 15px 25px;
+  /* Total width = 200 + 25 + 25 = 250px */
+}
+</pre>
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2 style="margin-top:40px;">Try It Yourself</h2>
+<p>Experiment with the box model and box-sizing property:</p>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+    <span style="background:#ff6a6a;padding:6px 15px;border-radius:6px;">CSS</span>
+    <button onclick="runBoxCode()"
+    style="background:#ff6a6a;color:white;border:none;
+    padding:8px 20px;border-radius:8px;cursor:pointer;">
+    Run Code
+    </button>
+</div>
+
+<textarea id="boxEditor"
+style="width:100%;height:320px;background:#111827;
+color:#ff6a00;border:none;border-radius:10px;
+padding:15px;margin-bottom:20px;">
+
+/* Box Model Examples */
+
+/* Content only */
+.content-only {
+  width: 200px;
+  height: 100px;
+  background-color: #f56565;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* With padding */
+.with-padding {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* With border */
+.with-border {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #45b7d1;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* With margin */
+.with-margin {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #45b7d1;
+  margin: 30px;
+  background-color: #4ecdc4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content-box sizing */
+.content-box-sizing {
+  box-sizing: content-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #f56565;
+  background-color: #ffe5e5;
+  color: black;
+  margin: 10px 0;
+}
+
+/* Border-box sizing */
+.border-box-sizing {
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid #667eea;
+  background-color: #e4e8fc;
+  color: black;
+  margin: 10px 0;
+}
+
+</textarea>
+<h2>Preview:</h2>
+
+<hr style="margin:40px 0;">
+
+<h3 style="color:black;">Box Model Components</h3>
+
+<div class="component content-only-demo">
+Content Only<br>(200px × 100px)
+</div>
+
+<div class="component padding-demo">
+Content + Padding<br>(200px × 100px + 20px padding)
+</div>
+
+<div class="component border-demo">
+Content + Padding + Border<br>
+(200px × 100px + 20px padding + 5px border)
+</div>
+
+<div class="component full-demo">
+Full Box Model<br>(All components)
+</div>
+
+<hr style="margin:40px 0;">
+
+<h3 style="color:black;">Box-sizing Comparison</h3>
+
+<div class="comparison-wrapper">
+
+<div class="compare-box">
+<h4>content-box (Default)</h4>
+<div class="compare content-compare">
+200px width + 20px padding + 5px border = 250px total width
+</div>
+</div>
+
+<div class="compare-box">
+<h4>border-box</h4>
+<div class="compare border-compare">
+200px total width<br>(includes padding and border)
+</div>
+</div>
+
+</div>
+
+<hr style="margin:40px 0;">
+
+<h3 style="color:black;">Box Model Visualization</h3>
+
+<div class="visual-margin">
+  Margin
+  <div class="visual-border">
+    Border
+    <div class="visual-padding">
+      Padding
+      <div class="visual-content">
+        Content
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-buttons">
+    <a href="css9.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css11.html">Next →</a>
+</div>
+
+</div>
+
+<script>
+function runBoxCode(){
+
+    const css = document.getElementById("boxEditor").value;
+
+    const oldStyle = document.getElementById("dynamicBoxStyle");
+    if(oldStyle){
+        oldStyle.remove();
+    }
+
+    // Scope CSS only inside boxPreview
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g,
+        function(match, p1, p2){
+            return p1 + " #boxPreview " + p2;
+        });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "dynamicBoxStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            overflow: auto;
+            color: #00f2fe;
+            margin-bottom: 20px;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .code-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-btn {
+            background: #4facfe;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00f2fe;
+            color: black;
+        }
+
+        .output-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">3. HTML Attributes</h1>
+
+        <p>
+            HTML attributes provide additional information about HTML elements.
+            They are always written in the start tag and usually appear as
+            <strong>name="value"</strong>.
+        </p>
+
+        <h2>Basic Example</h2>
+
+        <pre>
+&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;
+&lt;img src="image.jpg" alt="Description" width="500" height="600"&gt;
+</pre>
+
+        <!-- Individual Attributes -->
+
+        <h2>1. href Attribute</h2>
+        <p>Specifies the URL of the page the link goes to.</p>
+        <pre>
+&lt;a href="https://www.google.com"&gt;Google&lt;/a&gt;
+</pre>
+
+        <h2>2. src Attribute</h2>
+        <p>Specifies the path of an image.</p>
+        <pre>
+&lt;img src="mountain.jpg"&gt;
+</pre>
+
+        <h2>3. alt Attribute</h2>
+        <p>Provides alternate text if the image cannot load.</p>
+        <pre>
+&lt;img src="mountain.jpg" alt="Mountain View"&gt;
+</pre>
+
+        <h2>4. width and height</h2>
+        <p>Defines the size of an element.</p>
+        <pre>
+&lt;img src="mountain.jpg" width="300" height="200"&gt;
+</pre>
+
+        <h2>5. style Attribute</h2>
+        <p>Adds inline CSS styling.</p>
+        <pre>
+&lt;p style="color:blue; font-size:20px;"&gt;
+This is blue text
+&lt;/p&gt;
+</pre>
+
+        <h2>6. class Attribute</h2>
+        <p>Used to group elements for styling.</p>
+        <pre>
+&lt;div class="box"&gt;Content&lt;/div&gt;
+</pre>
+
+        <h2>7. id Attribute</h2>
+        <p>Gives a unique identification to an element.</p>
+        <pre>
+&lt;p id="intro"&gt;Introduction paragraph&lt;/p&gt;
+</pre>
+
+        <h2>8. title Attribute</h2>
+        <p>Shows extra information when you hover over the element.</p>
+        <pre>
+&lt;p title="Tooltip text"&gt;Hover over me&lt;/p&gt;
+</pre>
+
+        <!-- Live Preview -->
+
+        <h2>Basic Example</h2>
+
+        <div class="code-wrapper">
+            <div class="code-buttons">
+                <button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+                <button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+            </div>
+
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2 style="color:blue; text-align:center;" title="This is a heading"&gt;
+Welcome to HTML Attributes
+&lt;/h2&gt;
+
+&lt;a href="https://www.google.com"
+   target="_blank"
+   title="Go to Google"&gt;
+Visit Google
+&lt;/a&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;img src="https://picsum.photos/150" 
+     alt="Random Image" 
+     width="150" 
+     height="150" 
+     style="border-radius:10px; border:3px solid black;"&gt;
+
+&lt;p id="demo" class="text"
+   style="color:green; font-size:18px;"&gt;
+This paragraph uses id, class and style attributes.
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+
+        <h2>Output</h2>
+
+        <div class="output-box">
+            <iframe></iframe>
+        </div>
+
+        <h2>Additional Notes</h2>
+
+        <p>
+            • Attributes are always written inside the opening tag.<br>
+            • Attribute values should be enclosed in double quotes.<br>
+            • Some attributes are global and can be used on any element.<br>
+            • Attributes improve accessibility and functionality of webpages.
+        </p>
+
+        <!-- Navigation Buttons -->
+
+        <div class="nav-buttons">
+            <a href="Elements.html" class="nav-btn">← Back</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            
+            <a href="structure.html" class="nav-btn">Next →</a>
+        </div>
+
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const code = wrapper.querySelector("pre").innerText;
+            navigator.clipboard.writeText(code);
+            alert("Code Copied Successfully!");
+        }
+
+        function runCode(button) {
+            const wrapper = button.closest(".code-wrapper");
+            const code = wrapper.querySelector("pre").innerText;
+
+            let nextElement = wrapper.nextElementSibling;
+
+            while (nextElement && !nextElement.classList.contains("output-box")) {
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (nextElement) {
+                const iframe = nextElement.querySelector("iframe");
+                iframe.srcdoc = code;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Selectors</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:60px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+}
+
+.nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>3. CSS Selectors</h1>
+
+<p>Learn how to target HTML elements with CSS.</p>
+
+<h2>What are CSS Selectors?</h2>
+
+<p>
+CSS selectors are patterns used to select HTML elements you want to style.
+They are the part of a CSS rule that actually selects the content.
+</p>
+
+<h2>Basic Selectors</h2>
+
+<h3>Element Selector</h3>
+<p>Selects all elements of a specified type.</p>
+<pre>
+p { color: blue; }
+h1 { font-size: 2em; }
+</pre>
+
+<h3>ID Selector</h3>
+<p>Selects a single element with a specific id attribute (use # symbol).</p>
+<pre>
+#header { background-color: #333; color: white; padding: 20px; }
+</pre>
+
+<h3>Class Selector</h3>
+<p>Selects all elements with a specific class attribute (use . symbol).</p>
+<pre>
+.highlight { background-color: yellow; }
+.button { padding: 10px 20px; border: none; border-radius: 5px; }
+</pre>
+
+<h3>Universal Selector</h3>
+<p>Selects all elements in the document (use * symbol).</p>
+<pre>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+</pre>
+
+<h2>Combinator Selectors</h2>
+
+<h3>Descendant Selector</h3>
+<p>Selects elements that are descendants of another element.</p>
+<pre>
+div p { color: blue; }
+</pre>
+
+<h3>Child Selector</h3>
+<p>Selects elements that are direct children (use &gt; symbol).</p>
+<pre>
+div &gt; p { color: red; }
+</pre>
+
+<h3>Adjacent Sibling Selector</h3>
+<p>Selects an element directly after another (use + symbol).</p>
+<pre>
+h1 + p { font-weight: bold; }
+</pre>
+
+<h3>General Sibling Selector</h3>
+<p>Selects all siblings after an element (use ~ symbol).</p>
+<pre>
+h1 ~ p { color: green; }
+</pre>
+
+<h2>Attribute Selectors</h2>
+
+<h3>[attribute]</h3>
+<p>Selects elements with a specific attribute.</p>
+<pre>
+[title] { border: 1px solid blue; }
+</pre>
+
+<h3>[attribute="value"]</h3>
+<p>Selects elements with a specific attribute value.</p>
+<pre>
+[type="text"] { width: 200px; padding: 5px; }
+</pre>
+
+<h3>[attribute~="value"]</h3>
+<p>Selects elements with an attribute containing a specified word.</p>
+<pre>
+[title~="flower"] { color: green; }
+</pre>
+
+<h3>[attribute|="value"]</h3>
+<p>Selects elements with an attribute value that starts with specified value.</p>
+<pre>
+[lang|="en"] { color: blue; }
+</pre>
+
+<h2>Pseudo-class Selectors</h2>
+
+<h3>:hover</h3>
+<p>Selects elements when you hover over them.</p>
+<pre>
+a:hover { color: red; }
+</pre>
+
+<h3>:focus</h3>
+<p>Selects elements when they have focus.</p>
+<pre>
+input:focus { border: 2px solid blue; }
+</pre>
+
+<h3>:nth-child()</h3>
+<p>Selects elements based on position among siblings.</p>
+<pre>
+tr:nth-child(even) { background-color: #f2f2f2; }
+tr:nth-child(odd) { background-color: #ffffff; }
+</pre>
+
+<h2>Pseudo-element Selectors</h2>
+
+<h3>::before</h3>
+<p>Inserts content before an element.</p>
+<pre>
+p::before { content: "→ "; color: blue; }
+</pre>
+
+<h3>::after</h3>
+<p>Inserts content after an element.</p>
+<pre>
+p::after { content: " ←"; color: red; }
+</pre>
+
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2 style="margin-top:40px;">Try It Yourself</h2>
+<p>Experiment with different CSS selectors and input states:</p>
+
+<button onclick="runCode()" 
+style="background:#ee0979;color:white;border:none;
+padding:8px 20px;border-radius:8px;margin-bottom:15px;cursor:pointer;">
+Run Code
+</button>
+
+<textarea id="cssEditor" 
+style="width:100%;height:300px;background:#111827;
+color:#ff6a00;border:none;border-radius:10px;
+padding:15px;margin-bottom:20px;">
+
+/* Element selector */
+h1 { color: #ff6a00; text-align:center; }
+
+/* Descendant selector */
+.container p { font-style: italic; }
+
+/* Child selector */
+.container &gt; p { font-weight: bold; }
+
+/* Adjacent sibling */
+h2 + p { color: orange; }
+
+/* Attribute selector */
+input[type="text"] { border: 2px solid blue; }
+
+/* Focus effect */
+input:focus {
+  border: 2px solid #ff6a00;
+  outline: none;
+}
+
+/* Email validation */
+input[type="email"]:valid {
+  border: 2px solid green;
+}
+
+input[type="email"]:invalid {
+  border: 2px solid red;
+}
+
+/* Button class */
+.button {
+  background:#ff6a00;
+  color:white;
+  padding:8px 15px;
+  border:none;
+  border-radius:5px;
+}
+
+/* Pseudo-element */
+.quote::before { content: "❝ "; color:#ff6a00; }
+.quote::after { content: " ❞"; color:#ff6a00; }
+
+</textarea>
+
+<h3>Preview:</h3>
+
+<div id="previewBox"
+style="background:white;color:black;padding:30px;
+border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+
+<h1>CSS Selectors Example</h1>
+
+<p>This is a paragraph with 
+<span style="background:yellow;">highlighted text</span>.
+</p>
+
+<div class="container">
+
+    <div>
+        <p>This paragraph is inside a div and will be italic.</p>
+    </div>
+
+    <p>This paragraph is a direct child of .container and will be bold.</p>
+
+</div>
+
+<p>This paragraph is not a direct child and will not be bold.</p>
+
+<h2>Subheading</h2>
+
+<p>This paragraph comes directly after h2 and will be orange.</p>
+
+<p>This paragraph does not come directly after h2.</p>
+
+<br>
+
+<input type="text" placeholder="Text input with attribute selector" required>
+<br><br>
+
+<input type="email" placeholder="Enter valid email" required>
+<br><br>
+
+<button class="button">Normal Button</button>
+<button class="button">Another Button</button>
+
+<br><br>
+
+<p class="quote">
+This is a quoted text with special styling before and after.
+</p>
+
+</div>
+
+<!-- Navigation -->
+
+<div class="nav-buttons">
+    <a href="css2.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css4.html">Next →</a>
+</div>
+
+</div>
+
+<script>
+function runCode(){
+
+    const css = document.getElementById("cssEditor").value;
+
+    const oldStyle = document.getElementById("dynamicStyle");
+    if(oldStyle){
+        oldStyle.remove();
+    }
+
+    // Scope CSS only inside previewBox
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g,
+        function(match, p1, p2){
+            return p1 + " #previewBox " + p2;
+        });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "dynamicStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

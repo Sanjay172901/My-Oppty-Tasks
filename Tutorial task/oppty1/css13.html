@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tutorial - Colors</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+        padding: 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      pre {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: auto;
+        color: #ff6a00;
+        margin-bottom: 20px;
+      }
+      .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>13.Display </h1>
+<h2>Display Property</h2>
+      <h3>Block Elements</h3>
+      <p>
+      <P>Block elements start on a new line and take up the full width available:</P>
+      <pre>.block-element { display: block; width: 300px; height: 50px; background-color: #ff6b6b; margin: 10px 0; </pre>
+
+      <h3>Inline Elements</h3>
+      <p>
+        Inline elements flow within text and only take up as much width as necessary:
+      </p>
+      <pre>.inline-element { display: inline; width: 300px; height: 50px; background-color: #ff6b6b; margin: 10px; }</pre>
+      
+      <h3>Inline-Block Elements</h3>        
+      <p>
+        
+      </p>
+      <pre>inline-block-element { display: inline-block; width: 100px; height: 50px; background-color: #667eea; margin: 10px; }</pre>
+
+
+      <h3>None</h3>      
+      <p>
+    The none value completely removes the element from the document flow
+      </p>
+
+      <pre>
+.hidden-element { display: none; }
+</pre>
+
+      <h3>Flex</h3>
+      <p>
+    Flex display creates a flexible box layout
+      </p>
+      <pre>
+    .flex-container { display: flex; gap: 10px; }
+     .flex-item { flex: 1; padding: 20px; background-color: #ff6b6b; } 
+       
+</pre>
+
+      <h3>Grid</h3>
+      <p>
+    Grid display creates a grid layout
+      </p>
+      <pre>
+grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; } 
+.grid-item { padding: 20px; background-color: #4ecdc4; }
+</pre>
+      <h2>Visibility Property</h2>
+      <h3>Visible</h3>
+      <p>
+        The visible value makes an element visible (default)
+      </p>
+
+      <pre>
+/* .visible-element { visibility: visible; }
+</pre>
+
+      <h3>Hidden</h3>
+      <p>The hidden value hides an element but keeps it in the document flow</p>
+
+      <pre>
+.hidden-element { visibility: hidden; }
+</pre>
+
+      <h2>Display vs Visibility</h2>
+      <p>Understanding the key differences between display: none and visibility: hidden</p>
+
+      <pre>
+/* display: none removes the element from the document flow */ 
+.display-none { display: none; } 
+/* visibility: hidden hides the element but keeps its space */ .visibility-hidden { visibility: hidden; }
+      </pre>
+
+<div class="nav-buttons">
+    <a href="css12.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css14.html">Next →</a>
+</div>
+    </div>
+    
+  </body>
+</html>

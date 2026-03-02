@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links & Anchors</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .code-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        pre {
+            background: #111827;
+            padding: 40px 20px 20px 20px;
+            border-radius: 12px;
+            overflow: auto;
+            color: #00f2fe;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-btn {
+            background: #4facfe;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00f2fe;
+            color: white;
+        }
+
+        .output-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100px;
+            border: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">7. Links & Anchors</h1>
+
+<p>
+Links are created using the <strong>&lt;a&gt;</strong> (anchor) tag.
+They allow users to navigate between pages, websites, or sections within a page.
+</p>
+
+<h2>Basic Link Syntax</h2>
+
+<p>
+The <strong>href</strong> attribute specifies the destination URL.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+
+<h2>Open Link in New Tab</h2>
+
+<p>
+Use <strong>target="_blank"</strong> to open a link in a new browser tab.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;a href="https://www.google.com" target="_blank"&gt;Open Google&lt;/a&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+
+<h2>Link to Another Page (Relative Link)</h2>
+
+<p>
+You can link to another file in your project using a relative path.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;a href="about.html"&gt;Go to About Page&lt;/a&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+
+<h2>Anchor Link (Jump to Section)</h2>
+
+<p>
+Anchor links allow navigation within the same page using the <strong>id</strong> attribute.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;a href="#contact"&gt;Go to Contact Section&lt;/a&gt;
+
+&lt;h2 id="contact"&gt;Contact Section&lt;/h2&gt;
+&lt;p&gt;This is the contact section.&lt;/p&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+
+<h2>Email Link</h2>
+
+<p>
+You can create a clickable email link using <strong>mailto:</strong>
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;a href="mailto:example@gmail.com"&gt;Send Email&lt;/a&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+
+<h2>Why Links Are Important</h2>
+
+<ul>
+<li>Enable navigation between pages</li>
+<li>Connect internal and external resources</li>
+<li>Improve user experience</li>
+<li>Essential for website structure</li>
+</ul>
+
+
+<div class="nav-buttons">
+<a href="TextFormatting.html" class="nav-btn">← Back</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html8.html" class="nav-btn">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button) {
+    const wrapper = button.closest(".code-wrapper");
+    const code = wrapper.querySelector("pre").innerText;
+    navigator.clipboard.writeText(code);
+    alert("Code Copied Successfully!");
+}
+
+function runCode(button) {
+    const wrapper = button.closest(".code-wrapper");
+    const code = wrapper.querySelector("pre").innerText;
+
+    let nextElement = wrapper.nextElementSibling;
+    while (nextElement && !nextElement.classList.contains("output-box")) {
+        nextElement = nextElement.nextElementSibling;
+    }
+
+    if (nextElement) {
+        const iframe = nextElement.querySelector("iframe");
+        iframe.srcdoc = code;
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tutorial - Colors</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+        padding: 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      pre {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: auto;
+        color: #ff6a00;
+        margin-bottom: 20px;
+      }
+      .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>12 Font </h1>
+
+      <h2>CSS Font Properties</h2>
+      <p>
+    CSS provides several properties to control the appearance of fonts, including font family, size, weight, style, and variant. 
+    These properties help create visually appealing and readable text.
+      </p>
+
+      <h2>Font Family</h2>
+      <p>
+        The font-family property specifies the font for an element. You can specify multiple fonts as a fallback system:
+      </p>
+
+      <pre>.serif-font { font-family: "Times New Roman", Times, serif; } .sans-serif-font { font-family: Arial, Helvetica, sans-serif; } 
+    .monospace-font { font-family: "Courier New", Courier, monospace; } .generic-font { font-family: sans-serif; }</pre>
+
+      <h2>Font Size</h2>
+      <p>
+        The font-size property sets the size of the font:
+      </p>
+      <pre>
+/.pixel-size { font-size: 16px; } .em-size { font-size: 1.2em; 
+    /* Relative to parent element */ } .rem-size { font-size: 1.5rem; 
+        /* Relative to root element */ } .percent-size { font-size: 120%;
+             /* Percentage of parent element */ } .keyword-size { font-size: large; } 
+             .viewport-size { font-size: 4vw; /* Relative to viewport width */ }
+</pre>
+
+      <h2>Font Weight</h2>
+      <p>
+    The font-weight property sets how thick or thin characters in text should be displayed
+      </p>
+
+      <pre>
+.normal-weight { font-weight: normal; /* 400 */ }
+ .bold-weight { font-weight: bold; /* 700 */ }
+ .light-weight { font-weight: 300; } .medium-weight { font-weight: 500; } 
+ .extra-bold { font-weight: 800; } .numeric-weight { font-weight: 600; }
+</pre>
+
+      <h2>Font Style</h2>
+      <p>
+    The font-style property specifies the style of the font:
+      </p>
+      <pre>
+.normal-style { font-style: normal; } 
+.italic-style { font-style: italic; } 
+.oblique-style { font-style: oblique; }
+</pre>
+
+      <h2>Font Variant</h2>
+      <p>
+    The font-variant property specifies whether text should be displayed in small-caps
+      </p>
+      <pre>
+.normal-variant { font-variant: normal; } .small-caps { font-variant: small-caps; }
+</pre>
+
+      <h2>Font Shorthand</h2>
+      <p>
+        The font property is a shorthand for setting all font properties in one declaration:
+      </p>
+
+      <pre>
+/* font: font-style font-variant font-weight font-size/line-height font-family 
+*/ .shorthand-font { font: italic small-caps bold 16px/1.5 Arial, sans-serif; } 
+.simple-shorthand { font: 14px Georgia, serif; } .with-line-height 
+{ font: 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+</pre>
+
+      <h2>Web Fonts</h2>
+      <p>Using custom fonts with @font-face:</p>
+
+      <pre>
+@font-face { font-family: "CustomFont"; src: url("custom-font.woff2") format("woff2"),
+ url("custom-font.woff") format("woff"); font-weight: normal; font-style: normal; } 
+ .custom-font { font-family: "CustomFont", Arial, sans-serif; }
+</pre>
+
+      <h2>Google Fonts</h2>
+      <p>Including Google Fonts in your project:</p>
+
+      <pre>
+./* In HTML head */ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
+/* In CSS */ .roboto-font { font-family: 'Roboto', sans-serif; }
+      </pre>
+
+<div class="nav-buttons">
+    <a href="css11.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css13.html">Next →</a>
+</div>
+    </div>
+    
+  </body>
+</html>

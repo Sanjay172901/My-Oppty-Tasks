@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Meta Tags Tutorial</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #00f2fe;
+        }
+
+        p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .code-wrapper {
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            color: #00f2fe;
+        }
+
+        .output-box {
+            margin-top: 10px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .output-box iframe {
+            width: 100%;
+            height: 120px;
+            border: none;
+        }
+
+        .nav-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">15. HTML Meta Tags</h1>
+
+        <p>
+            Meta tags provide information about the webpage to browsers and search engines.
+            They are placed inside the &lt;head&gt; section of an HTML document.
+        </p>
+
+        <!-- Charset -->
+        <h2>&lt;meta charset&gt;</h2>
+        <p>
+            Defines character encoding. UTF-8 supports most languages and symbols.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta charset="UTF-8"&gt;
+</pre>
+        </div>
+
+        <!-- Viewport -->
+        <h2>&lt;meta name="viewport"&gt;</h2>
+        <p>
+            Makes website responsive on mobile devices.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="viewport" 
+      content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+        </div>
+
+        <!-- Description -->
+        <h2>&lt;meta name="description"&gt;</h2>
+        <p>
+            Provides page description for search engines (SEO).
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="description" 
+      content="Learn HTML meta tags with examples."&gt;
+</pre>
+        </div>
+
+        <!-- Keywords -->
+        <h2>&lt;meta name="keywords"&gt;</h2>
+        <p>
+            Defines keywords related to the page content.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="keywords" 
+      content="HTML, meta tags, SEO, tutorial"&gt;
+</pre>
+        </div>
+
+        <!-- Author -->
+        <h2>&lt;meta name="author"&gt;</h2>
+        <p>
+            Specifies the author of the webpage.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="author" content="Your Name"&gt;
+</pre>
+        </div>
+
+        <!-- Refresh -->
+        <h2>&lt;meta http-equiv="refresh"&gt;</h2>
+        <p>
+            Automatically refreshes or redirects the page.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta http-equiv="refresh" content="5"&gt;
+</pre>
+        </div>
+
+        <!-- Robots -->
+        <h2>&lt;meta name="robots"&gt;</h2>
+        <p>
+            Controls search engine indexing behavior.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="robots" content="index, follow"&gt;
+</pre>
+        </div>
+
+        <!-- Theme Color -->
+        <h2>&lt;meta name="theme-color"&gt;</h2>
+        <p>
+            Changes browser address bar color on mobile devices.
+        </p>
+
+        <div class="code-wrapper">
+<pre>
+&lt;meta name="theme-color" content="#243b55"&gt;
+</pre>
+        </div>
+        <!-- Open Graph -->
+<h2> Open Graph (Facebook)</h2>
+<pre>
+&lt;meta property="og:title" content="Meta Tags Tutorial"&gt;
+&lt;meta property="og:description" content="Learn HTML Meta Tags"&gt;
+</pre>
+
+<!-- Twitter Card -->
+<h2>Twitter Card</h2>
+<pre>
+&lt;meta name="twitter:card" content="summary"&gt;
+&lt;meta name="twitter:title" content="Meta Tags Tutorial"&gt;
+</pre>
+
+        <div class="nav-buttons">
+            <a href="html14.html">← Back</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            <a href="html16.html">Next →</a>
+        </div>
+
+    </div>
+
+   
+</body>
+
+</html>

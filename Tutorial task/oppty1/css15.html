@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Flexbox Complete Tutorial</title>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:40px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+    font-family:monospace;
+}
+
+/* FLEXBOX STYLES */
+.flex-container{ display:flex; }
+.demo-flex{ background: rgba(255,255,255,0.1); padding:20px; border-radius:10px; gap:15px; }
+.flex-item{ background:#ff6a00; padding:20px; border-radius:8px; color:white; flex:1; text-align:center; }
+
+/* Flex Direction */
+.row { flex-direction: row; }
+.row-reverse { flex-direction: row-reverse; }
+.column { flex-direction: column; }
+.column-reverse { flex-direction: column-reverse; }
+
+/* Flex Wrap */
+.nowrap { flex-wrap: nowrap; }
+.wrap { flex-wrap: wrap; }
+.wrap-reverse { flex-wrap: wrap-reverse; }
+
+/* Justify Content */
+.flex-start { justify-content: flex-start; }
+.flex-end { justify-content: flex-end; }
+.center { justify-content: center; }
+.space-between { justify-content: space-between; }
+.space-around { justify-content: space-around; }
+.space-evenly { justify-content: space-evenly; }
+
+/* Small boxes for wrap demo */
+.small-box .flex-item{ flex:0 0 120px; }
+
+/* Align Items */
+.stretch { align-items: stretch; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+.align-center { align-items: center; }
+.baseline { align-items: baseline; }
+
+/* Align Content */
+.content-start { align-content: flex-start; }
+.content-end { align-content: flex-end; }
+.content-center { align-content: center; }
+.content-space-between { align-content: space-between; }
+.content-space-around { align-content: space-around; }
+.content-stretch { align-content: stretch; }
+.multi-line-demo { gap:10px; }
+.small { flex:0 0 100px; }
+
+/* Flex Item Properties */
+.item1 { order:1; flex-grow:0; flex-shrink:1; flex-basis:auto; align-self:auto; }
+.item2 { order:2; flex-grow:1; flex-shrink:0; flex-basis:200px; align-self:flex-start; }
+.item3 { order:3; flex-grow:2; flex-shrink:2; flex-basis:50%; align-self:center; }
+.item4 { align-self:flex-end; }
+ .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1> 15. CSS Flexbox Complete Tutorial</h1>
+
+<h2>Flex Container - display: flex</h2>
+<p>Creates a flex container:</p>
+
+<div class="flex-container demo-flex">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+</div>
+
+<hr>
+
+<h2>Flex Direction</h2>
+<p>Defines the direction of flex items:</p>
+<div class="flex-container row demo-flex">
+    <div class="flex-item">Row 1</div>
+    <div class="flex-item">Row 2</div>
+    <div class="flex-item">Row 3</div>
+</div>
+
+<div class="flex-container column demo-flex" style="margin-top:20px;">
+    <div class="flex-item">Column 1</div>
+    <div class="flex-item">Column 2</div>
+    <div class="flex-item">Column 3</div>
+</div>
+
+<hr>
+
+<h2>Flex Wrap</h2>
+<p>Controls whether items wrap onto multiple lines:</p>
+<div class="flex-container wrap demo-flex small-box">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+</div>
+
+<hr>
+
+<h2>Justify Content</h2>
+<div class="flex-container flex-start demo-flex">
+    <div class="flex-item">Start</div>
+    <div class="flex-item">Start</div>
+    <div class="flex-item">Start</div>
+</div>
+
+<div class="flex-container center demo-flex" style="margin-top:20px;">
+    <div class="flex-item">Center</div>
+    <div class="flex-item">Center</div>
+    <div class="flex-item">Center</div>
+</div>
+
+<div class="flex-container space-between demo-flex" style="margin-top:20px;">
+    <div class="flex-item">Between</div>
+    <div class="flex-item">Between</div>
+    <div class="flex-item">Between</div>
+</div>
+
+<hr>
+
+<h2>Align Items</h2>
+<div class="flex-container align-center demo-flex" style="height:150px;">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+</div>
+
+<hr>
+
+<h2>Align Content (multi-line)</h2>
+<div class="flex-container wrap content-space-between demo-flex multi-line-demo" style="height:200px;">
+    <div class="flex-item small">1</div>
+    <div class="flex-item small">2</div>
+    <div class="flex-item small">3</div>
+    <div class="flex-item small">4</div>
+    <div class="flex-item small">5</div>
+    <div class="flex-item small">6</div>
+</div>
+
+<hr>
+
+<h2>Flex Item Properties</h2>
+
+<h3>Order</h3>
+<div class="flex-container demo-flex">
+    <div class="flex-item item3">Item 3</div>
+    <div class="flex-item item1">Item 1</div>
+    <div class="flex-item item2">Item 2</div>
+</div>
+
+<h3>Flex Grow</h3>
+<div class="flex-container demo-flex">
+    <div class="flex-item item1">Item 1</div>
+    <div class="flex-item item2">Item 2</div>
+    <div class="flex-item item3">Item 3</div>
+</div>
+
+<h3>Flex Shrink</h3>
+<div class="flex-container demo-flex" style="width:400px;">
+    <div class="flex-item item1">Item 1</div>
+    <div class="flex-item item2">Item 2</div>
+    <div class="flex-item item3">Item 3</div>
+</div>
+
+<hr>
+
+<h3>Flex Basis</h3>
+<div class="flex-container demo-flex">
+    <div class="flex-item item1">Auto</div>
+    <div class="flex-item item2">200px</div>
+    <div class="flex-item item3">50%</div>
+</div>
+
+<h3>Flex Shorthand</h3>
+<div class="flex-container demo-flex">
+    <div class="flex-item item1">0 1 auto</div>
+    <div class="flex-item item2">1</div>
+    <div class="flex-item item3">2 1 200px</div>
+</div>
+
+<h3>Align Self</h3>
+<div class="flex-container demo-flex" style="height:150px;">
+    <div class="flex-item item1">Auto</div>
+    <div class="flex-item item2">Flex Start</div>
+    <div class="flex-item item3">Center</div>
+    <div class="flex-item item4">Flex End</div>
+</div>
+<div class="nav-buttons">
+    <a href="css14.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css16.html">Next →</a>
+</div>
+</div>
+</body>
+</html>

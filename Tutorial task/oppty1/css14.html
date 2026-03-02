@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Tutorial - Colors & Float</title>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:60px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+h3{margin-top:25px;margin-bottom:10px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+    font-family:monospace;
+}
+
+/* Navigation */
+.nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.nav-buttons a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* FLOAT SECTION */
+.float-left{
+    float:left;
+    width:200px;
+    height:100px;
+    background:#ff6b6b;
+    margin:10px;
+}
+
+.float-right{
+    float:right;
+    width:200px;
+    height:100px;
+    background:#4ecdc4;
+    margin:10px;
+}
+
+.float-none{
+    float:none;
+    width:200px;
+    height:100px;
+    background:#667eea;
+    margin:10px;
+}
+
+/* Clear */
+.clear-left{clear:left;}
+.clear-right{clear:right;}
+.clear-both{clear:both;}
+.clear-none{clear:none;}
+
+/* Text Wrapping */
+.text-wrapper{width:400px;}
+.floating-image{
+    float:left;
+    width:100px;
+    height:100px;
+    background:#ff6b6b;
+    margin:0 15px 15px 0;
+}
+
+/* Multi Column */
+.multi-columns{width:100%;}
+.column{
+    float:left;
+    width:30%;
+    margin:1.66%;
+    background:#f0f0f0;
+    padding:20px;
+    color:black;
+    border-radius:8px;
+}
+
+hr{
+    margin:40px 0;
+    border:1px solid rgba(255,255,255,0.2);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>14.CSS Float & Modern Layouts</h1>
+
+<h2>Creating Layouts with Float</h2>
+<p>The float property specifies whether an element should float to the left, right, or not at all.</p>
+
+<h3>Float Left</h3>
+<div class="float-left"></div>
+<p>Text wraps around the element floated to the left.</p>
+<div class="clear-both"></div>
+
+<h3>Float Right</h3>
+<div class="float-right"></div>
+<p>Text wraps around the element floated to the right.</p>
+<div class="clear-both"></div>
+
+<h3>Float None</h3>
+<div class="float-none"></div>
+<p>This element stays in normal document flow.</p>
+
+<h2>Clear Property</h2>
+
+<h3>Clear Left</h3>
+<pre>.clear-left { clear: left; }</pre>
+
+<h3>Clear Right</h3>
+<pre>.clear-right { clear: right; }</pre>
+
+<h3>Clear Both</h3>
+<pre>.clear-both { clear: both; }</pre>
+
+<h3>Clear None</h3>
+<pre>.clear-none { clear: none; }</pre>
+
+<hr>
+
+<h2>Float Layout Examples</h2>
+
+<h3>Text Wrapping Example</h3>
+<div class="text-wrapper">
+<div class="floating-image"></div>
+<p>
+This is a classic example of text wrapping around a floated element.
+The box floats to the left and text flows around it.
+</p>
+</div>
+<div class="clear-both"></div>
+
+<h3>Multi-column Layout</h3>
+<div class="multi-columns">
+<div class="column">Column 1</div>
+<div class="column">Column 2</div>
+<div class="column">Column 3</div>
+</div>
+<div class="clear-both"></div>
+
+<hr>
+
+<h2>Float vs Modern Layouts</h2>
+
+<h3>Float (Legacy)</h3>
+<pre>
+.float-layout .sidebar { float:left; width:25%; }
+.float-layout .main { float:right; width:70%; }
+</pre>
+
+<h3>Flexbox (Modern)</h3>
+<pre>
+.flex-layout { display:flex; }
+.flex-layout .sidebar { flex:1; }
+.flex-layout .main { flex:3; }
+</pre>
+
+<h3>Grid (Modern)</h3>
+<pre>
+.grid-layout {
+display:grid;
+grid-template-columns:1fr 3fr;
+}
+</pre>
+
+<p>
+Float requires clearing and manual width control.<br>
+Flexbox is great for one-dimensional layouts.<br>
+Grid is best for two-dimensional layouts.
+</p>
+
+<div class="nav-buttons">
+<a href="css13.html">← Previous</a>
+<a href="css.html">Home </a>
+<a href="css15.html">Next →</a>
+</div>
+
+</div>
+</body>
+</html>

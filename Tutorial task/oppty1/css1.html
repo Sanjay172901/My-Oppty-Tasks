@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to CSS</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    color:white;
+    padding:60px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#ff6a00;
+    margin-bottom:20px;
+    position:relative;
+}
+
+/* Copy Button */
+.copy-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#ff6a00;
+    color:white;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+/* Navigation Buttons */
+.nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+
+a{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>1. Introduction to CSS</h1>
+
+<p>
+CSS stands for <strong>Cascading Style Sheets</strong>.
+It is used to style HTML elements and control layout.
+</p>
+
+<p>
+There are three ways to apply CSS:
+Inline, Internal, and External stylesheets.
+</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font-size: 40px;
+}
+</pre>
+
+<p>
+CSS makes your website visually attractive and responsive.
+</p>
+
+<h2>How CSS Works</h2>
+
+<p>
+CSS works by associating rules with HTML elements.
+A CSS rule contains:
+</p>
+
+<p>
+<strong>Selector</strong> – Points to the HTML element<br>
+<strong>Declaration</strong> – Style applied<br>
+<strong>Property</strong> – What to change<br>
+<strong>Value</strong> – Setting assigned
+</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+h1 {
+    color: blue;
+    font-size: 36px;
+}
+</pre>
+
+<h2>Ways to Add CSS</h2>
+
+<h2>1. External CSS</h2>
+
+<p>Link an external file inside the head section:</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+&lt;head&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+</pre>
+
+<h2>2. Internal CSS</h2>
+<p>Define CSS rules within the HTML document itself:</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+&lt;style&gt;
+body {
+    background-color: lightblue;
+}
+h1 {
+    color: navy;
+}
+&lt;/style&gt;
+</pre>
+
+<h2>3. Inline CSS</h2>
+<p>Apply CSS directly to HTML elements using the style attribute:</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+&lt;h1 style="color: blue;"&gt;Hello World&lt;/h1&gt;
+&lt;p style="color: red;"&gt;This is a paragraph.&lt;/p&gt;
+</pre>
+
+<h2>CSS Comments</h2>
+<p>Comments in CSS are used to explain code and are ignored by the browser.</p>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+/* This is a single-line comment */
+
+/*
+This is a
+multi-line comment
+*/
+</pre>
+
+<h2>Example: Complete CSS Page</h2>
+
+<pre>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+body {
+    background-color: #f0f0f0;
+    font-family: Arial;
+}
+h1 {
+    color: crimson;
+    text-align: center;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;Welcome to CSS&lt;/h1&gt;
+&lt;p&gt;This is styled using internal CSS.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2 style="margin-top:40px;">Try It Yourself</h2>
+
+<p>Edit the CSS code below and see how the preview changes:</p>
+
+<div style="margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+
+    <span style="background:#ff6a00;padding:6px 15px;border-radius:6px;">
+        CSS
+    </span>
+
+    <button onclick="runIntroCode()" 
+        style="background:#ee0979;border:none;
+        padding:8px 20px;color:white;
+        border-radius:8px;cursor:pointer;">
+        Run Code
+    </button>
+
+</div>
+
+<textarea id="introEditor" 
+style="width:100%;height:220px;border-radius:12px;
+padding:15px;background:#111827;
+color:#ff6a00;border:none;margin-bottom:20px;">
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff6b6b;
+    text-align: center;
+    border-bottom: 2px solid #ff6b6b;
+    padding-bottom: 10px;
+}
+
+.highlight {
+    background: yellow;
+}
+
+</textarea>
+
+<h3 style="margin-bottom:15px;">Preview:</h3>
+
+<div id="introPreview" 
+style="background:white;color:black;
+padding:30px;border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+
+<h1>Welcome to CSS</h1>
+
+<p>
+This is a paragraph with 
+<span class="highlight">highlighted text</span>.
+</p>
+
+<p>
+CSS allows you to control the visual presentation of HTML elements.
+</p>
+
+</div>
+
+
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons">
+    <a href="css.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css2.html">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button){
+    const code = button.parentElement.innerText.replace("Copy","");
+    navigator.clipboard.writeText(code);
+    button.innerText = "Copied!";
+    setTimeout(() => {
+        button.innerText = "Copy";
+    }, 1500);
+}
+</script>
+
+<script>
+function runIntroCode(){
+
+    const css = document.getElementById("introEditor").value;
+
+    const oldStyle = document.getElementById("introDynamicStyle");
+    if(oldStyle){
+        oldStyle.remove();
+    }
+
+    // Scope CSS only inside preview
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g, function(match, p1, p2){
+        return p1 + " #introPreview " + p2;
+    });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "introDynamicStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

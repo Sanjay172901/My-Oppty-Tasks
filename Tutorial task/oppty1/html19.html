@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18. Comments</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+padding:60px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.main-title{
+text-align:center;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+padding:15px 25px;
+border-radius:50px;
+margin-bottom:30px;
+font-size:32px;
+font-weight:700;
+}
+
+h2{
+margin-top:25px;
+margin-bottom:15px;
+color:#4facfe;
+}
+
+p{
+margin-bottom:20px;
+line-height:1.7;
+opacity:0.9;
+}
+
+ul{
+margin-left:20px;
+margin-bottom:20px;
+}
+
+.code-wrapper{
+position:relative;
+margin-bottom:15px;
+}
+
+.code-buttons{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+display:flex;
+justify-content:space-between;
+}
+
+pre{
+background:#111827;
+padding:40px 20px 20px 20px;
+border-radius:12px;
+overflow:auto;
+color:#00f2fe;
+}
+
+.btn-small{
+padding:6px 12px;
+font-size:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.copy-btn{ background:#4facfe; color:white; }
+.run-btn{ background:#00f2fe; color:white; }
+
+.output-box{
+background:white;
+color:black;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+iframe{
+width:100%;
+height:400px;
+border:none;
+}
+
+.nav-buttons{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+}
+
+.nav-btn{
+padding:12px 25px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="main-title">19. HTML Comments</h1>
+
+<p>
+Comments are used to explain HTML code and improve readability. 
+They are completely ignored by the browser and are not visible to users.
+Comments are essential for documentation, collaboration, and debugging.
+</p>
+
+<h2>Comment Syntax</h2>
+
+<p>
+HTML comments begin with <strong>&lt;!--</strong> and end with <strong>--&gt;</strong>.
+Everything inside is ignored by the browser.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+</div>
+<pre>
+&lt;!-- This is a comment --&gt;
+&lt;p&gt;This is visible content.&lt;/p&gt;
+</pre>
+</div>
+
+<h2>Single-Line and Multi-Line Comments</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;!-- Single line comment --&gt;
+
+&lt;!--
+Multi-line comment
+that spans several lines
+--&gt;
+</pre>
+</div>
+
+<h2>Comment Placement</h2>
+
+<h2>In the Head Section</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+
+</div>
+<pre>
+&lt;head&gt;
+  &lt;!-- SEO Meta Tags --&gt;
+  &lt;meta name="description" content="Page description"&gt;
+
+  &lt;!-- External CSS --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+</pre>
+</div>
+
+<h2>In the Body Section</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;body&gt;
+  &lt;!-- Header Section --&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+  &lt;/header&gt;
+&lt;/body&gt;
+</pre>
+</div>
+
+<h2>Commenting Out Code</h2>
+
+<p>
+Comments can temporarily disable HTML elements during testing.
+</p>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;div&gt;
+  &lt;h2&gt;Visible Heading&lt;/h2&gt;
+
+  &lt;!-- &lt;h2&gt;Hidden Heading&lt;/h2&gt; --&gt;
+
+  &lt;p&gt;This paragraph is visible.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+</div>
+
+<h2>Best Practices for Comments</h2>
+
+<ul>
+<li>Explain complex logic</li>
+<li>Document important decisions</li>
+<li>Mark sections clearly</li>
+<li>Keep comments updated</li>
+<li>Do not over-comment obvious code</li>
+</ul>
+
+<h2>Marking Sections Clearly</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+</div>
+<pre>
+&lt;!-- ========== HEADER SECTION ========== --&gt;
+&lt;header&gt;&lt;/header&gt;
+
+&lt;!-- ========== MAIN CONTENT ========== --&gt;
+&lt;main&gt;&lt;/main&gt;
+
+&lt;!-- ========== FOOTER SECTION ========== --&gt;
+&lt;footer&gt;&lt;/footer&gt;
+</pre>
+</div>
+
+<h2>Comments in Forms</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+
+</div>
+<pre>
+&lt;form&gt;
+  &lt;!-- User Info --&gt;
+  &lt;input type="text"&gt;
+
+  &lt;!-- Submit Button --&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+</div>
+
+<h2>JavaScript vs HTML Comments</h2>
+
+<p>
+HTML comments use <strong>&lt;!-- --&gt;</strong>.  
+JavaScript comments use:
+</p>
+
+<ul>
+<li>// Single line</li>
+<li>/* Multi-line */</li>
+</ul>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+
+
+</div>
+<pre>
+&lt;script&gt;
+// Single line JS comment
+
+/*
+Multi-line
+JS comment
+*/
+&lt;/script&gt;
+</pre>
+</div>
+
+<h2>Complete Example</h2>
+
+<div class="code-wrapper">
+<div class="code-buttons">
+<button class="btn-small copy-btn" onclick="copyCode(this)">Copy</button>
+<button class="btn-small run-btn" onclick="runCode(this)">Run</button>
+</div>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;!-- Author: John Doe --&gt;
+&lt;!-- Purpose: Demonstrate HTML Comments --&gt;
+
+&lt;head&gt;
+  &lt;!-- Page Title --&gt;
+  &lt;title&gt;Comment Example&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;!-- Header Section --&gt;
+  &lt;h1&gt;Welcome&lt;/h1&gt;
+
+  &lt;!-- Main Paragraph --&gt;
+  &lt;p&gt;This page demonstrates comments.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<h2>Output</h2>
+<div class="output-box"><iframe></iframe></div>
+
+<div class="nav-buttons">
+<a href="html18.html" class="nav-btn">← Prev</a>
+<a href="html.html" class="nav-btn">Home</a>
+<a href="html20.html" class="nav-btn">Next →</a>
+</div>
+
+</div>
+
+<script>
+function copyCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+navigator.clipboard.writeText(code);
+alert("Code Copied Successfully!");
+}
+
+function runCode(button){
+const wrapper = button.closest(".code-wrapper");
+const code = wrapper.querySelector("pre").innerText;
+
+let nextElement = wrapper.nextElementSibling;
+while(nextElement && !nextElement.classList.contains("output-box")){
+nextElement = nextElement.nextElementSibling;
+}
+
+if(nextElement){
+const iframe = nextElement.querySelector("iframe");
+iframe.srcdoc = code;
+}
+}
+</script>
+
+</body>
+</html>

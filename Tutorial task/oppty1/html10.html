@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Lists</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        pre {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            overflow: auto;
+            color: #00f2fe;
+            margin-bottom: 20px;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .code-buttons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .copy-btn {
+            background: #4facfe;
+            color: white;
+        }
+
+        .run-btn {
+            background: #00f2fe;
+            color: black;
+        }
+
+        .output-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="main-title">10. HTML Lists</h1>
+
+        <p>
+            HTML provides three types of lists: ordered lists, unordered lists, and definition lists.
+        </p>
+
+        <h2>Unordered List</h2>
+        <p>
+            The &lt;ul&gt; tag creates a bulleted list.
+            Each item inside the list must be written using the &lt;li&gt; tag.
+        </p>
+        <pre>
+&lt;ul&gt;
+   &lt;li&gt;Apple&lt;/li&gt;
+   &lt;li&gt;Banana&lt;/li&gt;
+   &lt;li&gt;Orange&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
+        <h2>Ordered List</h2>
+        <p>
+            The &lt;ol&gt; tag creates a numbered list.
+            Items are also written using &lt;li&gt;.
+        </p>
+        <pre>
+&lt;ol&gt;
+   &lt;li&gt;First item&lt;/li&gt;
+   &lt;li&gt;Second item&lt;/li&gt;
+   &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+        <h2>Definition List</h2>
+        <p>
+            The &lt;dl&gt; tag creates a description list.
+            It is used for terms and definitions.
+        </p>
+        <pre>
+&lt;dl&gt;
+   &lt;dt&gt;HTML&lt;/dt&gt;
+   &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+   &lt;dt&gt;CSS&lt;/dt&gt;
+   &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+        <h2>List Attributes (Ordered List)</h2>
+        <p>
+            The &lt;ol&gt; tag creates a numbered list.
+            Items are also written using &lt;li&gt;.
+        </p>
+        <p><strong>type Attribute</strong></p>
+        <p>
+            Specifies numbering type:
+        </p>
+
+        <pre>
+&lt;ol type="1"&gt;   Default Numbers&lt;/ol&gt;
+&lt;ol type="A"&gt;   Uppercase Letters&lt;/ol&gt;
+&lt;ol type="a"&gt;   Lowercase Letters&lt;/ol&gt;
+&lt;ol type="I"&gt;   Uppercase Roman&lt;/ol&gt;
+&lt;ol type="i"&gt;   Lowercase Roman&lt;/ol&gt;
+</pre>
+
+        <p><strong>start Attribute</strong></p>
+        <p>
+            Defines the starting number of an ordered list.
+        </p>
+
+        <pre>
+&lt;ol start="5"&gt;
+   &lt;li&gt;Item 5&lt;/li&gt;
+   &lt;li&gt;Item 6&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+        <p><strong>reversed Attribute</strong></p>
+        <p>
+            Displays list in descending order.
+        </p>
+
+        <pre>
+&lt;ol reversed&gt;
+   &lt;li&gt;Item 3&lt;/li&gt;
+   &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+        <hr style="margin:30px 0; border:1px solid rgba(255,255,255,0.2);">
+
+        <h2>Styling Lists with CSS</h2>
+
+        <p>
+            You can change bullet style using the <strong>list-style-type</strong> property.
+        </p>
+
+        <pre>
+&lt;ul style="list-style-type: square;"&gt;
+   &lt;li&gt;Square Bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul style="list-style-type: circle;"&gt;
+   &lt;li&gt;Circle Bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul style="list-style-type: none;"&gt;
+   &lt;li&gt;No Bullet&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+        <h2>Nested Lists</h2>
+        <pre>
+&lt;ul&gt;
+   &lt;li&gt;Fruits
+       &lt;ul&gt;
+           &lt;li&gt;Apple&lt;/li&gt;
+           &lt;li&gt;Banana&lt;/li&gt;
+       &lt;/ul&gt;
+   &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+        <h2>Try It Yourself</h2>
+
+        <div class="code-wrapper">
+            
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My Favorite Things&lt;/h1&gt;
+
+&lt;h2&gt;Favorite Programming Languages&lt;/h2&gt;
+&lt;ol type="A"&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;li&gt;Python&lt;/li&gt;
+    &lt;li&gt;Java&lt;/li&gt;
+    &lt;li&gt;C++&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Favorite Web Technologies&lt;/h2&gt;
+&lt;ul style="list-style-type: square;"&gt;
+    &lt;li&gt;HTML5&lt;/li&gt;
+    &lt;li&gt;CSS3&lt;/li&gt;
+    &lt;li&gt;React&lt;/li&gt;
+    &lt;li&gt;Node.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Web Development Concepts&lt;/h2&gt;
+&lt;dl&gt;
+    &lt;dt&gt;Responsive Design&lt;/dt&gt;
+    &lt;dd&gt;Design that adapts to different screen sizes&lt;/dd&gt;
+    &lt;dt&gt;Accessibility&lt;/dt&gt;
+    &lt;dd&gt;Design usable by people with disabilities&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </div>
+
+        <h2>Preview</h2>
+
+        <div class="output-box">
+            <iframe></iframe>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="html9.html" class="nav-btn">← Prev: Audio and Video</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            <a href="html11.html" class="nav-btn">Next: Tables →</a>
+        </div>
+
+    </div>
+
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const code = document.querySelector(".code-wrapper pre").innerText;
+    const iframe = document.querySelector(".output-box iframe");
+
+    iframe.srcdoc = code;
+
+});
+</script>
+</body>
+
+</html>

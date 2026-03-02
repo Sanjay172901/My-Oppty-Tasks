@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Padding</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  color:white;
+  padding:60px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{margin-bottom:20px;}
+h2{margin-top:35px;margin-bottom:15px;}
+p{margin-bottom:20px;line-height:1.7;}
+
+pre{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  overflow:auto;
+  color:#ff6a00;
+  margin-bottom:20px;
+}
+
+.nav-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-buttons a{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff6a00,#ee0979);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+/* Base demo box */
+.demo-box{
+  color:white;
+  border-radius:8px;
+  margin:15px 0;
+  font-weight:500;
+}
+
+/* Basic Padding Sizes */
+.small-padding{
+  padding:10px;
+  background:#f56565;
+}
+
+.medium-padding{
+  padding:20px;
+  background:#f97316;
+}
+
+.large-padding{
+  padding:40px;
+  background:#667eea;
+}
+
+/* Individual Padding */
+.top-padding{
+  padding-top:30px;
+  padding-left:15px;
+  padding-right:15px;
+  padding-bottom:15px;
+  background:#7b4fa3;
+}
+
+.right-padding{
+  padding-right:25px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:15px;
+  background:#f56565;
+}
+
+.bottom-padding{
+  padding-bottom:35px;
+  padding-top:15px;
+  padding-left:15px;
+  padding-right:15px;
+  background:#f97316;
+}
+
+.left-padding{
+  padding-left:20px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right:15px;
+  background:#667eea;
+}
+
+/* Shorthand */
+.all-sides{
+  padding:15px;
+  background:#7b4fa3;
+}
+
+.vertical-horizontal{
+  padding:10px 25px;
+  background:#f56565;
+}
+
+.three-values{
+  padding:10px 20px 30px;
+  background:#f97316;
+}
+
+.four-values{
+  padding:5px 15px 25px 35px;
+  background:#667eea;
+}
+
+/* Units */
+.pixel-padding{
+  padding:20px;
+  background:#7b4fa3;
+}
+
+.em-padding{
+  padding:2em;
+  background:#f56565;
+}
+
+.rem-padding{
+  padding:1.5rem;
+  background:#f97316;
+}
+
+.percent-padding{
+  padding:5%;
+  background:#667eea;
+  width:200px;
+}
+
+/* Padding vs Margin */
+.with-padding{
+  padding:20px;
+  border:2px solid #ff6b6b;
+  background:#ffeeee;
+  color:black;
+  margin:15px 0;
+  border-radius:8px;
+}
+
+.with-margin{
+  margin:20px;
+  border:2px solid #667eea;
+  background:#eeeeff;
+  color:black;
+  padding:15px;
+  border-radius:8px;
+}
+
+/* Percentage Example Section */
+.percent-example-container{
+  background:#f0f0f0;
+  padding:20px;
+  border-radius:10px;
+  width:350px;
+}
+
+.percent-example-box{
+  background:#f56565;
+  color:white;
+  padding:10%;
+  text-align:center;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>8. Padding</h1>
+<p>Controlling space inside elements</p>
+
+<h2>CSS Padding Properties</h2>
+
+<p>
+The CSS padding properties are used to generate space around an element's
+content, inside of any defined borders. Padding can be set for all
+sides of an element or for specific sides.
+</p>
+
+<h2>Padding Values</h2>
+
+<p>Padding values can be specified in several ways:</p>
+
+<pre>
+/* Length values */
+.length-padding { padding: 20px; }
+
+/* Percentage values */
+.percentage-padding { padding: 5%; }
+
+/* Initial and inherit */
+.initial-padding { padding: initial; }
+.inherit-padding { padding: inherit; }
+</pre>
+
+<h2>Individual Padding Sides</h2>
+
+<p>You can set padding for specific sides of an element:</p>
+
+<pre>
+.top-padding { padding-top: 20px; }
+.right-padding { padding-right: 15px; }
+.bottom-padding { padding-bottom: 30px; }
+.left-padding { padding-left: 10px; }
+</pre>
+
+<h2>Padding Shorthand</h2>
+
+<p>
+The padding property is a shorthand for setting all padding properties
+in one declaration:
+</p>
+
+<pre>
+/* All sides same */
+.all-sides { padding: 20px; }
+
+/* Vertical and horizontal */
+.vertical-horizontal { padding: 10px 20px; }
+
+/* Top, horizontal, bottom */
+.top-horizontal-bottom { padding: 10px 20px 15px; }
+
+/* Top Right Bottom Left */
+.all-four { padding: 10px 20px 15px 25px; }
+</pre>
+
+<h2>Padding vs Margin</h2>
+
+<p>Understanding the difference between padding and margin:</p>
+
+<pre>
+/* Padding – space inside the border */
+.with-padding {
+  padding: 20px;
+  border: 2px solid #ff6b6b;
+  background-color: #ffeeee;
+}
+
+/* Margin – space outside the border */
+.with-margin {
+  margin: 20px;
+  border: 2px solid #667eea;
+  background-color: #eeeeff;
+}
+</pre>
+
+<h2>Padding with Different Units</h2>
+
+<p>Padding can be specified using different CSS units:</p>
+
+<pre>
+.pixel-padding { padding: 20px; }
+
+.em-padding { padding: 2em; } /* Relative to font size */
+
+.rem-padding { padding: 1.5rem; } /* Relative to root font size */
+
+.percent-padding { padding: 5%; } /* Relative to parent width */
+
+.viewport-padding { padding: 2vw; } /* Relative to viewport width */
+</pre>
+
+<h2>Percentage Padding</h2>
+
+<p>
+Percentage padding is always calculated relative to the width
+of the containing block:
+</p>
+
+<pre>
+.percent-padding {
+  padding: 10%; /* 10% of parent's width */
+  width: 200px;
+  background-color: #ff6b6b;
+}
+</pre>
+
+<h2>Negative Padding</h2>
+
+<p>
+Unlike margins, padding cannot be negative.
+Negative padding values are invalid:
+</p>
+
+<pre>
+/* This will not work */
+.invalid-padding {
+  padding: -20px; /* Invalid - ignored */
+}
+</pre>
+
+
+<!-- ================= TRY IT YOURSELF ================= -->
+
+<h2 style="margin-top:40px;">Try It Yourself</h2>
+<p>Experiment with different padding properties:</p>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+    <span style="background:#ff6a6a;padding:6px 15px;border-radius:6px;">CSS</span>
+    <button onclick="runPaddingCode()"
+    style="background:#ff6a6a;color:white;border:none;padding:8px 20px;
+    border-radius:8px;cursor:pointer;">
+    Run Code
+    </button>
+</div>
+
+<textarea id="paddingEditor"
+style="width:100%;height:300px;background:#111827;
+color:#ff6a00;border:none;border-radius:10px;
+padding:15px;margin-bottom:20px;">
+
+/* Base demo box */
+.demo-box{
+  color:white;
+  border-radius:8px;
+  margin:15px 0;
+  font-weight:500;
+}
+
+/* Basic Padding Sizes */
+.small-padding{
+  padding:10px;
+  background:#f56565;
+}
+
+.medium-padding{
+  padding:20px;
+  background:#f97316;
+}
+
+.large-padding{
+  padding:40px;
+  background:#667eea;
+}
+
+/* Individual Padding */
+.top-padding{
+  padding-top:30px;
+  padding-left:15px;
+  padding-right:15px;
+  padding-bottom:15px;
+  background:#7b4fa3;
+}
+
+.right-padding{
+  padding-right:25px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:15px;
+  background:#f56565;
+}
+
+.bottom-padding{
+  padding-bottom:35px;
+  padding-top:15px;
+  padding-left:15px;
+  padding-right:15px;
+  background:#f97316;
+}
+
+.left-padding{
+  padding-left:20px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right:15px;
+  background:#667eea;
+}
+
+/* Shorthand */
+.all-sides{
+  padding:15px;
+  background:#7b4fa3;
+}
+
+.vertical-horizontal{
+  padding:10px 25px;
+  background:#f56565;
+}
+
+.three-values{
+  padding:10px 20px 30px;
+  background:#f97316;
+}
+
+.four-values{
+  padding:5px 15px 25px 35px;
+  background:#667eea;
+}
+
+/* Units */
+.pixel-padding{
+  padding:20px;
+  background:#7b4fa3;
+}
+
+.em-padding{
+  padding:2em;
+  background:#f56565;
+}
+
+.rem-padding{
+  padding:1.5rem;
+  background:#f97316;
+}
+
+.percent-padding{
+  padding:5%;
+  background:#667eea;
+  width:200px;
+}
+
+/* Padding vs Margin */
+.with-padding{
+  padding:20px;
+  border:2px solid #ff6b6b;
+  background:#ffeeee;
+  color:black;
+  margin:15px 0;
+  border-radius:8px;
+}
+
+.with-margin{
+  margin:20px;
+  border:2px solid #667eea;
+  background:#eeeeff;
+  color:black;
+  padding:15px;
+  border-radius:8px;
+}
+
+/* Percentage Example Section */
+.percent-example-container{
+  background:#f0f0f0;
+  padding:20px;
+  border-radius:10px;
+  width:350px;
+}
+
+.percent-example-box{
+  background:#f56565;
+  color:white;
+  padding:10%;
+  text-align:center;
+  border-radius:8px;
+}
+</textarea>
+
+<h3>Preview:</h3>
+
+
+
+
+<div class="demo-box small-padding">Small Padding (10px)</div>
+<div class="demo-box medium-padding">Medium Padding (20px)</div>
+<div class="demo-box large-padding">Large Padding (40px)</div>
+
+<div class="demo-box top-padding">Top Padding (30px)</div>
+<div class="demo-box right-padding">Right Padding (25px)</div>
+<div class="demo-box bottom-padding">Bottom Padding (35px)</div>
+<div class="demo-box left-padding">Left Padding (20px)</div>
+
+<div class="demo-box all-sides">All Sides Same (15px)</div>
+<div class="demo-box vertical-horizontal">Vertical: 10px, Horizontal: 25px</div>
+<div class="demo-box three-values">Top: 10px, Horizontal: 20px, Bottom: 30px</div>
+<div class="demo-box four-values">Top: 5px, Right: 15px, Bottom: 25px, Left: 35px</div>
+
+<div class="demo-box pixel-padding">Pixel Padding (20px)</div>
+<div class="demo-box em-padding">EM Padding (2em)</div>
+<div class="demo-box rem-padding">REM Padding (1.5rem)</div>
+<div class="demo-box percent-padding">Percentage Padding (5%)</div>
+
+<div class="with-padding">
+This box has 20px padding (space inside the border)
+</div>
+
+<div class="with-margin">
+This box has 20px margin (space outside the border)
+</div>
+
+<div class="percent-example-container">
+  <h4 style="color:black;">Percentage Padding Example</h4>
+  <div class="percent-example-box">
+    This box has 10% padding (relative to container width)
+  </div>
+</div>
+<div class="nav-buttons">
+    <a href="css7.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css9.html">Next →</a>
+</div>
+</div>
+
+<script>
+function runPaddingCode(){
+
+    const css = document.getElementById("paddingEditor").value;
+
+    const oldStyle = document.getElementById("dynamicPaddingStyle");
+    if(oldStyle){
+        oldStyle.remove();
+    }
+
+    // Scope CSS only inside paddingPreview
+    const scopedCSS = css.replace(/(^|\})\s*([^{]+)/g,
+        function(match, p1, p2){
+            return p1 + " #paddingPreview " + p2;
+        });
+
+    const styleTag = document.createElement("style");
+    styleTag.id = "dynamicPaddingStyle";
+    styleTag.innerHTML = scopedCSS;
+
+    document.head.appendChild(styleTag);
+}
+</script>
+
+</body>
+</html>

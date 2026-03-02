@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tutorial - Colors</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+        padding: 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      pre {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        overflow: auto;
+        color: #ff6a00;
+        margin-bottom: 20px;}
+
+        
+     .nav-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons a{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>4 CSS Colors</h1>
+
+      <h2>CSS Colors</h2>
+      <p>
+        Colors in CSS are used to give style to HTML elements. CSS supports
+        several ways to specify colors including named colors, hexadecimal, RGB,
+        RGBA, HSL, and HSLA values.
+      </p>
+
+      <h2>Color Names</h2>
+      <p>
+        CSS supports 140 named colors. These are simple to use but offer limited
+        options:
+      </p>
+      <pre>
+.red { color: red; }.blue { color: blue; }.green { color: green; }..purple { color: purple; }
+</pre
+      >
+
+      <h2>Hexadecimal Colors</h2>
+      <p>
+        Hexadecimal colors are specified with a # followed by 3 or 6 hexadecimal
+        characters (0-9, A-F):
+      </p>
+      <pre>
+/* 6-digit hex */ .background { background-color: #ff6b6b; 
+    /* Red */ } .text { color: #333333; /* Dark gray */ } 
+.link { color: #4285f4; /* Blue */ }
+ /* 3-digit hex (shorthand) */ .border { border-color: #f00; /* Red (same as #ff0000) */ } .
+ shadow { box-shadow: 0 2px 4px #00000040; /* Black with alpha */ }
+</pre
+      >
+
+      <h2>RGB Colors</h2>
+      <p>
+        RGB colors are specified with the rgb() function, which takes three
+        parameters (red, green, and blue) each ranging from 0 to 255:
+      </p>
+
+      <pre>
+.red { color: rgb(255, 0, 0); }
+.green { background-color: rgb(0, 255, 0); }
+.blue { border-color: rgb(0, 0, 255); }
+.gray { color: rgb(128, 128, 128); }
+</pre
+      >
+
+      <h2>RGBA Colors</h2>
+      <p>
+        RGBA colors are specified with the rgba() function, which takes four
+        parameters (red, green, blue, and alpha) each ranging from 0 to 255 and
+        0 to 1 respectively:
+      </p>
+      <pre>
+.semi-transparent {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.highlight {
+    color: rgba(255, 255, 0, 0.8);
+}
+</pre
+      >
+
+      <h2>HSL Colors</h2>
+      <p>
+        HSL stands for Hue, Saturation, and Lightness. Hue is a degree on the
+        color wheel (0-360), saturation is a percentage (0-100%), and lightness
+        is a percentage (0-100%):
+      </p>
+      <pre>
+.red { color: hsl(0, 100%, 50%); }            /* Red */
+.green { background-color: hsl(120, 100%, 50%); }  /* Green */
+.blue { border-color: hsl(240, 100%, 50%); }  /* Blue */
+.pastel { background-color: hsl(300, 50%, 80%); }  /* Pastel purple */
+</pre
+      >
+
+      <h2>HSLA Colors</h2>
+      <p>
+        HSLA is like HSL but with an additional alpha parameter (0-1) for
+        transparency:
+      </p>
+
+      <pre>
+.semi-transparent {
+    background-color: hsla(120, 100%, 50%, 0.5); /* 50% transparent green */
+}
+
+.overlay {
+    background-color: hsla(0, 0%, 0%, 0.7); /* 70% transparent black */
+}
+</pre
+      >
+
+      <h2>Color Keywords</h2>
+      <p>CSS also supports special keywords for transparency:</p>
+
+      <pre>
+.transparent {
+    color: transparent;
+}
+
+.current {
+    color: currentColor; /* Inherits the current text color */
+}
+</pre
+      >
+
+      <h2>Try It Yourself</h2>
+      <p>Experiment with different color formats:</p>
+
+      <pre>
+.example1 { color: red; }
+.example2 { color: #3498db; }
+.example3 { color: rgb(255, 165, 0); }
+.example4 { color: hsl(200, 100%, 50%); }
+      </pre>
+
+<div class="nav-buttons">
+    <a href="css3.html">← Previous</a>
+    <a href="css.html">Home </a>
+    <a href="css5.html">Next →</a>
+</div>
+    </div>
+    
+  </body>
+</html>

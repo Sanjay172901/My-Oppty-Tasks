@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to HTML</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    padding:60px;
+}
+ .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+h1{
+  
+text-align:center;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+padding:15px 25px;
+border-radius:50px;
+margin-bottom:30px;
+font-size:32px;
+font-weight:700;
+
+    
+}
+
+p{
+    margin-bottom:30px;
+    line-height:1.7;
+    opacity:0.9;
+}
+
+pre{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    overflow:auto;
+    color:#00f2fe;
+}
+
+a{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 25px;
+    background:linear-gradient(45deg,#00f2fe,#4facfe);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+li{
+    line-height: 1.5;
+}
+h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h2{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div style="text-align: center;">
+<h1>4. Structure of a Webpage</h1>
+<p style="font-size: 15px;">
+Understanding the basic structure of an HTML document.
+</p>
+</div>
+
+<h2>HTML Document Structure</h2>
+<p>
+Every HTML document follows a standard structure that includes several essential elements:
+</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Page content goes here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h2>Breaking Down the Structure:</h2>
+
+<ol style="list-style-type: decimal; margin-left:1.2em;">
+<li>The &lt;!DOCTYPE html&gt; declaration defines that this document is an HTML5 document.</li>
+<li>The &lt;html&gt; element is the root element of an HTML page.</li>
+<li>The &lt;head&gt; element contains meta information about the HTML page.</li>
+<li>The &lt;title&gt; element specifies a title for the HTML page (shown in the browser tab).</li>
+<li>The &lt;body&gt; element defines the document's body and contains all visible contents.</li>
+<li>The &lt;h1&gt; element defines a large heading.</li>
+<li>The &lt;p&gt; element defines a paragraph.</li>
+</ol>
+
+<p>
+The &lt;head&gt; section contains metadata, while the &lt;body&gt; section contains visible content.
+</p>
+
+<h2>Core Structural Elements in Detail</h2>
+
+<h3>1. Document Type Declaration</h3>
+<p>
+The DOCTYPE declaration tells the browser which version of HTML the page is using.
+It ensures the browser renders the page in standards mode.
+</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+</pre>
+
+<h3>2. HTML Root Element</h3>
+<p>
+The &lt;html&gt; element wraps the entire document. 
+The <code>lang</code> attribute specifies the language of the webpage.
+</p>
+
+<pre>
+&lt;html lang="en"&gt;
+&lt;/html&gt;
+</pre>
+
+<h3>3. Head Section</h3>
+<p>
+The &lt;head&gt; section contains metadata such as character encoding, viewport configuration, page title, stylesheets, and scripts.
+</p>
+
+<pre>
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+</pre>
+
+<h3>4. Body Section</h3>
+<p>
+The &lt;body&gt; contains all the visible content displayed in the browser window.
+This includes headings, paragraphs, images, links, and more.
+</p>
+
+<pre>
+&lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+</pre>
+
+<h3>5. Semantic Structure Elements</h3>
+<p>
+Modern HTML uses semantic tags to clearly describe different parts of the webpage layout.
+</p>
+
+<pre>
+&lt;header&gt;Header Content&lt;/header&gt;
+&lt;nav&gt;Navigation Links&lt;/nav&gt;
+&lt;main&gt;Main Content&lt;/main&gt;
+&lt;section&gt;Section Content&lt;/section&gt;
+&lt;footer&gt;Footer Content&lt;/footer&gt;
+</pre>
+
+<h3>6. DOM Tree Representation</h3>
+<p>
+HTML elements are organized in a tree-like hierarchy called the Document Object Model (DOM).
+Each element can have parent and child elements.
+</p>
+
+<pre>
+html
+ ├── head
+ │    ├── meta
+ │    └── title
+ └── body
+      ├── header
+      ├── main
+      └── footer
+</pre>
+
+<h2>Complete Example</h2>
+<p>Here's a complete HTML document with all essential elements:</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;p&gt;This is the main content of our website.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+ <div class="nav-buttons">
+            <a href="Elements.html" class="nav-btn">← Back</a>
+            <a href="html.html" class="nav-btn">Home</a>
+            
+            <a href="structure.html" class="nav-btn">Next →</a>
+        </div>
+
+
+</body>
+</html>

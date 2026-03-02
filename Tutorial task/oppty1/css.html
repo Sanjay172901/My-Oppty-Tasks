@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Tutorial Series</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    display:flex;
+    background:#1e1e2f;
+    color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:280px;
+    background:#151523;
+    padding:40px 25px;
+    min-height:100vh;
+    box-shadow:5px 0 25px rgba(0,0,0,0.4);
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+}
+
+.sidebar ul{list-style:none;}
+
+.sidebar li{
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:10px;
+    cursor:pointer;
+    background:#23233a;
+    transition:0.3s;
+}
+
+.sidebar li:hover{
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+}
+
+/* CONTENT */
+.content{
+    flex:1;
+    padding:60px;
+}
+
+.content h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.content p{
+    opacity:0.8;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.back-btn{
+    padding:12px 25px;
+    background:linear-gradient(45deg,#ff6a00,#ee0979);
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>CSS Lessons</h2>
+    <ul>
+        <li onclick="location.href='css1.html'">1. Introduction to CSS</li>
+        <li onclick="location.href='css2.html'">2. CSS Syntax</li>
+        <li onclick="location.href='css3.html'">3. CSS Selecters</li>
+        <li onclick="location.href='css4.html'">4. Colors</li>
+        <li onclick="location.href='css5.html'">5. Border</li>
+        <li onclick="location.href='css6.html'">6. Background</li>
+        <li onclick="location.href='css7.html'">7. Margins</li>
+        <li onclick="location.href='css8.html'">8. Padding</li>
+        <li onclick="location.href='css9.html'">9.Height and Width</li>
+        <li onclick="location.href='css10.html'">10.Box Model</li>
+        <li onclick="location.href='css11.html'">11.TextFormatting</li>
+        <li onclick="location.href='css12.html'">12.Fonts</li>
+        <li onclick="location.href='css13.html'">13.Display and Visibility</li>
+        <li onclick="location.href='css14.html'">14.FLoat</li>
+        <li onclick="location.href='css15.html'">15.Flex Box</li>
+         <li onclick="location.href='css16.html'">16.CSS Grid</li>
+    </ul>
+</div>
+
+<div class="content">
+
+    <h1>CSS Tutorial Series</h1>
+
+    <p>
+        Learn how to style beautiful websites using modern CSS techniques.
+        This course covers selectors, box model, layouts, Flexbox,
+        Grid, animations, and responsive design principles.
+    </p>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> Course Overview</h2>
+    <p>
+        CSS (Cascading Style Sheets) is used to control the visual presentation
+        of HTML elements. It allows you to design layouts, control colors,
+        spacing, fonts, positioning, and responsiveness.
+    </p>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> What You Will Learn</h2>
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>Understanding CSS syntax and structure</li>
+        <li>Using selectors and properties effectively</li>
+        <li>Working with the CSS Box Model</li>
+        <li>Building layouts with Flexbox</li>
+        <li>Creating grid systems using CSS Grid</li>
+        <li>Applying transitions and animations</li>
+        <li>Designing responsive websites</li>
+    </ul>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> Basic CSS Example</h2>
+
+    <pre style="background:#111827; padding:20px; border-radius:10px; overflow:auto; color:#ff6a00;">
+body {
+    background-color: #1e1e2f;
+    color: white;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+    </pre>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> Understanding the Box Model</h2>
+    <p>
+        Every HTML element is treated as a box in CSS.
+        The box model consists of:
+    </p>
+
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>Content</li>
+        <li>Padding</li>
+        <li>Border</li>
+        <li>Margin</li>
+    </ul>
+
+    <p>
+        Mastering the box model is essential for controlling layout spacing.
+    </p>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> Layout Systems</h2>
+    <p>
+        CSS provides powerful layout systems such as:
+    </p>
+
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>Flexbox – One-dimensional layout system</li>
+        <li>Grid – Two-dimensional layout system</li>
+        <li>Positioning – Absolute, Relative, Fixed, Sticky</li>
+    </ul>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2>📱 Responsive Design</h2>
+    <p>
+        With media queries, you can design websites that adapt
+        to different screen sizes and devices.
+    </p>
+
+    <pre style="background:#111827; padding:20px; border-radius:10px; overflow:auto; color:#ee0979;">
+@media (max-width: 768px) {
+    body {
+        background-color: black;
+    }
+}
+    </pre>
+
+    <hr style="border:1px solid #2a2a40; margin:30px 0;">
+
+    <h2> Learning Outcome</h2>
+    <p>
+        After completing this course, you will be able to:
+    </p>
+
+    <ul style="margin-left:20px; line-height:1.8; opacity:0.9;">
+        <li>Create visually appealing web layouts</li>
+        <li>Build responsive designs</li>
+        <li>Use Flexbox and Grid confidently</li>
+        <li>Apply animations and transitions professionally</li>
+    </ul>
+
+    <br><br>
+
+    <a href="index.html" class="back-btn">← Back to Courses</a>
+
+</div>
+
+</body>
+</html>

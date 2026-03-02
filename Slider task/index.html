@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Carousel - Standard CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 10;
+            transition: opacity 1s ease-in-out, transform 1.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(1.1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 20;
+            transform: scale(1);
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5);
+        }
+
+        .content {
+            position: relative;
+            z-index: 30;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.4s;
+        }
+
+        .slide.active .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+        }
+
+        .btn-primary:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: black;
+        }
+
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .prev { left: 30px; }
+        .next { right: 30px; }
+
+        
+        .indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 50;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            width: 35px;
+            background: white;
+            border-radius: 10px;
+        }
+
+       
+        #notification {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #10b981;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            transform: translateY(150%);
+            transition: transform 0.4s;
+            z-index: 100;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        }
+
+        #notification.show {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-btn { padding: 15px; bottom: 20px; top: auto; transform: none; }
+            .prev { left: 20px; }
+            .next { right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel" id="carousel">
+        
+        <div class="slide active">
+            <div class="slide-bg"></div>
+            <div class="content">
+                <h1>Mountain Peaks</h1>
+                <p>Experience the breath-taking heights of the Himalayan range.</p>
+                <div class="btn-group">
+                    <button onclick="showMessage('Exploring Peaks...')" class="btn btn-primary">Explore Tours</button>
+                    <button onclick="showMessage('Opening Gallery...')" class="btn btn-outline">View Gallery</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-bg"></div>
+            <div class="content">
+                <h1>Deep Forests</h1>
+                <p>Get lost in the serenity of ancient woodlands.</p>
+                <div class="btn-group">
+                    <button onclick="showMessage('Booking Trail...')" class="btn btn-primary" style="background: #22c55e; color: white;">Book a Trail</button>
+                    <button onclick="showMessage('Showing Maps...')" class="btn btn-outline">Forest Maps</button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="slide">
+            <div class="slide-bg"></div>
+            <div class="content">
+                <h1>Crystal Waters</h1>
+                <p>Dive into the pristine blue waters of tropical paradises.</p>
+                <div class="btn-group">
+                    <button onclick="showMessage('Starting Dive...')" class="btn btn-primary" style="background: #3b82f6; color: white;">Start Diving</button>
+                    <button onclick="showMessage('Checking Weather...')" class="btn btn-outline">Check Tides</button>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="slide">
+            <div class="slide-bg"></div>
+            <div class="content">
+                <h1>Wild Plains</h1>
+                <p>Witness the untamed beauty of the savannah.</p>
+                <div class="btn-group">
+                    <button onclick="showMessage('Safari Mode On...')" class="btn btn-primary" style="background: #d97706; color: white;">Go on Safari</button>
+                    <button onclick="showMessage('Wild Life Guide...')" class="btn btn-outline">Wildlife Guide</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-bg"></div>
+            <div class="content">
+                <h1>Lakeside Bliss</h1>
+                <p>Reflection and tranquility at the edge of the world.</p>
+                <div class="btn-group">
+                    <button onclick="showMessage('Booking Stay...')" class="btn btn-primary" style="background: #4f46e5; color: white;">Stay Here</button>
+                    <button onclick="showMessage('Viewing Activities...')" class="btn btn-outline">Leisure Activities</button>
+                </div>
+            </div>
+        </div>
+
+     
+        <button id="prevBtn" class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button id="nextBtn" class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+
+ 
+        <div id="indicators" class="indicators"></div>
+    </div>
+
+   
+    <div id="notification"></div>
+
+    <script>
+        
+      
+        const photos = [
+            'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2070',
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=2071',
+            'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=2052',
+            'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=2070',
+            'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2070'
+        ];
+
+        const slides = document.querySelectorAll('.slide');
+        const bgs = document.querySelectorAll('.slide-bg');
+        const dotsContainer = document.getElementById('indicators');
+        let index = 0;
+
+        
+        bgs.forEach((bg, i) => {
+            if (photos[i]) bg.style.backgroundImage = `url('${photos[i]}')`;
+        });
+
+       
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => showSlide(i);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            index = (n + slides.length) % slides.length;
+            
+           
+            slides.forEach((s, i) => s.classList.remove('active'));
+            dots.forEach((d, i) => d.classList.remove('active'));
+
+         
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+     
+        document.getElementById('nextBtn').onclick = () => showSlide(index + 1);
+        document.getElementById('prevBtn').onclick = () => showSlide(index - 1);
+
+    
+        setInterval(() => showSlide(index + 1), 3000);
+
+       
+        function showMessage(msg) {
+            const notify = document.getElementById('notification');
+            notify.textContent = msg;
+            notify.classList.add('show');
+            setTimeout(() => notify.classList.remove('show'), 2500);
+        }
+    </script>
+</body>
+</html>
