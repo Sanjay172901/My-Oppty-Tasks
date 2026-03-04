@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple India Weather</title>
+    
+ 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .accent {
+            color: #f97316;
+        }
+
+        header p {
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        
+        .search-area {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            outline: none;
+            font-size: 1rem;
+            transition: ring 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .weather-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f1f5f9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .city-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #0f172a;
+        }
+
+        .desc {
+            color: #64748b;
+            text-transform: capitalize;
+        }
+
+        .temp-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+       
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            background: #f1f5f9;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            background-color: #ddd; 
+        }
+
+        .status-msg {
+            text-align: center;
+            margin-top: 1rem;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>India Weather <span class="accent">Lite</span></h1>
+            <p>Simple real-time weather tracker</p>
+        </header>
+
+        <div class="search-area">
+            <input type="text" id="cityInput" placeholder="Enter city (e.g. Hyderabad, Pune)" class="search-input">
+            <button id="searchBtn" class="search-btn">Search</button>
+        </div>
+
+        <div id="weatherDisplay" class="weather-card hidden">
+            <div class="weather-header">
+                <div>
+                    <h2 id="cityName" class="city-name">City Name</h2>
+                    <p id="weatherDesc" class="desc">Loading...</p>
+                </div>
+                <div id="temp" class="temp-display">--°C</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">💧 Humidity: <span id="humidity">--</span>%</div>
+                <div class="stat-item">💨 Wind: <span id="wind">--</span> km/h</div>
+            </div>
+
+            <div id="map"></div>
+        </div>
+
+        <p id="status" class="status-msg"></p>
+    </div>
+
+  
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        
+        const map = L.map('map', { zoomControl: false }).setView([20.59, 78.96], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        let marker;
+
+        const ui = {
+            input: document.getElementById('cityInput'),
+            btn: document.getElementById('searchBtn'),
+            display: document.getElementById('weatherDisplay'),
+            status: document.getElementById('status'),
+            city: document.getElementById('cityName'),
+            temp: document.getElementById('temp'),
+            humidity: document.getElementById('humidity'),
+            wind: document.getElementById('wind'),
+            desc: document.getElementById('weatherDesc')
+        };
+
+        async function fetchWeather(cityName) {
+            try {
+                ui.status.innerText = "Searching...";
+                
+                
+                const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1`;
+                const geoRes = await fetch(geoUrl);
+                const geoData = await geoRes.json();
+
+                if (!geoData.results) throw new Error("City not found");
+                const { latitude, longitude, name } = geoData.results[0];
+
+                
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`;
+                const weatherRes = await fetch(weatherUrl);
+                const data = await weatherRes.json();
+
+                ui.display.classList.remove('hidden');
+                
+               
+                map.invalidateSize();
+
+                ui.city.innerText = name;
+                ui.temp.innerText = Math.round(data.current.temperature_2m) + "°C";
+                ui.humidity.innerText = data.current.relative_humidity_2m;
+                ui.wind.innerText = data.current.wind_speed_10m;
+                ui.desc.innerText = "Clear Conditions";
+
+                if (marker) map.removeLayer(marker);
+                marker = L.marker([latitude, longitude]).addTo(map);
+                map.flyTo([latitude, longitude], 10);
+
+                ui.status.innerText = "";
+            } catch (error) {
+                ui.status.innerText = "Error: " + error.message;
+                ui.display.classList.add('hidden');
+            }
+        }
+
+        ui.btn.addEventListener('click', () => {
+            if (ui.input.value) fetchWeather(ui.input.value);
+        });
+
+        ui.input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') ui.btn.click();
+        });
+        window.onload = () => fetchWeather('Kakinada');
+    </script>
+</body>
+</html>
