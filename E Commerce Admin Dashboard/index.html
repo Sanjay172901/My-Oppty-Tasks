@@ -6,7 +6,7 @@
     <title>EliteShop India - Pro Commerce Engine</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        
+        /* --- GLOBAL & THEME VARIABLES --- */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -26,7 +26,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-main); display: flex; min-height: 100vh; }
 
-       
+        /* --- NAVIGATION SIDEBAR --- */
         nav {
             width: 260px;
             background-color: var(--bg-sidebar);
@@ -49,7 +49,7 @@
             gap: 12px; 
         }
 
-        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 8px; flex-grow: 1; }
         
         .nav-btn {
             width: 100%; 
@@ -71,7 +71,11 @@
         .nav-btn:hover { background: rgba(255,255,255,0.05); color: white; }
         .nav-btn.active { background: var(--primary); color: white; }
 
-      
+        .logout-section { padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .btn-logout { color: var(--danger); }
+        .btn-logout:hover { background: rgba(239, 68, 68, 0.1); }
+
+        /* --- LAYOUT COMPONENTS --- */
         main { margin-left: 260px; flex-grow: 1; padding: 40px; }
         
         .page { display: none; animation: fadeIn 0.3s ease; }
@@ -92,7 +96,15 @@
 
         .card-header { margin-bottom: 20px; font-size: 18px; font-weight: 700; }
 
-       
+        /* --- LOGIN PAGE --- */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .login-error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 20px; }
+
+        /* --- STOREFRONT SPECIFICS --- */
         .cart-bar { 
             background: var(--primary); 
             color: white; 
@@ -140,7 +152,7 @@
         .stock-in { color: var(--success); }
         .stock-out { color: var(--danger); }
 
-        
+        /* --- BUTTONS --- */
         .btn { 
             padding: 12px 20px; 
             border: none; 
@@ -161,7 +173,7 @@
         .btn-danger-text { color: var(--danger); background: none; border: none; cursor: pointer; font-size: 14px; }
         .btn-sm { padding: 6px 12px; font-size: 12px; }
 
-       
+        /* --- CART MODAL --- */
         .cart-overlay { 
             position: fixed; 
             top: 0; left: 0; 
@@ -206,6 +218,7 @@
         .form-input { padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-main); outline: none; }
         .form-input:focus { border-color: var(--primary); }
 
+        /* --- ORDER TRACKING --- */
         .order-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
         .order-id-label { color: var(--text-muted); font-size: 12px; }
         .order-price-val { font-weight: 700; color: var(--primary); text-align: right; }
@@ -224,7 +237,7 @@
         }
         .track-item.active::before { border-color: var(--primary); background: var(--primary); }
 
-      
+        /* --- ADMIN COMPONENTS --- */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px; }
         .stat-label { font-size: 12px; color: var(--text-muted); }
         
@@ -244,7 +257,7 @@
 
         .no-data { text-align: center; padding: 40px; color: var(--text-muted); grid-column: 1/-1; }
 
-      
+        /* --- UTILITY --- */
         #toast { 
             position: fixed; 
             bottom: 20px; 
@@ -259,11 +272,14 @@
             animation: slideUp 0.3s ease;
         }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* Helper Classes */
+        .hide { display: none !important; }
     </style>
 </head>
 <body>
 
-   
+    <!-- TEMPLATES -->
     <template id="tmpl-product-card">
         <div class="card product-card">
             <button class="wishlist-btn">
@@ -343,6 +359,7 @@
         </tr>
     </template>
 
+    <!-- UI OVERLAYS -->
     <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
     <div class="cart-modal" id="cart-modal">
         <div class="cart-header">
@@ -366,7 +383,7 @@
         </div>
     </div>
 
-  
+    <!-- SIDEBAR -->
     <nav>
         <div class="logo">⚡ EliteShop</div>
         <ul class="nav-links">
@@ -375,9 +392,13 @@
             <li><button onclick="showPage('track')" id="btn-track" class="nav-btn">📦 My Orders</button></li>
             <li><button onclick="showPage('admin')" id="btn-admin" class="nav-btn">🛠️ Dashboard</button></li>
         </ul>
+        <div id="logout-container" class="logout-section hide">
+            <button onclick="handleAdminLogout()" class="nav-btn btn-logout">🚪 Logout Admin</button>
+        </div>
     </nav>
 
     <main>
+        <!-- PAGES -->
         <div id="store-page" class="page active">
             <div class="cart-bar" onclick="toggleCart()">
                 <span>🛒 Shopping Cart</span>
@@ -397,6 +418,23 @@
             <div id="user-orders-container"></div>
         </div>
 
+        <!-- ADMIN LOGIN PAGE -->
+        <div id="admin-login-page" class="page">
+            <div class="login-container">
+                <div class="card">
+                    <div class="card-header">Admin Access Required</div>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Please enter the management password to continue.</p>
+                    <div style="text-align: left;">
+                        <label class="input-label">Password</label>
+                        <input type="password" id="admin-password-input" class="form-input" style="width: 100%; margin-bottom: 10px;" placeholder="Enter Password">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="handleAdminLogin()">Unlock Dashboard</button>
+                    <div id="login-error-msg" class="login-error"></div>
+                </div>
+            </div>
+        </div>
+
+     
         <div id="admin-page" class="page">
             <h2>Store Management</h2>
             <div class="stats-grid">
@@ -469,7 +507,7 @@
     <div id="toast"></div>
 
     <script>
-     
+       
         const DEFAULT_PRODUCTS = [
             { id: 1, name: "Premium Hoodie", price: 2499, stock: 15, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" },
             { id: 2, name: "Classic Sneakers", price: 4999, stock: 8, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" },
@@ -483,6 +521,7 @@
         let orders = JSON.parse(localStorage.getItem('es_orders')) || [];
         let wishlist = JSON.parse(localStorage.getItem('es_wishlist')) || [];
         let cart = [];
+        let isAdminAuthenticated = false; 
 
         function save() {
             localStorage.setItem('es_products', JSON.stringify(products));
@@ -490,12 +529,48 @@
             localStorage.setItem('es_wishlist', JSON.stringify(wishlist));
         }
 
-      
+        function handleAdminLogin() {
+            const input = document.getElementById('admin-password-input');
+            const error = document.getElementById('login-error-msg');
+            
+            
+            const SECRET = "admin123";
+
+            if (input.value === SECRET) {
+                isAdminAuthenticated = true;
+                error.textContent = "";
+                input.value = "";
+                document.getElementById('logout-container').classList.remove('hide');
+                showPage('admin');
+                notify("Welcome back, Admin!");
+            } else {
+                error.textContent = "Invalid password. Access denied.";
+                input.focus();
+            }
+        }
+
+        function handleAdminLogout() {
+            isAdminAuthenticated = false;
+            document.getElementById('logout-container').classList.add('hide');
+            showPage('store');
+            notify("Admin logged out.");
+        }
+
         function showPage(id) {
+          
+            if (id === 'admin' && !isAdminAuthenticated) {
+                id = 'admin-login';
+            }
+
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
             document.getElementById(id + '-page').classList.add('active');
-            document.getElementById('btn-' + id).classList.add('active');
+            
+          
+            const activeBtnId = (id === 'admin-login' || id === 'admin') ? 'btn-admin' : 'btn-' + id;
+            document.getElementById(activeBtnId).classList.add('active');
+            
             render();
         }
 
@@ -504,7 +579,7 @@
             document.getElementById('cart-overlay').classList.toggle('show');
         }
 
-       
+     
         function toggleWishlist(id) {
             if (wishlist.includes(id)) {
                 wishlist = wishlist.filter(item => item !== id);
@@ -594,6 +669,7 @@
             render();
         }
 
+      
         function createProductElement(p) {
             const tmpl = document.getElementById('tmpl-product-card');
             const clone = tmpl.content.cloneNode(true);
@@ -627,11 +703,12 @@
         }
 
         function render() {
-            
+       
             const storeList = document.getElementById('product-display');
             storeList.innerHTML = '';
             products.forEach(p => storeList.appendChild(createProductElement(p)));
 
+            
             const wishListDisplay = document.getElementById('wishlist-display');
             wishListDisplay.innerHTML = '';
             const wishItems = products.filter(p => wishlist.includes(p.id));
@@ -644,7 +721,7 @@
                 wishListDisplay.appendChild(empty);
             }
 
-           
+         
             const cartList = document.getElementById('cart-items');
             cartList.innerHTML = '';
             const cartTmpl = document.getElementById('tmpl-cart-item');
@@ -665,7 +742,7 @@
             document.getElementById('cart-count').textContent = `${cart.length} Items - ₹${cartTotalSum.toLocaleString('en-IN')}`;
             document.getElementById('cart-total').textContent = `₹${cartTotalSum.toLocaleString('en-IN')}`;
 
-        
+          
             const trackList = document.getElementById('user-orders-container');
             trackList.innerHTML = '';
             const orderTmpl = document.getElementById('tmpl-order-card');
@@ -688,60 +765,61 @@
                 trackList.appendChild(empty);
             }
 
-            
-            const adminOrders = document.getElementById('admin-orders-list');
-            adminOrders.innerHTML = '';
-            const adminOrderTmpl = document.getElementById('tmpl-admin-order-row');
-            orders.forEach(o => {
-                const clone = adminOrderTmpl.content.cloneNode(true);
-                clone.querySelector('.admin-id').textContent = `#${o.id}`;
-                clone.querySelector('.admin-items').textContent = o.items;
-                clone.querySelector('.admin-payment').textContent = o.payment;
-                const badge = clone.querySelector('.admin-badge');
-                badge.textContent = o.status;
-                badge.classList.add(`badge-${o.status.replace(/\s+/g, '-').toLowerCase()}`);
-                const actionCell = clone.querySelector('.admin-action-cell');
-                if(o.status === 'Pending Payment') {
-                    const btn = document.createElement('button');
-                    btn.className = 'btn btn-primary btn-sm';
-                    btn.textContent = 'Verify Payment';
-                    btn.onclick = () => updateOrderStatus(o.id, 'Processing');
-                    actionCell.appendChild(btn);
-                } else {
-                    const sel = document.createElement('select');
-                    sel.className = 'form-select';
-                    sel.style.width = 'auto'; sel.style.marginBottom = '0';
-                    ['Processing', 'Shipped', 'Delivered'].forEach(s => {
-                        const opt = document.createElement('option');
-                        opt.value = s; opt.textContent = s;
-                        if(o.status === s) opt.selected = true;
-                        sel.appendChild(opt);
-                    });
-                    sel.onchange = (e) => updateOrderStatus(o.id, e.target.value);
-                    actionCell.appendChild(sel);
-                }
-                adminOrders.appendChild(clone);
-            });
+            if (isAdminAuthenticated) {
+                const adminOrders = document.getElementById('admin-orders-list');
+                adminOrders.innerHTML = '';
+                const adminOrderTmpl = document.getElementById('tmpl-admin-order-row');
+                orders.forEach(o => {
+                    const clone = adminOrderTmpl.content.cloneNode(true);
+                    clone.querySelector('.admin-id').textContent = `#${o.id}`;
+                    clone.querySelector('.admin-items').textContent = o.items;
+                    clone.querySelector('.admin-payment').textContent = o.payment;
+                    const badge = clone.querySelector('.admin-badge');
+                    badge.textContent = o.status;
+                    badge.classList.add(`badge-${o.status.replace(/\s+/g, '-').toLowerCase()}`);
+                    const actionCell = clone.querySelector('.admin-action-cell');
+                    if(o.status === 'Pending Payment') {
+                        const btn = document.createElement('button');
+                        btn.className = 'btn btn-primary btn-sm';
+                        btn.textContent = 'Verify Payment';
+                        btn.onclick = () => updateOrderStatus(o.id, 'Processing');
+                        actionCell.appendChild(btn);
+                    } else {
+                        const sel = document.createElement('select');
+                        sel.className = 'form-select';
+                        sel.style.width = 'auto'; sel.style.marginBottom = '0';
+                        ['Processing', 'Shipped', 'Delivered'].forEach(s => {
+                            const opt = document.createElement('option');
+                            opt.value = s; opt.textContent = s;
+                            if(o.status === s) opt.selected = true;
+                            sel.appendChild(opt);
+                        });
+                        sel.onchange = (e) => updateOrderStatus(o.id, e.target.value);
+                        actionCell.appendChild(sel);
+                    }
+                    adminOrders.appendChild(clone);
+                });
 
-            const adminProds = document.getElementById('admin-product-list');
-            adminProds.innerHTML = '';
-            const adminProdTmpl = document.getElementById('tmpl-admin-product-row');
-            products.forEach(p => {
-                const clone = adminProdTmpl.content.cloneNode(true);
-                clone.querySelector('.admin-p-name').textContent = p.name;
-                clone.querySelector('.admin-p-price').textContent = `₹${p.price.toLocaleString('en-IN')}`;
-                const stockVal = p.stock || 0;
-                const stockEl = clone.querySelector('.admin-p-stock');
-                stockEl.textContent = `${stockVal} units`;
-                if(stockVal <= 0) stockEl.classList.add('stock-out');
-                clone.querySelector('.delete-p-btn').onclick = () => deleteProduct(p.id);
-                adminProds.appendChild(clone);
-            });
+                const adminProds = document.getElementById('admin-product-list');
+                adminProds.innerHTML = '';
+                const adminProdTmpl = document.getElementById('tmpl-admin-product-row');
+                products.forEach(p => {
+                    const clone = adminProdTmpl.content.cloneNode(true);
+                    clone.querySelector('.admin-p-name').textContent = p.name;
+                    clone.querySelector('.admin-p-price').textContent = `₹${p.price.toLocaleString('en-IN')}`;
+                    const stockVal = p.stock || 0;
+                    const stockEl = clone.querySelector('.admin-p-stock');
+                    stockEl.textContent = `${stockVal} units`;
+                    if(stockVal <= 0) stockEl.classList.add('stock-out');
+                    clone.querySelector('.delete-p-btn').onclick = () => deleteProduct(p.id);
+                    adminProds.appendChild(clone);
+                });
 
-            const totalSalesSum = orders.reduce((sum, o) => sum + o.total, 0);
-            document.getElementById('admin-total-sales').textContent = `₹${totalSalesSum.toLocaleString('en-IN')}`;
-            document.getElementById('admin-order-count').textContent = orders.length;
-            document.getElementById('admin-product-count').textContent = products.length;
+                const totalSalesSum = orders.reduce((sum, o) => sum + o.total, 0);
+                document.getElementById('admin-total-sales').textContent = `₹${totalSalesSum.toLocaleString('en-IN')}`;
+                document.getElementById('admin-order-count').textContent = orders.length;
+                document.getElementById('admin-product-count').textContent = products.length;
+            }
         }
 
         function notify(msg, err = false) {
@@ -751,6 +829,11 @@
             t.style.display = 'block';
             setTimeout(() => { t.style.display = 'none'; }, 3000);
         }
+
+       
+        document.getElementById('admin-password-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') handleAdminLogin();
+        });
 
         window.onload = render;
     </script>
