@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple form</title>
+    <style>
+        
+        :root {
+            --primary: #ffffff;
+            --accent-1: #00f2ff; 
+            --accent-2: #7000ff; 
+            --bg-dark: #050505;
+            --card-bg: rgba(10, 10, 10, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #888888;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+       
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 50px 160px, var(--accent-1), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, var(--accent-2), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 150px 10px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.2;
+            animation: drift 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50%); }
+        }
+
+       
+        .glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 10s infinite alternate;
+        }
+        .glow-1 { top: -200px; left: -100px; }
+        .glow-2 { bottom: -200px; right: -100px; background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%); }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 50px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            position: relative;
+            animation: emerge 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes emerge {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+      
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 40px; height: 40px;
+            border-top: 2px solid var(--accent-1);
+            border-right: 2px solid var(--accent-1);
+            opacity: 0.5;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            font-style: italic;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-1) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            margin: 0 0 30px 0;
+            color: var(--text-dim);
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        label {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-1);
+        }
+
+        .count-badge {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--text-dim);
+            opacity: 0.6;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            box-sizing: border-box;
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-1);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background: var(--accent-1);
+            transform: skewX(-10deg);
+        }
+
+        button:active {
+            transform: skewX(-10deg) scale(0.98);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: white;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        .secondary-btn:hover {
+            background: white;
+            color: black;
+            transform: none;
+        }
+
+        .link-text {
+            margin-top: 30px;
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .link-text b {
+            color: var(--accent-1);
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-left: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .link-text b:hover {
+            color: white;
+        }
+
+        
+        #msg-box {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: none;
+            border-left: 4px solid transparent;
+        }
+
+        .success { background: rgba(0, 242, 255, 0.1); color: var(--accent-1); border-left-color: var(--accent-1); display: block !important; }
+        .error { background: rgba(255, 0, 0, 0.1); color: #ff4d4d; border-left-color: #ff4d4d; display: block !important; }
+
+       
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-row b { 
+            font-size: 9px; 
+            color: var(--accent-1); 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em;
+        }
+        
+        .profile-row span { 
+            font-weight: 700; 
+            font-size: 14px; 
+            color: white;
+        }
+
+       
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="container">
+       
+        <div id="msg-box"></div>
+
+       
+        <div id="view-register">
+            <h2>Sign Up</h2>
+            <p>New Identity Protocol</p>
+            
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Username</label>
+                </div>
+                <input type="text" id="reg-name" placeholder="John Doe">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Email</label>
+                </div>
+                <input type="email" id="reg-email" placeholder="john@example.com">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Mobile</label>
+                    <span id="phone-count" class="count-badge">0 / 10</span>
+                </div>
+                <input type="text" id="reg-phone" placeholder="10 Digit Number" maxlength="10">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Date</label>
+                </div>
+                <input type="date" id="reg-dob">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Passkey</label>
+                </div>
+                <input type="password" id="reg-pass" placeholder="At least 8 chars">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Confirm Passkey</label>
+                </div>
+                <input type="password" id="reg-pass-confirm" placeholder="••••••••">
+            </div>
+
+            <button id="btn-do-register">Execute</button>
+            
+            <div class="link-text">
+                Already registered? <b id="link-to-login">Access</b>
+            </div>
+        </div>
+
+      
+        <div id="view-login" class="hidden">
+            <h2>Login</h2>
+            <p>Verification Required</p>
+            
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Email</label>
+                </div>
+                <input type="email" id="login-email" placeholder="john@example.com">
+            </div>
+            <div class="input-group">
+                <div class="label-row">
+                    <label>Passkey</label>
+                </div>
+                <input type="password" id="login-pass" placeholder="••••••••">
+            </div>
+
+            <button id="btn-do-login">Authenticate</button>
+            
+            <div class="link-text">
+                No identity? <b id="link-to-register">Register</b>
+            </div>
+        </div>
+
+       
+        <div id="view-profile" class="hidden">
+            <h2>System Profile</h2>
+            <p>Stored Biological Data</p>
+            
+            <div class="profile-row"><b>User</b> <span id="out-name"></span></div>
+            <div class="profile-row"><b>Mail</b> <span id="out-email"></span></div>
+            <div class="profile-row"><b>Contatc number</b> <span id="out-phone"></span></div>
+            <div class="profile-row"><b>Origin</b> <span id="out-dob"></span></div>
+
+            <button id="btn-do-logout" class="secondary-btn">Close Session</button>
+        </div>
+    </div>
+
+    <script>
+      
+        var boxRegister = document.getElementById("view-register");
+        var boxLogin = document.getElementById("view-login");
+        var boxProfile = document.getElementById("view-profile");
+        var msg = document.getElementById("msg-box");
+        var phoneInput = document.getElementById("reg-phone");
+        var phoneCounter = document.getElementById("phone-count");
+
+        
+        window.onload = function() {
+            var loginStatus = localStorage.getItem("isLoggedIn");
+            var userData = localStorage.getItem("myUser");
+
+            if (loginStatus === "yes" && userData !== null) {
+                showProfile();
+            }
+
+            
+            phoneInput.oninput = function() {
+                var val = this.value;
+                this.value = val.replace(/\D/g, ''); 
+                
+                
+                phoneCounter.textContent = this.value.length + " / 10";
+            };
+
+            document.getElementById("btn-do-register").onclick = doRegister;
+            document.getElementById("btn-do-login").onclick = doLogin;
+            document.getElementById("btn-do-logout").onclick = doLogout;
+            document.getElementById("link-to-login").onclick = showLogin;
+            document.getElementById("link-to-register").onclick = showRegister;
+        };
+
+
+        function showRegister() {
+            boxRegister.className = "";
+            boxLogin.className = "hidden";
+            boxProfile.className = "hidden";
+            msg.className = ""; 
+        }
+
+        function showLogin() {
+            boxRegister.className = "hidden";
+            boxLogin.className = "";
+            boxProfile.className = "hidden";
+            msg.className = ""; 
+        }
+
+        function showProfile() {
+            boxRegister.className = "hidden";
+            boxLogin.className = "hidden";
+            boxProfile.className = "";
+
+            var data = localStorage.getItem("myUser");
+            var user = JSON.parse(data);
+
+            document.getElementById("out-name").textContent = user.name;
+            document.getElementById("out-email").textContent = user.email;
+            document.getElementById("out-phone").textContent = user.phone;
+            document.getElementById("out-dob").textContent = user.dob;
+        }
+
+      
+        function doRegister() {
+            var n = document.getElementById("reg-name").value;
+            var e = document.getElementById("reg-email").value;
+            var p = document.getElementById("reg-phone").value;
+            var d = document.getElementById("reg-dob").value;
+            var w = document.getElementById("reg-pass").value;
+            var wc = document.getElementById("reg-pass-confirm").value;
+
+            if (n === "" || e === "" || w === "" || wc === "") {
+                msg.textContent = "All fields are required";
+                msg.className = "error";
+                return;
+            }
+
+            if (e.indexOf("@") === -1 || e.indexOf(".") === -1) {
+                msg.textContent = "Enter a valid email address";
+                msg.className = "error";
+                return;
+            }
+
+            
+            if (p.length !== 10) {
+                msg.textContent = "Mobile must be exactly 10 digits";
+                msg.className = "error";
+                return;
+            }
+
+           
+            var passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!passPattern.test(w)) {
+                msg.textContent = "Key: 8+ chars, Upper, Lower, & Number required";
+                msg.className = "error";
+                return;
+            }
+
+            if (w !== wc) {
+                msg.textContent = "Passwords do not match";
+                msg.className = "error";
+                return;
+            }
+
+            var userObj = {
+                name: n,
+                email: e,
+                phone: p,
+                dob: d,
+                pass: w
+            };
+
+            localStorage.setItem("myUser", JSON.stringify(userObj));
+
+            msg.textContent = "Registration Successful! Access Authorized.";
+            msg.className = "success";
+
+            document.getElementById("login-email").value = e;
+
+            setTimeout(function() {
+                showLogin();
+            }, 1500);
+        }
+
+        function doLogin() {
+            var inputE = document.getElementById("login-email").value;
+            var inputP = document.getElementById("login-pass").value;
+
+            var savedData = localStorage.getItem("myUser");
+            
+            if (savedData === null) {
+                msg.textContent = "No user found. Register first.";
+                msg.className = "error";
+                return;
+            }
+
+            var user = JSON.parse(savedData);
+
+            if (inputE === user.email && inputP === user.pass) {
+                localStorage.setItem("isLoggedIn", "yes");
+                msg.textContent = "Authentication Successful.";
+                msg.className = "success";
+                showProfile();
+            } else {
+                msg.textContent = "Invalid Credentials.";
+                msg.className = "error";
+            }
+        }
+
+        function doLogout() {
+            localStorage.setItem("isLoggedIn", "no");
+            showLogin();
+            msg.textContent = "Session Terminated.";
+            msg.className = "success";
+        }
+
+    </script>
+</body>
+</html>
