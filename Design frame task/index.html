@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Image Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial;
+}
+
+body{
+
+height:100vh;
+overflow:hidden;
+color:white;
+
+
+background: linear-gradient(
+-45deg,
+#000428,
+#020024,
+#090979,
+#1a2980,
+#004e92,
+#0f2027,
+#203a43,
+#2c5364,
+#26d0ce,
+#3a7bd5,
+#6a11cb,
+#2575fc,
+#ff512f,
+#dd2476,
+#00c6ff,
+#0072ff,
+#000428
+);
+background-size:1000% 1000%;
+
+animation:infinityBG 20s ease infinite;
+}
+
+@keyframes infinityBG{
+
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+
+}
+
+
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:200%;
+height:200%;
+
+background-image:
+
+linear-gradient(#ffffff10 1px,transparent 1px),
+linear-gradient(90deg,#ffffff10 1px,transparent 1px);
+
+background-size:60px 60px;
+
+animation:gridMove 50s linear infinite;
+}
+
+@keyframes gridMove{
+
+0%{transform:translateY(0)}
+100%{transform:translateY(-1000px)}
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:1200px;
+height:1200px;
+
+background:radial-gradient(circle,#00ffff33,transparent);
+
+filter:blur(140px);
+
+top:20%;
+left:50%;
+
+animation:auroraMove 14s ease infinite;
+}
+
+@keyframes auroraMove{
+
+0%{transform:translate(-200px,0)}
+50%{transform:translate(200px,120px)}
+100%{transform:translate(-200px,0)}
+
+}
+
+.container{
+
+display:flex;
+height:100vh;
+position:relative;
+z-index:2;
+}
+
+
+
+.controls{
+
+width:360px;
+padding:32px;
+
+background:rgba(255,255,255,0.05);
+
+backdrop-filter:blur(40px);
+
+border-right:1px solid rgba(255,255,255,0.2);
+
+box-shadow:
+
+0 0 80px rgba(0,0,0,0.8),
+inset 0 0 40px rgba(255,255,255,0.05);
+
+overflow:auto;
+}
+
+.controls h2{
+
+text-align:center;
+
+margin-bottom:25px;
+
+font-size:28px;
+
+letter-spacing:3px;
+
+background:linear-gradient(45deg,#ffd700,#ffffff);
+
+-webkit-background-clip:text;
+
+background-clip: text;
+
+color:transparent;
+}
+
+
+.controls input{
+
+width:100%;
+
+padding:14px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:12px;
+
+background:rgba(255,255,255,0.08);
+
+color:white;
+
+outline:none;
+
+transition:.4s;
+}
+
+.controls input:focus{
+
+background:rgba(255,255,255,0.18);
+
+box-shadow:0 0 15px #00ffff88;
+}
+
+.controls input::placeholder{
+color:#ddd;
+}
+
+
+
+.controls hr{
+
+margin:22px 0;
+
+border:none;
+
+height:1px;
+
+background:rgba(255,255,255,0.2);
+}
+
+.controls label{
+font-size:13px;
+color:#ddd;
+}
+
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin:8px 0;
+
+border:none;
+
+border-radius:14px;
+
+font-weight:600;
+
+cursor:pointer;
+
+color:#111;
+
+background:linear-gradient(45deg,#ffd700,#ffae00);
+
+position:relative;
+
+overflow:hidden;
+
+transition:.4s;
+}
+
+button::after{
+
+content:"";
+
+position:absolute;
+
+width:200%;
+height:200%;
+
+background:linear-gradient(
+45deg,
+transparent,
+#ffffff55,
+transparent
+);
+
+top:-50%;
+left:-50%;
+
+transform:rotate(25deg);
+
+animation:buttonShine 5s linear infinite;
+}
+
+@keyframes buttonShine{
+
+0%{transform:translateX(-200%) rotate(25deg)}
+100%{transform:translateX(200%) rotate(25deg)}
+
+}
+
+button:hover{
+
+transform:translateY(-4px) scale(1.05);
+
+box-shadow:
+
+0 0 20px #ffd700,
+0 0 60px #ffd700;
+}
+
+
+
+.viewer{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+}
+
+.frame{
+
+width:780px;
+
+height:500px;
+
+background:white;
+
+border-radius:20px;
+
+position:relative;
+
+overflow:hidden;
+
+
+}
+
+
+.frame::before{
+
+content:"";
+
+position:absolute;
+
+top:-4px;
+left:-4px;
+right:-4px;
+bottom:-4px;
+
+background:linear-gradient(
+45deg,
+#ff0000,
+#ff7300,
+#fffb00,
+#48ff00,
+#00ffd5,
+#002bff,
+#7a00ff,
+#ff00ab,
+#ff0000
+);
+
+background-size:600%;
+
+filter:blur(14px);
+
+z-index:-1;
+
+animation:infinityBorder 14s linear infinite;
+}
+
+@keyframes infinityBorder{
+
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+
+}
+
+
+.frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+
+.shape{
+
+position:absolute;
+
+width:70px;
+height:70px;
+
+cursor:pointer;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+
+transition:.4s;
+}
+
+.shape:hover{
+
+transform:translate(-50%,-50%) scale(1.4);
+
+box-shadow:
+
+0 0 25px white,
+0 0 70px white;
+}
+
+.circle{
+border-radius:50%;
+}
+
+
+input[type=range]{
+
+appearance:none;
+
+height:6px;
+
+border-radius:6px;
+
+background:#555;
+}
+
+input[type=range]::-webkit-slider-thumb{
+
+appearance:none;
+
+width:22px;
+height:22px;
+
+border-radius:50%;
+
+background:#ffd700;
+
+cursor:pointer;
+
+box-shadow:0 0 25px #ffd700;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="controls">
+
+<h2>AI Image Generator</h2>
+
+<input id="prompt" placeholder="Type any word (forest, car, beach...)">
+
+<button onclick="generateImage()">Generate Image</button>
+
+<hr>
+
+<button onclick="addSquare()">Add Square</button>
+<button onclick="addCircle()">Add Circle</button>
+
+<hr>
+
+<label>Frame Background</label>
+<input type="color" id="bgColor">
+
+<label>Frame Roundness</label>
+<input type="range" id="roundness" min="0" max="100">
+
+<hr>
+
+<button onclick="clearCanvas()">Clear Canvas</button>
+
+<button id="downloadBtn">Download Frame</button>
+
+</div>
+
+<div class="viewer">
+
+<div class="frame" id="frame">
+
+<img id="image">
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+
+function generateImage(){
+
+let word=document.getElementById("prompt").value
+
+if(word===""){
+alert("Enter a word")
+return
+}
+
+image.src="https://loremflickr.com/600/400/"+word+"&"+new Date().getTime()
+
+}
+
+
+
+const colors=["red","blue","green","yellow","purple","orange","pink","cyan"]
+
+function randomColor(){
+return colors[Math.floor(Math.random()*colors.length)]
+}
+
+
+function addSquare(){
+
+let shape=document.createElement("div")
+
+shape.className="shape"
+shape.style.background=randomColor()
+
+shape.onclick=function(){
+this.style.background=randomColor()
+}
+
+frame.appendChild(shape)
+
+}
+
+
+function addCircle(){
+
+let shape=document.createElement("div")
+
+shape.className="shape circle"
+shape.style.background=randomColor()
+
+shape.onclick=function(){
+this.style.background=randomColor()
+}
+
+frame.appendChild(shape)
+
+}
+
+
+document.getElementById("bgColor").addEventListener("input",function(){
+
+frame.style.background=this.value
+
+})
+
+
+document.getElementById("roundness").addEventListener("input",function(){
+
+frame.style.borderRadius=this.value+"px"
+
+})
+
+
+function clearCanvas(){
+
+document.querySelectorAll(".shape").forEach(s=>s.remove())
+
+image.src=""
+
+frame.style.background="white"
+frame.style.borderRadius=""
+
+}
+
+
+document.getElementById("downloadBtn").addEventListener("click",function(){
+
+alert("Downloading Frame...")
+
+console.log("Downloading Frame...")
+
+})
+
+</script>
+
+</body>
+</html>
